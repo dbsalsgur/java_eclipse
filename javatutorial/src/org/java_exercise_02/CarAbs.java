@@ -1,4 +1,4 @@
-package org.java_exercies_02;
+package org.java_exercise_02;
 
 public abstract class CarAbs {
 	int s;

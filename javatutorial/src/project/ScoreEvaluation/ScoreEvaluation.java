@@ -9,9 +9,9 @@ import java.util.Scanner;
 class ScoreEvaluation {
 
 	static ArrayList record = new ArrayList();
-	// record¿¡ ÀÔ·Â¹ŞÀº ÀÌ¸§, ÇĞ¹ø, ±¹¾î¼ºÀû, ¿µ¾î¼ºÀû, ¼öÇĞ¼ºÀûÀ» ÀúÀåÇÑ´Ù.
+	// recordì— ì…ë ¥ë°›ì€ ì´ë¦„, í•™ë²ˆ, êµ­ì–´ì„±ì , ì˜ì–´ì„±ì , ìˆ˜í•™ì„±ì ì„ ì €ì¥í•œë‹¤.
 	static Scanner s = new Scanner(System.in);
-	// s¿¡ ÀÔ·Â °ªÀ» ¹Ş´Â´Ù.
+	// sì— ì…ë ¥ ê°’ì„ ë°›ëŠ”ë‹¤.
 
 	public static void main(String[] args) {
 		while (true) {
@@ -23,13 +23,13 @@ class ScoreEvaluation {
 			case 2:
 				deleteRecord();
 				break;
-				
+
 			case 3:
 				sortRecord();
 				break;
-				
+
 			case 4:
-				System.out.println("ÇÁ·Î±×·¥À» Á¾·áÇÕ´Ï´Ù.");
+				System.out.println("í”„ë¡œê·¸ë¨ì„ ì¢…ë£Œí•©ë‹ˆë‹¤.");
 				System.exit(0);
 			}
 		}// while(true)
@@ -37,23 +37,23 @@ class ScoreEvaluation {
 
 	static int displayMenu() {
 		System.out.println("****************************************************");
-		System.out.println("¡ß                   ¼ºÀû °ü¸® ÇÁ·Î±×·¥                    ¡ß");
-		System.out.println("¡ß                    version 1.0                        ¡ß");
-		System.out.println("¡ß            made by MinhyeokTech Co, Inc.          ¡ß");
+		System.out.println("â—†                   ì„±ì  ê´€ë¦¬ í”„ë¡œê·¸ë¨                     â—†");
+		System.out.println("â—†                   version 1.0                     â—†");
+		System.out.println("â—†            made by MinhyeokTech Co, Inc.          â—†");
 		System.out.println("****************************************************");
 		System.out.println();
 		System.out.println();
-		System.out.println(" 1. ÇĞ»ı¼ºÀû ÀÔ·ÂÇÏ±â ");
+		System.out.println(" 1. í•™ìƒì„±ì  ì…ë ¥í•˜ê¸° ");
 		System.out.println();
-		System.out.println(" 2. ÇĞ»ı¼ºÀû »èÁ¦ÇÏ±â ");
+		System.out.println(" 2. í•™ìƒì„±ì  ì‚­ì œí•˜ê¸° ");
 		System.out.println();
-		System.out.println(" 3. ÇĞ»ı¼ºÀû Á¤·ÄÇÏ¿© º¸±â(ÀÌ¸§¼ø, ¼ºÀû¼ø)");
+		System.out.println(" 3. í•™ìƒì„±ì  ì •ë ¬í•˜ì—¬ ë³´ê¸°(ì´ë¦„ìˆœ, ì„±ì ìˆœ)");
 		System.out.println();
-		System.out.println(" 4. ÇÁ·Î±×·¥ Á¾·á");
+		System.out.println(" 4. í”„ë¡œê·¸ë¨ ì¢…ë£Œ");
 		System.out.println();
 		System.out.println();
-		System.out.println("¿øÇÏ´Â ¸Ş´º¸¦ ¼±ÅÃÇÏ¼¼¿ä.(1-4) : ");
-		//ÇÁ·Î±×·¥ ½ÇÇà ½Ã Ãâ·ÂµÉ È­¸é -> switch¹®À¸·Î È£Ãâ
+		System.out.println("ì›í•˜ëŠ” ë©”ë‰´ë¥¼ ì„ íƒí•˜ì„¸ìš”.(1-4) : ");
+		//í”„ë¡œê·¸ë¨ ì‹¤í–‰ ì‹œ ì¶œë ¥ë  í™”ë©´ -> switchë¬¸ìœ¼ë¡œ í˜¸ì¶œ
 
 		int menu = 0;
 
@@ -67,54 +67,55 @@ class ScoreEvaluation {
 					throw new Exception();
 				}
 			} catch (Exception e) {
-				System.out.println("¸Ş´º¸¦ Àß¸ø ¼±ÅÃÇÏ¼Ì½À´Ï´Ù. ´Ù½Ã ÀÔ·ÂÇØÁÖ¼¼¿ä.");
-				System.out.println("¿øÇÏ´Â ¸Ş´º¸¦ ¼±ÅÃÇÏ¼¼¿ä.(1-4) : ");
+				System.out.println("ë©”ë‰´ë¥¼ ì˜ëª» ì„ íƒí•˜ì…¨ìŠµë‹ˆë‹¤. ë‹¤ì‹œ ì…ë ¥í•´ì£¼ì„¸ìš”.");
+				System.out.println("ì›í•˜ëŠ” ë©”ë‰´ë¥¼ ì„ íƒí•˜ì„¸ìš”.(1-4) : ");
 			}
 		} while (true);
-		//s.nextLine()À¸·Î ÀÔ·Â¹ŞÀº °ªÀ» intÇüÀ¸·Î º¯È¯, 1, 2, 3, 4ÀÌ¿ÜÀÇ °ªÀ» ÀÔ·Â ½Ã ´Ù½Ã ¸Ş´º¸¦ ¼±ÅÃÇÏ°Ô ÇÔ
+		//s.nextLine()ìœ¼ë¡œ ì…ë ¥ë°›ì€ ê°’ì„ intí˜•ìœ¼ë¡œ ë³€í™˜, 1, 2, 3, 4ì´ì™¸ì˜ ê°’ì„ ì…ë ¥ ì‹œ ë‹¤ì‹œ ë©”ë‰´ë¥¼ ì„ íƒí•˜ê²Œ í•¨
 
 		return menu;
 	}// static int displayMenu()
 
 	static void inputRecord() {
-		System.out.println("1. ÇĞ»ı¼ºÀû ÀÔ·ÂÇÏ±â");
-		System.out.println("ÀÌ¸§,ÇĞ¹ø,±¹¾î¼ºÀû,¿µ¾î¼ºÀû,¼öÇĞ¼ºÀû ÀÇ ¼ø¼­·Î °ø¹é¾øÀÌ ÀÔ·ÂÇÏ¼¼¿ä");
-		System.out.println("ÀÔ·ÂÀ» ¸¶Ä¡·Á¸é q¸¦ ÀÔ·ÂÇÏ¼¼¿ä. ¸ŞÀÎÈ­¸éÀ¸·Î µ¹¾Æ°©´Ï´Ù.");
+		System.out.println("1. í•™ìƒì„±ì  ì…ë ¥í•˜ê¸°");
+		System.out.println("ì´ë¦„,í•™ë²ˆ,êµ­ì–´ì„±ì ,ì˜ì–´ì„±ì ,ìˆ˜í•™ì„±ì  ì˜ ìˆœì„œë¡œ ê³µë°±ì—†ì´ ì…ë ¥í•˜ì„¸ìš”");
+		System.out.println("ì…ë ¥ì„ ë§ˆì¹˜ë ¤ë©´ që¥¼ ì…ë ¥í•˜ì„¸ìš”. ë©”ì¸í™”ë©´ìœ¼ë¡œ ëŒì•„ê°‘ë‹ˆë‹¤.");
 		while (true) {
 			System.out.print(">>");
-			//ÀÔ·Â ´ë±â
+			//ì…ë ¥ ëŒ€ê¸°
 			do {
 				try {
 					String input = s.nextLine().trim();
-					//s.nextLine()À¸·Î ¹ŞÀº ÀÔ·Â °ª¿¡ °ø¹éÀ» Á¦°ÅÇÏ°í input¿¡ ¹®ÀÚ¿­·Î ¹ŞÀ½
+					//s.nextLine()ìœ¼ë¡œ ë°›ì€ ì…ë ¥ ê°’ì— ê³µë°±ì„ ì œê±°í•˜ê³  inputì— ë¬¸ìì—´ë¡œ ë°›ìŒ
 
 					if (!input.equalsIgnoreCase("q")) {
 						Scanner s2 = new Scanner(input).useDelimiter(",");
-						//inputÀ¸·Î ¹ŞÀº ÀÔ·Â°ªÀ» useDelimiter()¸¦ ÅëÇØ ,(½°Ç¥)¸¦ ±âÁØÀ¸·Î °¢°¢ ÇÑ°³ÀÇ ÀÎÀÚ·Î ÀÎ½Ä
-						//useDelimiter()´Â °ø¹éÀÌ ¾ø¾î¾ß ÇÏ±â ¶§¹®¿¡ ÀÔ·Â ½Ã ½°Ç¥¿Í ÀÔ·Â°ª¿¡ °ø¹éÀÌ ¾ø¾î¾ß ÇÑ´Ù.
+						//inputìœ¼ë¡œ ë°›ì€ ì…ë ¥ê°’ì„ useDelimiter()ë¥¼ í†µí•´ ,(ì‰¼í‘œ)ë¥¼ ê¸°ì¤€ìœ¼ë¡œ ê°ê° í•œê°œì˜ ì¸ìë¡œ ì¸ì‹
+						//useDelimiter()ëŠ” ê³µë°±ì´ ì—†ì–´ì•¼ í•˜ê¸° ë•Œë¬¸ì— ì…ë ¥ ì‹œ ì‰¼í‘œì™€ ì…ë ¥ê°’ì— ê³µë°±ì´ ì—†ì–´ì•¼ í•œë‹¤.
 
 						record.add(new Student2(s2.next(), s2.next(), s2.nextInt(), s2.nextInt(), s2.nextInt()));
-						//ÀÌ¸§, ÇĞ¹ø : ¹®ÀÚ¿­ / °¢°¢ÀÇ ¼ºÀû : Á¤¼öÇü
-						System.out.println("Àß ÀÔ·ÂµÇ¾ú½À´Ï´Ù. ÀÔ·ÂÀ» ¸¶Ä¡·Á¸é q¸¦ ÀÔ·ÂÇÏ¼¼¿ä.");
+						//ì´ë¦„, í•™ë²ˆ : ë¬¸ìì—´ / ê°ê°ì˜ ì„±ì  : ì •ìˆ˜í˜•
+						//ì¸ìëŠ” ì—¬ëŸ¬ê°œì´ë‚˜, ì € ì¸ìë“¤ ë¬¶ìŒì´ recordì˜ í•œ ì €ì¥ê³µê°„ì— ì €ì¥ë¨
+						System.out.println("ì˜ ì…ë ¥ë˜ì—ˆìŠµë‹ˆë‹¤. ì…ë ¥ì„ ë§ˆì¹˜ë ¤ë©´ që¥¼ ì…ë ¥í•˜ì„¸ìš”.");
 						break;
 					} else {
 						return;
 					}
 				} catch (Exception e) {
-					System.out.println("ÀÔ·Â¿À·ùÀÔ´Ï´Ù. ÀÌ¸§,ÇĞ¹ø,±¹¾î¼ºÀû,¿µ¾î¼ºÀû,¼öÇĞ¼ºÀû ÀÇ ¼ø¼­·Î ÀÔ·ÂÇÏ¼¼¿ä.");
-					//Á¤ÇØÁø ±ÔÄ¢¿¡ ¹ş¾î³ª´Â ÀÔ·Â°ª ÀÔ·Â ½Ã Ãâ·Â
+					System.out.println("ì…ë ¥ì˜¤ë¥˜ì…ë‹ˆë‹¤. ì´ë¦„,í•™ë²ˆ,êµ­ì–´ì„±ì ,ì˜ì–´ì„±ì ,ìˆ˜í•™ì„±ì  ì˜ ìˆœì„œë¡œ ì…ë ¥í•˜ì„¸ìš”.");
+					//ì •í•´ì§„ ê·œì¹™ì— ë²—ì–´ë‚˜ëŠ” ì…ë ¥ê°’ ì…ë ¥ ì‹œ ì¶œë ¥
 					break;
 				}
 			} while (true);
-			//Á¤È®ÇÑ ÀÔ·Â°ªÀ» ÀÔ·ÂÇÒ ¶§±îÁö ¹İº¹
+			//ì •í™•í•œ ì…ë ¥ê°’ì„ ì…ë ¥í•  ë•Œê¹Œì§€ ë°˜ë³µ
 		} // do-while(true)
 	}// static void inputRecord()
 
 	static void deleteRecord() {
 		while (true) {
 			displayRecord();
-			//»èÁ¦ Àü ÀÔ·Â°ª¿¡ ÀÇÇÑ ÀÌ¸§, ÇĞ¹ø, Á¡¼ö µ¥ÀÌÅÍ Ç¥½Ã
-			System.out.println("»èÁ¦ÇÏ°íÀÚ ÇÏ´Â µ¥ÀÌÅÍÀÇ ÇĞ¹øÀ» ÀÔ·ÂÇÏ¼¼¿ä.(q:¸ŞÀÎÈ­¸é)");
+			//ì‚­ì œ ì „ ì…ë ¥ê°’ì— ì˜í•œ ì´ë¦„, í•™ë²ˆ, ì ìˆ˜ ë°ì´í„° í‘œì‹œ
+			System.out.println("ì‚­ì œí•˜ê³ ì í•˜ëŠ” ë°ì´í„°ì˜ í•™ë²ˆì„ ì…ë ¥í•˜ì„¸ìš”.(q:ë©”ì¸í™”ë©´)");
 			System.out.print(">>");
 
 			do {
@@ -122,9 +123,9 @@ class ScoreEvaluation {
 					String input = s.nextLine().trim();
 
 					if (!input.equalsIgnoreCase("q")) {
-						//qÀÔ·ÂÀÌ °¡´ÉÇÏ³ª, q¸¦ ÀÔ·Â ½Ã ¸ŞÀÎÈ­¸éÀ¸·Î µ¹¾Æ°¡¹Ç·Î, Á¶°Ç ¼³Á¤
+						//qì…ë ¥ì´ ê°€ëŠ¥í•˜ë‚˜, që¥¼ ì…ë ¥ ì‹œ ë©”ì¸í™”ë©´ìœ¼ë¡œ ëŒì•„ê°€ë¯€ë¡œ, ì¡°ê±´ ì„¤ì •
 						int length = record.size();
-						//ArrayListÀÇ Å©±â´Â size()·Î È®ÀÎ °¡´É, for¹®ÀÇ ¹İº¹Á¶°ÇÀ» ¼³Á¤ÇÏ±â À§ÇÑ º¯¼ö¼±¾ğ
+						//ArrayListì˜ í¬ê¸°ëŠ” size()ë¡œ í™•ì¸ ê°€ëŠ¥, forë¬¸ì˜ ë°˜ë³µì¡°ê±´ì„ ì„¤ì •í•˜ê¸° ìœ„í•œ ë³€ìˆ˜ì„ ì–¸
 						boolean found = false;
 
 						for (int i = 0; i < length; i++) {
@@ -133,103 +134,108 @@ class ScoreEvaluation {
 								found = true;
 								record.remove(i);
 								break;
-							//ÀÔ·Â°ªÀÌ studentNo, Áï ÇĞ¹ø°ú °°À» °æ¿ì i¹øÂ°¿¡ ÀúÀåµÈ ÇØ´ç record¸¦ »èÁ¦
-							//found°¡ true°¡ µÇ¸é¼­ ¾Æ·¡ÀÇ Á¶°Ç¹®À» ÅëÇØ "»èÁ¦µÇ¾ú½À´Ï´Ù."°¡ Ãâ·Â
+							//ì…ë ¥ê°’ì´ studentNo, ì¦‰ í•™ë²ˆê³¼ ê°™ì„ ê²½ìš° ië²ˆì§¸ì— ì €ì¥ëœ í•´ë‹¹ record ArrayListë¥¼ ì‚­ì œ
+							//foundê°€ trueê°€ ë˜ë©´ì„œ ì•„ë˜ì˜ ì¡°ê±´ë¬¸ì„ í†µí•´ "ì‚­ì œë˜ì—ˆìŠµë‹ˆë‹¤."ê°€ ì¶œë ¥
 							}
 						}// for (int i = 0; i < length; i++) 
 						if (found) {
-							System.out.println("»èÁ¦µÇ¾ú½À´Ï´Ù.");
+							System.out.println("ì‚­ì œë˜ì—ˆìŠµë‹ˆë‹¤.");
 						} else {
-							System.out.println("ÀÏÄ¡ÇÏ´Â µ¥ÀÌÅÍ°¡ ¾ø½À´Ï´Ù.");
-							//ÇĞ¹øÀÇ Çü½ÄÀ» Á¤È®È÷ ÀÔ·ÂÇßÀ¸³ª, ÀÏÄ¡ÇÏ´Â µ¥ÀÌÅÍ°¡ ¾øÀ¸¸é Ãâ·Â. printlnºÎºĞÀ¸·Î µ¹¾Æ°¨
+							System.out.println("ì¼ì¹˜í•˜ëŠ” ë°ì´í„°ê°€ ì—†ìŠµë‹ˆë‹¤.");
+							//í•™ë²ˆì˜ í˜•ì‹ì„ ì •í™•íˆ ì…ë ¥í–ˆìœ¼ë‚˜, ì¼ì¹˜í•˜ëŠ” ë°ì´í„°ê°€ ì—†ìœ¼ë©´ ì¶œë ¥. printlnë¶€ë¶„ìœ¼ë¡œ ëŒì•„ê°
 						}
 						break;
 					} else {
 						return;
 					}
-					
+
 				} catch (Exception e) {
-					System.out.println("ÀÔ·Â¿À·ùÀÔ´Ï´Ù. ´Ù½Ã ÀÔ·ÂÇØ ÁÖ¼¼¿ä.");
-					//ÀÔ·Â °ªÀÌ Á¶°Ç¿¡ ¸ÂÁö¾ÊÀ¸¸é, ´Ù½Ã ÇØ´ç ¸Ş¼ÒµåÀÇ printlnºÎºĞÀ¸·Î µ¹¾Æ°¨
+					System.out.println("ì…ë ¥ì˜¤ë¥˜ì…ë‹ˆë‹¤. ë‹¤ì‹œ ì…ë ¥í•´ ì£¼ì„¸ìš”.");
+					//ì…ë ¥ ê°’ì´ ì¡°ê±´ì— ë§ì§€ì•Šìœ¼ë©´, ë‹¤ì‹œ í•´ë‹¹ ë©”ì†Œë“œì˜ printlnë¶€ë¶„ìœ¼ë¡œ ëŒì•„ê°
 					break;
 				}
 			} while (true);
 		}// end of while
 	}// static void deleteRecord()
-	
+
 	static void sortRecord() {
 		while (true) {
-			System.out.println(" Á¤·Ä±âÁØÀ» ¼±ÅÃÇÏ¼¼¿ä.(1:ÀÌ¸§¼ø 2:ÃÑÁ¡¼ø 3:¸ŞÀÎ¸Ş´º) : ");
-			//ÀÔ·Â°ªÀº 1,2,3Áß ÇÏ³ª¿©¾ß ¾Æ·¡ÀÇ ÄÚµå°¡ ½ÇÇàµÊ
-			
+			System.out.println(" ì •ë ¬ê¸°ì¤€ì„ ì„ íƒí•˜ì„¸ìš”.(1:ì´ë¦„ìˆœ 2:ì´ì ìˆœ 3:ë©”ì¸ë©”ë‰´) : ");
+			//ì…ë ¥ê°’ì´ 1,2,3ì¤‘ í•˜ë‚˜ì—¬ì•¼ ì•„ë˜ì˜ ì½”ë“œê°€ ì‹¤í–‰ë¨
+
 			int sort = 0;
-			
+
 			do {
 				try {
 					sort = Integer.parseInt(s.nextLine());
-					//ÀÔ·Â°ª(¹®ÀÚ¿­)À» Á¤¼öÇüÀ¸·Î ¹Ù²Ş
-					
+					//ì…ë ¥ê°’(ë¬¸ìì—´)ì„ ì •ìˆ˜í˜•ìœ¼ë¡œ ë°”ê¿ˆ
+
 					if (sort >= 1 && sort <= 3) {
 						break;
 					} else {
 						throw new Exception();
 					}
+					//ì…ë ¥ê°’ì˜ ê²€ì¦, ì…ë ¥ê°’ì´ ì¡°ê±´ì— ë§ì§€ ì•Šìœ¼ë©´, elseê°€ ì‹¤í–‰ë˜ë©´ì„œ ì˜ˆì™¸ë¥¼ ìƒì„±í•˜ì—¬, catchë¡œ ë„˜ì–´ê°€ê²Œ ë¨
 				} catch (Exception e) {
-					System.out.println("À¯È¿ÇÏÁö ¾ÊÀº ÀÔ·Â°ªÀÔ´Ï´Ù. ´Ù½Ã ÀÔ·ÂÇØÁÖ¼¼¿ä.");
-					System.out.println(" Á¤·Ä±âÁØÀ» ¼±ÅÃÇÏ¼¼¿ä.(1:ÀÌ¸§¼ø 2:ÃÑÁ¡¼ø 3:¸ŞÀÎ¸Ş´º) : ");
+					System.out.println("ìœ íš¨í•˜ì§€ ì•Šì€ ì…ë ¥ê°’ì…ë‹ˆë‹¤. ë‹¤ì‹œ ì…ë ¥í•´ì£¼ì„¸ìš”.");
+					System.out.println(" ì •ë ¬ê¸°ì¤€ì„ ì„ íƒí•˜ì„¸ìš”.(1:ì´ë¦„ìˆœ 2:ì´ì ìˆœ 3:ë©”ì¸ë©”ë‰´) : ");
 				}
 			} while (true);
-			//ÀÔ·Â°ªÀÌ ±âÁØ¿¡ ºÎÇÕÇÒ¶§±îÁö ¹İº¹µÇ´Â ±â´É
-			
+			//ì…ë ¥ê°’ì´ ê¸°ì¤€ì— ë¶€í•©í• ë•Œê¹Œì§€ ë°˜ë³µë˜ëŠ” ê¸°ëŠ¥
+
 			if (sort==1) {
 				Collections.sort(record, new NameAscending());
-				//¿À¸§Â÷¼øÀ¸·Î Á¤·Ä
+				//ì˜¤ë¦„ì°¨ìˆœìœ¼ë¡œ ì •ë ¬
 				displayRecord();
 			} else if(sort==2) {
 				Collections.sort(record, new TotalDescending());
-				//³»¸²Â÷¼øÀ¸·Î Á¤·Ä
+				//ë‚´ë¦¼ì°¨ìˆœìœ¼ë¡œ ì •ë ¬
 				displayRecord();
 			} else {
 				return;
 			}
-			//ÀÔ·Â ÈÄ Á¤·ÄÀÌ Àß µÇ¾ú´ÂÁö¸¦ È®ÀÎÇÏ±â À§ÇØ displayRecord()È£Ãâ
+			//ì…ë ¥ í›„ ì •ë ¬ì´ ì˜ ë˜ì—ˆëŠ”ì§€ë¥¼ í™•ì¸í•˜ê¸° ìœ„í•´ displayRecord()í˜¸ì¶œ
 		}
 	}
-	
+
 	static void displayRecord() { 
 		int koreanTotal = 0; 
 		int englishTotal = 0; 
 		int mathTotal = 0; 
 		int total = 0; 
-		
+
 		System.out.println(); 
-		System.out.println("ÀÌ¸§ ¹øÈ£ ±¹¾î ¿µ¾î ¼öÇĞ ÃÑÁ¡ "); 
+		System.out.println("ì´ë¦„    ë²ˆí˜¸    êµ­ì–´    ì˜ì–´    ìˆ˜í•™      ì´ì  "); 
 		System.out.println("======================================"); 
-		
+
 		int length = record.size(); 
-		//for¹® »ç¿ëÀ» À§ÇÑ º¯¼ö ¼±¾ğ
-		
+		//forë¬¸ ì‚¬ìš©ì„ ìœ„í•œ ë³€ìˆ˜ ì„ ì–¸
+
 		if(length > 0) { 
 			for (int i = 0; i < length ; i++) { 
 				Student2 student = (Student2)record.get(i); 
-				System.out.println(student); 
+				System.out.println(student);
+				//toString()ì„ ì˜¤ë²„ë¼ì´ë”© í–ˆê¸°ë•Œë¬¸ì—, get()ë©”ì†Œë“œë¥¼ í†µí•´ recordì— ì €ì¥ëœ ê°’ì„ í•˜ë‚˜í•˜ë‚˜ ì¶œë ¥í•¨
 				koreanTotal += student.koreanScore; 
 				mathTotal += student.mathScore; 
 				englishTotal += student.englishScore; 
 				total += student.total; 
-				//°¢ º¯¼ö¿¡ Á¡¼ö¸¦ ´ãÀ½.
+				//get(i)ë¡œ êº¼ë‚¸ ê°’ì„ ê° í† íƒˆì ìˆ˜ì— ëˆ„ì í•¨.
 			} 
 		} else { 
 			System.out.println(); 
-			System.out.println(" µ¥ÀÌÅÍ°¡ ¾ø½À´Ï´Ù."); 
+			System.out.println(" ë°ì´í„°ê°€ ì—†ìŠµë‹ˆë‹¤."); 
 			System.out.println(); 
+			//ì €ì¥ëœ ë°ì´í„°ê°€ ì—†ì„ ë•Œ ì¶œë ¥.
 		} 
 		System.out.println("======================================"); 
-		System.out.println("ÃÑÁ¡: " 
+		System.out.println("ì´ì : " 
 			+ Student2.format(koreanTotal+"", 11, Student2.RIGHT) 
+			//ì´ì :ì€ 3ì¹¸, ì´ë¦„+í•™ë²ˆ+êµ­ì–´ì ìˆ˜ëŠ” 14ì¹¸ì´ë¯€ë¡œ 11ì¹¸ í™•ë³´, ì˜¤ë¥¸ìª½ ì •ë ¬ë¡œ ì¡°ì • 
 			+ Student2.format(englishTotal+"", 6, Student2.RIGHT) 
 			+ Student2.format(mathTotal+"", 6, Student2.RIGHT) 
 			+ Student2.format(total+"", 8, Student2.RIGHT) 
+			//ëˆ„ì ë°ì´í„°ì˜ ì´ì ì´ í‘œì‹œë¨
 		); 
 		System.out.println(); 
 	} // static void displayRecord() { 

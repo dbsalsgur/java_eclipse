@@ -1,4 +1,4 @@
-package org.java_exercies_02;
+package org.java_exercise_02;
 
 public class Sedan extends CarAbs {
 

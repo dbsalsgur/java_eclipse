@@ -22,7 +22,7 @@ class EmployeeManage {
 				//sortRecord();
 				break;
 			case 4:
-				System.out.println("ÇÁ·Î±×·¥À» Á¾·áÇÕ´Ï´Ù.");
+				System.out.println("í”„ë¡œê·¸ë¨ì„ ì¢…ë£Œí•©ë‹ˆë‹¤.");
 				System.exit(0);
 			}
 		}
@@ -30,7 +30,7 @@ class EmployeeManage {
 	
 	static int displayMenu() {
 		System.out.println("************************************");
-		System.out.println("¡ß");
+		System.out.println("**");
 		System.out.println();
 		System.out.println();
 		System.out.println();
