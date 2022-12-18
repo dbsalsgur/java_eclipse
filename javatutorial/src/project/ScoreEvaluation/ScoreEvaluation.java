@@ -15,23 +15,23 @@ class ScoreEvaluation {
 
 	public static void main(String[] args) {
 		while (true) {
-			switch (displayMenu()) {
-			case 1:
-				inputRecord();
-				break;
-
-			case 2:
-				deleteRecord();
-				break;
-
-			case 3:
-				sortRecord();
-				break;
-
-			case 4:
-				System.out.println("프로그램을 종료합니다.");
-				System.exit(0);
-			}
+			switch (displayMenu()) { 
+				case 1:
+					inputRecord();
+					break;
+	
+				case 2:
+					deleteRecord();
+					break;
+	
+				case 3:
+					sortRecord();
+					break;
+	
+				case 4:
+					System.out.println("프로그램을 종료합니다.");
+					System.exit(0);
+				}
 		}// while(true)
 	}
 
