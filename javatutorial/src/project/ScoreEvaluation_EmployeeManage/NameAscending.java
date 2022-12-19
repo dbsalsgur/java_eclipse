@@ -1,4 +1,4 @@
-package project.ScoreEvaluation;
+package project.ScoreEvaluation_EmployeeManage;
 
 import java.util.Comparator;
 

@@ -1,7 +1,7 @@
-package project.ScoreEvaluation;
+package project.ScoreEvaluation_EmployeeManage;
 
 
-class Student2 implements Comparable {
+public class Student2 implements Comparable {
 	final static int LEFT = 0;
 	final static int CENTER = 1;
 	final static int RIGHT = 2;	
