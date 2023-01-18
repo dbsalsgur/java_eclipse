@@ -11,4 +11,5 @@ public class TotalPane extends JPanel {
 		JTable table = new JTable(new EmployeeModel());
 		add(new JScrollPane(table));
 	}
+	//EmployeeModel 크기의 표 생성, 스크롤바도 추가
 }

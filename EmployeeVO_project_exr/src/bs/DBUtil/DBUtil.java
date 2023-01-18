@@ -11,4 +11,7 @@ public class DBUtil {
 		Connection con = DriverManager.getConnection(url, "root", "");
 		return con;
 	}
+	//데이터베이스와 연결
+	//데이터베이스명 : mydatabase
+	//ID : root, pwd : 없음
 }

@@ -30,10 +30,10 @@ public class FindPane extends JPanel implements ActionListener {
 		
 		int size = caption.length;
 		
-		for (int i = 0; i < size-1; i++) {
-			jp[i] = new JPanel();
+		for (int i = 0; i < size; i++) {
 			jl[i] = new JLabel(caption[i]);
 			tf[i] = new JTextField(15);
+			jp[i] = new JPanel();
 			jp[i].add(jl[i]);
 			jp[i].add(tf[i]);
 			add(jp[i]);
@@ -41,16 +41,16 @@ public class FindPane extends JPanel implements ActionListener {
 			if (i==0 || i==1) {
 				tf[i].setEditable(true);
 			}
-			
-			jp[size] = new JPanel();
-			okb = new JButton("사원정보조회");
-			okb.addActionListener(this);
-			rsb = new JButton("다시쓰기");
-			rsb.addActionListener(this);
-			jp[size].add(okb);
-			jp[size].add(rsb);
-			add(jp[size]);
 		}
+		jp[size] = new JPanel();
+		okb = new JButton("사원정보조회");
+		okb.addActionListener(this);
+		rsb = new JButton("다시쓰기");
+		rsb.addActionListener(this);
+		jp[size].add(okb);
+		jp[size].add(rsb);
+		add(jp[size]);
+		
 	}
 
 	@Override
@@ -67,10 +67,10 @@ public class FindPane extends JPanel implements ActionListener {
 				if (!sno.equals("")&&!sname.equals("")) {
 					int no = Integer.parseInt(sno);
 					evo = edvo.getEmployeeCheck(no, sname);
-				} else if(!sno.equals("")&&!sname.equals("")){
+				} else if(!sno.equals("")&& sname.equals("")){
 					int no = Integer.parseInt(sno);
 					evo = edvo.getEmployeeNo(no);
-				} else if(!sno.equals("")&&!sname.equals("")) {
+				} else if(sno.equals("")&&!sname.equals("")) {
 					evo = edvo.getEmployeeName(sname);
 				}
 			} catch (Exception e) {
@@ -78,8 +78,8 @@ public class FindPane extends JPanel implements ActionListener {
 			}
 			if (evo != null) {
 				tf[0].setText(evo.getNo()+"");
-				tf[1].setText(evo.getName()+"");
-				tf[2].setText(evo.getJobGrade()+"");
+				tf[1].setText(evo.getName());
+				tf[2].setText(evo.getJobGrade());
 				tf[3].setText(evo.getDepartment()+"");
 				tf[4].setText(evo.getEmail());
 			} else {

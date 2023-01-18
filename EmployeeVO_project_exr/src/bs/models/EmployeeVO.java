@@ -7,6 +7,7 @@ public class EmployeeVO {
 	private int department;
 	private String email;
 	private String status;
+	//각각의 입력데이터를 독립시키기 위해 모든 변수를 private으로 설정, getter, setter를 구현
 	
 	public EmployeeVO(int no, String name, String jobGrade, int department, String email) {
 		super();
