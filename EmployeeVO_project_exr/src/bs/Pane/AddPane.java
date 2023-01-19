@@ -69,6 +69,7 @@ public class AddPane extends JPanel implements ActionListener, ItemListener {
 		//부서번호 선택 가능하도록 콤보박스 생성, 내용은 10부터 50까지 
 		jp[i].add(combo);
 		combo.addActionListener(this);
+		combo.addItemListener(this);
 		
 		jp[size] = new JPanel();
 		okb = new JButton("저장하기");
@@ -81,11 +82,13 @@ public class AddPane extends JPanel implements ActionListener, ItemListener {
 		//버튼모양의 누르면 동작하는 컴포넌트 추가
 	}
 
+	
 	@Override
 	public void itemStateChanged(ItemEvent ie) {
 		if(ie.getStateChange() == ItemEvent.SELECTED)
 			department = Integer.parseInt(ie.getItem().toString());
 	}
+	
 	//선택된 부서번호가 이벤트 발생으로 선택된 부서번호와 같다면 
 	//department에 선택한 부서번호 담음
 

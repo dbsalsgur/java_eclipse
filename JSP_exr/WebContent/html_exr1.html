@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>"개발자의 무덤"</title>
+</head>
+<body>
+<a name="top"/>
+<h1>Programmer in graveyard</h1>
+
+<a href="#bottom">하단으로 이동</a><br/><br/><br/>
+<a href="http://www.naver.com">네이버</a><br/>
+<a href="http://www.daum.net" target="_self">현재창으로 다음 열기</a><br/>
+<a href="http://www.google.co.kr" target="_blank">새 창으로 구글 열기</a><br/>
+<img src="./images/forest.jpg"/>
+
+<h3>과일</h3>
+<ol type="I" start="1">
+  <li> 바나나 </li>
+  <li> 딸기 </li>
+  <li> 파일애플 </li>
+  <li> 사과 </li>
+</ol>
+<br/><br/>
+<h3>컴퓨터 부품</h3>
+<ul type="square">
+  <li> 컴퓨터 </li>
+  <li> 모니터 </li>
+</ul>
+
+<dl>
+  <dt> 윤민혁</dt> <dd>코딩의 노예!</dd>
+  <dt> 김승주</dt> <dd>코딩의 노예!</dd>
+</dl>
+<br/><br/><br/><br/><br/><br/><br/><br/><br/>여긴 여백
+<br/><br/><br/><br/><br/><br/><br/><br/><br/>여긴 여백
+<br/><br/><br/><br/><br/><br/><br/><br/><br/>
+<a name= "bottom"/>
+<a href="#top">상단으로 이동</a>
+
+<hr width="20%"/>
+<hr width="20%" align="left"/>
+<hr width="20%" align="left" size="5"/>
+<hr width="20%" align="left" size="5" color="yellow"/>
+
+<table border=1>
+  <tr>
+    <th>열1</th>
+    <th>열2</th>
+    <th>열3</th>
+    
+  </tr>
+  <tr>
+    <td>1</td>
+    <td colspan=2 align="center">2</td>
+    <!--<td>3</td> -->
+  </tr>
+  <tr>
+    <td>4</td>
+    <td rowspan=2>5</td>
+    <td>6</td>
+  </tr>
+  <tr>
+	<td>7</td>
+    <!--<td>8</td> -->
+    <td>9</td>
+  </tr>
+</table>
+
+<form action="http://www.naver.com/index.html">
+<table border='1' width='40%'>
+	<col align= 'right' width='30%'>
+	<col align= 'center' width= '70'>
+	<tr>
+		<td>ID : </td>
+		<td> <input type="text" name="id"> </td>
+	</tr> 	
+	<tr> 
+		<td> PASS : </td>
+		<td> <input type="password" name="pass"> </td>
+	</tr>
+	<tr> 
+		<td colspan='2'> <input type="submit" value="로그인"> </td>
+	</tr> 
+</table>
+</form>
+
+<br><br><br>
+
+<form enctype="multipart/form-data" method=post>
+HIDDEN : <input type="hidden" name="id" value="YMH"> <br>
+DATA : <input type="text" name="data" maxlength="5" value="data" readonly> <br>
+PASS : <input type="password" name="pass" maxlength="5"> <br>
+RADIO : <input type="radio" name="ra" value="man" checked>남성 &nbsp; 
+<input type="radio" name="ra" value="woman">여성 <br>
+CHECK : <input type="checkbox" name="ch" value="1"> 컴퓨터 <br>
+BUTTON : <input type="button" name="bt" value="누르기"> <br>
+FILE ATTACH : <input type="file" value="찾아보기"> <br>
+SUBMIT : <input type="submit" value="전송"> <br>
+RESET : <input type="reset" value="초기화">
+</form>
+
+<form >
+	<select name="choice">
+		<option value="apple"> 사과 </option>
+		<option value="banana"> 바나나 </option>
+		<option value="pineapple"> 파인애플</option>
+	</select> <br>
+	<select name="choice1" multiple>
+		<option value="apple"> 사과 </option>
+		<option value="banana"> 바나나</option>
+		<option value="pineapple"> 파인애플</option>
+	</select> <br>
+	<textarea name= "memo" rows="10" cols="20">메모</textarea>
+	<input type="submit" value="이동">
+</form>
+
+
+</body>
+</html>
