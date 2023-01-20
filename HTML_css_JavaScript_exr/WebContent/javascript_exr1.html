@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript">
+	function mh() {
+		document.write("Welcome to javascript! <br/>");
+	}
+	function question() {
+		var ans = confirm("결제하시겠습니까?");
+		if (ans == true)
+			alert("김승주 님의 결제가 완료되었습니다!");
+		else
+			alert("김승주 님의 계좌 비밀번호가 성공적으로 복사되었습니다!");
+	}
+	function input_data() {
+		var name = prompt("이름 =", "홍길동");
+		var age = prompt("나이 = ", 20);
+		document.write(name + "님!<br/>");
+		document.write("당신은 만 " + (age - 1) + "세 입니다.");
+	}
+	function get_focus(x) {
+		alert(x.name + "의 위치에 커서가 있습니다");
+	}
+	function lose_focus(x) {
+		alert(x.name + "의 위치에서 커서가 사라졌습니다.");
+	}
+	function check_form() {
+		alert('서버로 전송 전 확인합니다');
+		return true;
+	}
+	function clear_form() {
+		alert('폼 필드들을 초기화합니다.');
+	}
+	function view_name() {
+		var na = a_form.name.value;
+		alert('선택한 이름 : '+na);
+	}
+	function view_blood() {
+		var bl = a_form.blood.options[a_form.blood.selectedIndex].value;
+		alert('선택한 혈액형 : '+bl);
+	}
+	function view_search() {
+		alert('바이러스 검사를 시작합니다.');
+	}
+	function open_win() {
+		var width = 300;
+		var height = 200;
+		var left = screen.width /2 - width /2;
+		var top = screen.heght /2 - height /2;
+		var mywin = window.open('http://www.naver.com', 'popup', 
+				'top='+top+', left='+left+', width='+width+'height='+height+', scorollbars=yes');
+	}
+	
+</script>
+<meta charset="UTF-8">
+<title>This is Javascript!! asshole</title>
+<link rel="stylesheet" type="text/css" href="./css/style.css">
+</head>
+<body onLoad="javascript:alert('윤민혁의 홈페이지에 오신 것을 환영합니다')">
+	<script type="text/javascript">
+		mh();
+	</script>
+	<p>뫄마가 아니라 마뫄.</p>
+	<form>
+		<input type="button" value="개인정보 처리방침" onClick="question()">
+	</form>
+	<a href="#" onClick="input_data()">입력!</a>
+	<!-- 	<form name="my_form"> -->
+	<!-- 		이름 : <input type="text" name="name" onFocus="get_focus(this)" onBlur="lose_focus(this)"/><br/> -->
+	<!-- 		주소 : <input type="text" name="addr" onFocus="get_focus(this)" onBlur="lose_focus(this)"/><br/> -->
+	<!-- 	</form> -->
+	<form name="my_form" action="http://www.naver.com"
+		onSubmit="return check_form()" onReset="clear_form()">
+		ID : <input type="text" name="id" /> <input type="submit" value="전송" />
+		<input type="reset" value="필드초기화" />
+	</form>
+	<form name="a_form">
+		이름 : <input type="text" name="name" onSelect="view_name()"/><br/>
+		혈액형 : <select name="blood" onChange="view_blood()">
+			<option value="A">A형 </option>
+			<option value="B">B형 </option>
+			<option value="O">O형 </option>
+			<option value="AB">AB형 </option>
+			</select>
+		바이러스 검사 : <input type="button" value="검사" onClick="view_search()">
+	</form>
+	<input type="button" value="네이버 새 창으로 띄우기" onCLick="javascript:open_win()" />
+</body>
+</html>
