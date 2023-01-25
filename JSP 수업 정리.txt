@@ -1,0 +1,65 @@
+1. 웹 프로그램의 실행 순서
+- public void init()  : 웹에서 멤버 필드의 값을 초기화한다. 사용자가 접속 시 제일 먼저 발생한다.
+- public void service() : 웹에서 모든 사용자가 접속하고 있을 때 제일 먼저 실행되는 메소드이다. java의 main메소드와 같다
+- public void destroy() : init메소드에 의해 초기화한 멤버의 필드값을 소멸시킨다. 서버 구동종료 시 실행하는 메소드이다.
+
+
+2. 클라이언트의 요청형식
+(1)HTTP메소드
+- html문서의 form태그의 속성 method에 지정한다.
+ex) <form method="post">
+- 데이터의 요청방식에 따라 
+GET, POST, HEAD, PUT, DELETE, OPTIONS, TRACE, CONNECT
+로 나뉘어진다. → 주로 GET,POST를 사용하고, springframework에서는 put, delete도 사용한다.
+
+(2)요청 URI
+- 실제 서버로부터 전달받을 데이터가 있는 경로를 지정한다.
+
+(3)HTTP 버젼
+- http버젼을 지정한다.
+- 요즘은 통상 HTTP1.1을 사용하므로, HTTP1/1로 표기한다.
+ex) HTTP1/1\r\n
+
+(4)헤더부
+- 헤더의 키와 값을 서버로 보낼 수 있다.
+- 형식은 헤더키 : 헤더값\r\n 과 같이 작성한다.
+ex) Host : www.freelec.co.kr\r\n
+    Connection : Close\r\n
+
+(5)바디
+- 구체적인 메세지를 작성할 수 있다.
+ex) ID : yoonmh\r\n
+    PW : test\r\n
+- 헤더부나 바디 맨 아래줄에 \n을 필수로 작성한다. 마침표 기능 및 헤더부와 바디부를 구분하는 기준점이 된다.
+
+
+3. 서버의 응답형식
+- 서버의 응답형식은 대체로 클라이언트의 요청형식과 비슷하다.
+- 다른점은 요청부에만 있다.
+- 요청부
+HTTP버전 응답코드 코드메시지
+로 구성되어 있다.
+ex) HTTP1/1(HTTP버전) 404(응답코드) Object Not Found\r\n(코드메세지)
+- 요청에 따른 결과의 내용에 따라 숫자를 부여한 것이 응답코드이다.
+- 400~499는 클라이언트의 요청이 형식에 맞지 않거나 인증되지 않을 때 응답코드이며, 주소가 잘못되었을 때 404가 뜬다.
+
+
+4. mapping 
+(1)web.xml파일 설정 
+- 프로젝트 생성 시 web.xml을 생성한다.
+- 데이터를 수정해도 .java파일을 컴파일할 필요가 없음
+- 여러개의 서블릿을 묶어놓고 관리하기 편하다.
+
+(2)annotation 설정
+- 프로젝트 생성 시 web.xml을 생성하지 않는다.
+- mapping 방식을 annotation방식을 지정한다.
+- servlet파일을 만들면 @WebServlet에 annotation에 지정한 이름이 나온다.
+ex) @WebServlet("/omg")
+
+
+5. get방식과 post방식
+- form태그의 method 속성을 post로 설정하면 post방식으로 요청한다. 그 이외의 방식은 모두 get방식 요청,
+- 주소표시줄에 직접 요청하는 경우
+ex) http://localhost:8081/JSPandServlet_exr/ServletGetParameter?data1=aaa&data2=bbb&data3=ccc
+- 웹페이지에서 링크를 클릭한 경우
+ex) 위와 같은 주소로 만들어진 링크를 html파일에 만들어서 그 링크를 클릭하면 동일하게 동작한다.

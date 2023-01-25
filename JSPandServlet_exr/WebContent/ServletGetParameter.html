@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>this is get Parameter</title>
+<script type="text/javascript">
+	function send_data() {
+// 		location.href="http://localhost:8081/JSPandServlet_exr/ServletGetParameter?su1=100&su2=200";
+		window.open("http://localhost:8081/JSPandServlet_exr/ServletGetParameter?su1=100&su2=200", "popup", "location=yes, width=800, height=100");
+	}
+</script>
+</head>
+<body>
+	<div align="center">
+		<a href="http://localhost:8081/JSPandServlet_exr/ServletGetParameter?name=ymh&age=27">
+			나의 이름과 나이
+		</a>
+	</div>
+	<br/><br/><br/><br/>
+	<div align="center">
+		<a href="#" onClick="send_data()">링크</a>
+		&nbsp;&nbsp;or&nbsp;&nbsp;
+		<input type="button" onCLick="send_data()" value="버튼">
+	</div>
+	<br/><br/><br/><br/>
+	<form method="GET" action="ServletGetParameter">
+		Name : <input type="text" name="name"/> <br/>
+		Jumin : <input type="text" name="ju1"/> - <input type="password" name="ju2"/> <br/>
+		Id : <input type="text" name="id"/> <br/>
+		Pass : <input type="text" name="pw"/> <br/>
+		<input type="submit" value="전송"/> <br/>
+		
+	</form>
+</body>
+</html>
