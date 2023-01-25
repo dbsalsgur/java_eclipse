@@ -7,7 +7,7 @@ public class EmployeeVO {
 	private int department;
 	private String email;
 	private String status;
-	//°¢°¢ÀÇ ÀÔ·Âµ¥ÀÌÅÍ¸¦ µ¶¸³½ÃÅ°±â À§ÇØ ¸ğµç º¯¼ö¸¦ privateÀ¸·Î ¼³Á¤, getter, setter¸¦ ±¸Çö
+	//ê°ê°ì˜ ì…ë ¥ë°ì´í„°ë¥¼ ë…ë¦½ì‹œí‚¤ê¸° ìœ„í•´ ëª¨ë“  ë³€ìˆ˜ë¥¼ privateìœ¼ë¡œ ì„¤ì •, getter, setterë¥¼ êµ¬í˜„
 	
 	public EmployeeVO(int no, String name, String jobGrade, int department, String email) {
 		super();

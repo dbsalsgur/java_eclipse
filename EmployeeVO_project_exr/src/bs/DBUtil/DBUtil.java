@@ -11,7 +11,7 @@ public class DBUtil {
 		Connection con = DriverManager.getConnection(url, "root", "");
 		return con;
 	}
-	//µ¥ÀÌÅÍº£ÀÌ½º¿Í ¿¬°á
-	//µ¥ÀÌÅÍº£ÀÌ½º¸í : mydatabase
-	//ID : root, pwd : ¾øÀ½
+	//ë°ì´í„°ë² ì´ìŠ¤ì™€ ì—°ê²°
+	//ë°ì´í„°ë² ì´ìŠ¤ëª… : mydatabase
+	//ID : root, pwd : ì—†ìŒ
 }

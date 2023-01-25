@@ -12,29 +12,29 @@ import bs.DBUtil.DBUtil;
 public class EmployeeDAO {
 	public EmployeeVO getEmployeeregiste(EmployeeVO evo) throws Exception {
 		String dml = "insert into employee" + " (name,jobGrade,department,email)" + "values " + " (?,	?,	?,	?)";
-		//·¹ÄÚµå¸¦ »ğÀÔÇÏ±â À§ÇÑ Äõ¸® ÇüÅÂ
+		//ë ˆì½”ë“œë¥¼ ì‚½ì…í•˜ê¸° ìœ„í•œ ì¿¼ë¦¬ í˜•íƒœ
 		Connection con = null;
 		PreparedStatement pstmt = null;
-		//¹ÙÀÎµùº¯¼ö '?'¸¦ »ç¿ëÇÏ±âÀ§ÇØ PreparedStatement·Î ¼±¾ğ
+		//ë°”ì¸ë”©ë³€ìˆ˜ '?'ë¥¼ ì‚¬ìš©í•˜ê¸°ìœ„í•´ PreparedStatementë¡œ ì„ ì–¸
 		EmployeeVO retval = null;
 		
 		try {
 			con = DBUtil.getConnection();
-			//µ¥ÀÌÅÍº£ÀÌ½º ¿¬°á
+			//ë°ì´í„°ë² ì´ìŠ¤ ì—°ê²°
 			pstmt = con.prepareStatement(dml);
-			//¿¬°áÇÑ µ¥ÀÌÅÍº£ÀÌ½º¿¡ ÀÔ·ÂÇÒ ¹®±¸ ¼³Á¤
+			//ì—°ê²°í•œ ë°ì´í„°ë² ì´ìŠ¤ì— ì…ë ¥í•  ë¬¸êµ¬ ì„¤ì •
 			pstmt.setString(1, evo.getName());
 			pstmt.setString(2, evo.getJobGrade());
 			pstmt.setInt(3, evo.getDepartment());
 			pstmt.setString(4, evo.getEmail());
-			//ÀÌ¸§, Á÷Ã¥, ºÎ¼­¹øÈ£, ÀÌ¸ŞÀÏ °¢°¢ ¹ÙÀÎµù º¯¼ö¿¡ ¼³Á¤
+			//ì´ë¦„, ì§ì±…, ë¶€ì„œë²ˆí˜¸, ì´ë©”ì¼ ê°ê° ë°”ì¸ë”© ë³€ìˆ˜ì— ì„¤ì •
 			
 			int i = pstmt.executeUpdate();
-			//INSERTÄõ¸® »ç¿ë ½Ã ¾²´Â ¸Ş¼Òµå
-			//¹İ¿µµÈ ·¹ÄÚµå °Ç¼ö ¸®ÅÏ. create, drop¿¡ ´ëÇØ¼± -1 ¸®ÅÏ
+			//INSERTì¿¼ë¦¬ ì‚¬ìš© ì‹œ ì“°ëŠ” ë©”ì†Œë“œ
+			//ë°˜ì˜ëœ ë ˆì½”ë“œ ê±´ìˆ˜ ë¦¬í„´. create, dropì— ëŒ€í•´ì„  -1 ë¦¬í„´
 			retval = new EmployeeVO();
 			retval.setStatus(i+"");
-			//return value º¯¼ö¸¦ °´Ã¼È­ ÇÏ¿© ·¹ÄÚµå °³¼ö¸¦ status¿¡ ´ã´Â´Ù.
+			//return value ë³€ìˆ˜ë¥¼ ê°ì²´í™” í•˜ì—¬ ë ˆì½”ë“œ ê°œìˆ˜ë¥¼ statusì— ë‹´ëŠ”ë‹¤.
 		} catch(SQLException e) {
 			System.out.println("e=["+e+"]");
 		} catch (Exception e) {
@@ -47,8 +47,8 @@ public class EmployeeDAO {
 				
 			}
 		}
-		//SQLExceptionÀ» ¸ÕÀú Ä³Ä¡, SQL°ú °ü·Ã¾ø´Â ¿¹¿Üµµ Ä³Ä¡ÇÏ±â À§ÇØ Exceptionµµ ¹èÄ¡
-		//Å¬·¡½ºÀÇ µ¿ÀÛÀÌ ³¡³ª¸é ¿¬°áÇØÁ¦, pstmt¿¡ ´ã±ä ¹®±¸µµ null·Î ºñ¿öÁØ´Ù.
+		//SQLExceptionì„ ë¨¼ì € ìºì¹˜, SQLê³¼ ê´€ë ¨ì—†ëŠ” ì˜ˆì™¸ë„ ìºì¹˜í•˜ê¸° ìœ„í•´ Exceptionë„ ë°°ì¹˜
+		//í´ë˜ìŠ¤ì˜ ë™ì‘ì´ ëë‚˜ë©´ ì—°ê²°í•´ì œ, pstmtì— ë‹´ê¸´ ë¬¸êµ¬ë„ nullë¡œ ë¹„ì›Œì¤€ë‹¤.
 		return retval;
 	}
 	
@@ -65,11 +65,11 @@ public class EmployeeDAO {
 			pstmt.setInt(1, no);
 			pstmt.setString(2, name);
 			rs = pstmt.executeQuery();
-			//SELECTÄõ¸® »ç¿ë½Ã ¾²´Â ¸Ş¼Òµå
+			//SELECTì¿¼ë¦¬ ì‚¬ìš©ì‹œ ì“°ëŠ” ë©”ì†Œë“œ
 			if (rs.next()) {
 				retval = new EmployeeVO(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getString(5));
 			}
-			//ResultSetÀ» ÀÌ¿ëÇØ µ¥ÀÌÅÍº£ÀÌ½º¿¡ ÀúÀåµÈ °ªÀ» ¹İÈ¯.
+			//ResultSetì„ ì´ìš©í•´ ë°ì´í„°ë² ì´ìŠ¤ì— ì €ì¥ëœ ê°’ì„ ë°˜í™˜.
 		} catch(SQLException se) {
 			System.out.println(se);
 		} catch(Exception e) {
@@ -84,8 +84,8 @@ public class EmployeeDAO {
 			}
 		}
 		return retval;
-		//»ç¿øÁ¤º¸Á¶È¸ ±¸Çö
-		//»ç¹ø, ÀÌ¸§À» ÅëÇØ ÇØ´ç ·¹ÄÚµå¸¦ ¸®ÅÏÇÏ´Â ¸Ş¼Òµå
+		//ì‚¬ì›ì •ë³´ì¡°íšŒ êµ¬í˜„
+		//ì‚¬ë²ˆ, ì´ë¦„ì„ í†µí•´ í•´ë‹¹ ë ˆì½”ë“œë¥¼ ë¦¬í„´í•˜ëŠ” ë©”ì†Œë“œ
 	}
 	
 	public EmployeeVO getEmployeeNo(int no) throws Exception {
@@ -117,8 +117,8 @@ public class EmployeeDAO {
 			}
 		}
 		return retval;
-		//»ç¿øÁ¤º¸Á¶È¸ ±¸Çö
-		//»ç¹øÀ» ÅëÇØ ÇØ´ç ·¹ÄÚµå¸¦ ¸®ÅÏÇÏ´Â ¸Ş¼Òµå
+		//ì‚¬ì›ì •ë³´ì¡°íšŒ êµ¬í˜„
+		//ì‚¬ë²ˆì„ í†µí•´ í•´ë‹¹ ë ˆì½”ë“œë¥¼ ë¦¬í„´í•˜ëŠ” ë©”ì†Œë“œ
 	}
 	
 	public EmployeeVO getEmployeeName(String name) throws Exception {
@@ -150,8 +150,8 @@ public class EmployeeDAO {
 			}
 		}
 		return retval;
-		//»ç¿øÁ¤º¸Á¶È¸ ±¸Çö
-		//ÀÌ¸§À» ÅëÇØ ÇØ´ç ·¹ÄÚµå¸¦ ¸®ÅÏÇÏ´Â ¸Ş¼Òµå
+		//ì‚¬ì›ì •ë³´ì¡°íšŒ êµ¬í˜„
+		//ì´ë¦„ì„ í†µí•´ í•´ë‹¹ ë ˆì½”ë“œë¥¼ ë¦¬í„´í•˜ëŠ” ë©”ì†Œë“œ
 	}
 	
 	public ArrayList<EmployeeVO> getEmployeetotal() {
@@ -184,8 +184,8 @@ public class EmployeeDAO {
 			}
 		}
 		return list;
-		//»ç¿øÀüÃ¼º¸±â ±â´É ±¸Çö
-		//arraylist¿¡ ´ÙÂ÷¿ø ¹è¿­·Î ·¹ÄÚµå¸¦ ¼øÂ÷ÀûÀ¸·Î ÀúÀåÇÏ¿© ÇØ´ç³»¿ë ¸®ÅÏ
+		//ì‚¬ì›ì „ì²´ë³´ê¸° ê¸°ëŠ¥ êµ¬í˜„
+		//arraylistì— ë‹¤ì°¨ì› ë°°ì—´ë¡œ ë ˆì½”ë“œë¥¼ ìˆœì°¨ì ìœ¼ë¡œ ì €ì¥í•˜ì—¬ í•´ë‹¹ë‚´ìš© ë¦¬í„´
 	}
 	
 	public ArrayList<String> getColumnName() {
@@ -201,7 +201,7 @@ public class EmployeeDAO {
 			pstmt = con.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			rsmd = rs.getMetaData();
-			//µ¥ÀÌÅÍº£ÀÌ½ºÀÇ ¼Ó¼º¸í µîÀ» ÀúÀåÇÏ±â À§ÇØ ResultSetMetaDataÀÇ °´Ã¼¿¡ getMetaData()¸¦ ÅëÇØ ÀÔ·Â
+			//ë°ì´í„°ë² ì´ìŠ¤ì˜ ì†ì„±ëª… ë“±ì„ ì €ì¥í•˜ê¸° ìœ„í•´ ResultSetMetaDataì˜ ê°ì²´ì— getMetaData()ë¥¼ í†µí•´ ì…ë ¥
 			int cols = rsmd.getColumnCount();
 			for (int i = 1; i <= cols; i++) {
 				columnName.add(rsmd.getColumnName(i));
@@ -220,6 +220,6 @@ public class EmployeeDAO {
 			}
 		}
 		return columnName;
-		//»ç¿øÀüÃ¼º¸±â¿¡¼­ ¼Ó¼º¸íÀ» Ç¥±âÇÏ±â À§ÇÑ ¸Ş¼Òµå
+		//ì‚¬ì›ì „ì²´ë³´ê¸°ì—ì„œ ì†ì„±ëª…ì„ í‘œê¸°í•˜ê¸° ìœ„í•œ ë©”ì†Œë“œ
 	}
 }

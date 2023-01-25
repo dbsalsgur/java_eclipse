@@ -25,36 +25,36 @@ public class AddPane extends JPanel implements ActionListener, ItemListener {
 	private JLabel jl[] = new JLabel[5];
 	private JTextField tf[] = new JTextField[5];
 	private JButton okb;
-	//ok¹öÆ°
+	//okë²„íŠ¼
 	private JButton rsb;
-	//reset(´Ù½ÃÇÏ±â)¹öÆ°
+	//reset(ë‹¤ì‹œí•˜ê¸°)ë²„íŠ¼
 	private int department = 10;
-	//ºÎ¼­¹øÈ£ ±âº»°ª 10 ¼³Á¤
+	//ë¶€ì„œë²ˆí˜¸ ê¸°ë³¸ê°’ 10 ì„¤ì •
 	
-	String[] caption = {"ÀÌ ¸§ :", "Á÷ Ã¥ :", "¸Ş ÀÏ :", "ºÎ ¼­ :"};
+	String[] caption = {"ì´ ë¦„ :", "ì§ ì±… :", "ë©” ì¼ :", "ë¶€ ì„œ :"};
 	
 	public AddPane() {
 		setLayout(new GridLayout(6,1));
-		//ÆäÀÌÁö¿¡ 6Çà 1¿­ÀÇ °ø°£ »ı¼º
+		//í˜ì´ì§€ì— 6í–‰ 1ì—´ì˜ ê³µê°„ ìƒì„±
 		EtchedBorder eb = new EtchedBorder();
 		setBorder(eb);
-		//ÄÄÆ÷³ÍÆ®¿¡ È¨À» ÆÇ´Ù°í ÇÏ³ª ÇÏ³ªµµ ¾Èº¸ÀÓ
+		//ì»´í¬ë„ŒíŠ¸ì— í™ˆì„ íŒë‹¤ê³  í•˜ë‚˜ í•˜ë‚˜ë„ ì•ˆë³´ì„
 		
 		int size = caption.length;
 		int i;
 		for (i = 0; i < size-1; i++) {
 			jp[i] = new JPanel();
-			//Panel °´Ã¼ »ı¼º
+			//Panel ê°ì²´ ìƒì„±
 			jl[i] = new JLabel(caption[i]);
-			// captionÀÇ i¹øÂ°ÀÇ ÅØ½ºÆ® ´ãÀ½, ÀÌ¸§ Á÷Ã¥ ¸ŞÀÏ ºÎ¼­ ¼ø
+			// captionì˜ ië²ˆì§¸ì˜ í…ìŠ¤íŠ¸ ë‹´ìŒ, ì´ë¦„ ì§ì±… ë©”ì¼ ë¶€ì„œ ìˆœ
 			tf[i] = new JTextField(15);
-			//TextField, Áï, ÀÔ·ÂÄ­ »ı¼º. ÀÎÀÚ´Â Å©±â
+			//TextField, ì¦‰, ì…ë ¥ì¹¸ ìƒì„±. ì¸ìëŠ” í¬ê¸°
 			jp[i].add(jl[i]);
-			//ÆĞ³Î¿¡ caption ÅØ½ºÆ® ºÙÀÌ±â
+			//íŒ¨ë„ì— caption í…ìŠ¤íŠ¸ ë¶™ì´ê¸°
 			jp[i].add(tf[i]);
-			//ÆĞ³Î¿¡ ÀÔ·ÂÄ­ ºÙÀÌ±â
+			//íŒ¨ë„ì— ì…ë ¥ì¹¸ ë¶™ì´ê¸°
 			add(jp[i]);
-			//¿Ï¼ºµÈ ÆĞ³Î Ãß°¡ÇÏ±â
+			//ì™„ì„±ëœ íŒ¨ë„ ì¶”ê°€í•˜ê¸°
 		}
 		jp[i] = new JPanel();
 		jl[i] = new JLabel(caption[i]);
@@ -62,24 +62,24 @@ public class AddPane extends JPanel implements ActionListener, ItemListener {
 		add(jp[i]);
 		
 		JComboBox combo = new JComboBox();
-		combo.addItem("ºÎ¼­¹øÈ£¸¦ ¼±ÅÃÇÏ¼¼¿ä");
+		combo.addItem("ë¶€ì„œë²ˆí˜¸ë¥¼ ì„ íƒí•˜ì„¸ìš”");
 		for (int c = 1; c <= 5; c++) {
 			combo.addItem(c*10);
 		}
-		//ºÎ¼­¹øÈ£ ¼±ÅÃ °¡´ÉÇÏµµ·Ï ÄŞº¸¹Ú½º »ı¼º, ³»¿ëÀº 10ºÎÅÍ 50±îÁö 
+		//ë¶€ì„œë²ˆí˜¸ ì„ íƒ ê°€ëŠ¥í•˜ë„ë¡ ì½¤ë³´ë°•ìŠ¤ ìƒì„±, ë‚´ìš©ì€ 10ë¶€í„° 50ê¹Œì§€ 
 		jp[i].add(combo);
 		combo.addActionListener(this);
 		combo.addItemListener(this);
 		
 		jp[size] = new JPanel();
-		okb = new JButton("ÀúÀåÇÏ±â");
+		okb = new JButton("ì €ì¥í•˜ê¸°");
 		okb.addActionListener(this);
-		rsb = new JButton("´Ù½Ã¾²±â");
+		rsb = new JButton("ë‹¤ì‹œì“°ê¸°");
 		rsb.addActionListener(this);
 		jp[size].add(okb);
 		jp[size].add(rsb);
 		add(jp[size]);
-		//¹öÆ°¸ğ¾çÀÇ ´©¸£¸é µ¿ÀÛÇÏ´Â ÄÄÆ÷³ÍÆ® Ãß°¡
+		//ë²„íŠ¼ëª¨ì–‘ì˜ ëˆ„ë¥´ë©´ ë™ì‘í•˜ëŠ” ì»´í¬ë„ŒíŠ¸ ì¶”ê°€
 	}
 
 	
@@ -89,8 +89,8 @@ public class AddPane extends JPanel implements ActionListener, ItemListener {
 			department = Integer.parseInt(ie.getItem().toString());
 	}
 	
-	//¼±ÅÃµÈ ºÎ¼­¹øÈ£°¡ ÀÌº¥Æ® ¹ß»ıÀ¸·Î ¼±ÅÃµÈ ºÎ¼­¹øÈ£¿Í °°´Ù¸é 
-	//department¿¡ ¼±ÅÃÇÑ ºÎ¼­¹øÈ£ ´ãÀ½
+	//ì„ íƒëœ ë¶€ì„œë²ˆí˜¸ê°€ ì´ë²¤íŠ¸ ë°œìƒìœ¼ë¡œ ì„ íƒëœ ë¶€ì„œë²ˆí˜¸ì™€ ê°™ë‹¤ë©´ 
+	//departmentì— ì„ íƒí•œ ë¶€ì„œë²ˆí˜¸ ë‹´ìŒ
 
 	@Override
 	public void actionPerformed(ActionEvent ae) {
@@ -98,27 +98,27 @@ public class AddPane extends JPanel implements ActionListener, ItemListener {
 		EmployeeVO evo = null;
 		EmployeeDAO edvo = null;
 		if (ae_type.equals(okb.getText())) {
-			//ÀúÀåÇÏ±â ´©¸£¸é ½ÇÇà
+			//ì €ì¥í•˜ê¸° ëˆ„ë¥´ë©´ ì‹¤í–‰
 			try {
 				evo = new EmployeeVO(0, tf[0].getText(), tf[1].getText(), department, tf[2].getText());
-				//ÀÔ·ÂÄ­¿¡ ÀÔ·ÂµÈ ¹®ÀÚ¸¦ ¸ğµÎ evo°´Ã¼¿¡ ´ãÀ½
+				//ì…ë ¥ì¹¸ì— ì…ë ¥ëœ ë¬¸ìë¥¼ ëª¨ë‘ evoê°ì²´ì— ë‹´ìŒ
 				edvo = new EmployeeDAO();
 				edvo.getEmployeeregiste(evo);
-				//µ¥ÀÌÅÍ ÀúÀåÇÏ´Â ¸Ş¼Òµå ½ÇÇà
+				//ë°ì´í„° ì €ì¥í•˜ëŠ” ë©”ì†Œë“œ ì‹¤í–‰
 			} catch (Exception e) {
 				System.out.println("e=["+e+"e");
 			}
 			if(edvo != null)
-				JOptionPane.showMessageDialog(this, tf[0].getText()+"´ÔÀÌ ¼º°øÀûÀ¸·Î Ãß°¡µÊ");
-			//edvo°¡ Àß Ã³¸®µÇ¸é ÀÔ·ÂÇÑ ÀÌ¸§+´ÔÀÌ ¼º°øÀûÀ¸·Î Ãß°¡µÊ Ãâ·Â
+				JOptionPane.showMessageDialog(this, tf[0].getText()+"ë‹˜ì´ ì„±ê³µì ìœ¼ë¡œ ì¶”ê°€ë¨");
+			//edvoê°€ ì˜ ì²˜ë¦¬ë˜ë©´ ì…ë ¥í•œ ì´ë¦„+ë‹˜ì´ ì„±ê³µì ìœ¼ë¡œ ì¶”ê°€ë¨ ì¶œë ¥
 		} else if(ae_type.equals(rsb.getText())){
-			//´Ù½Ã¾²±â ´©¸£¸é ½ÇÇà
+			//ë‹¤ì‹œì“°ê¸° ëˆ„ë¥´ë©´ ì‹¤í–‰
 			int size = caption.length;
 			for (int i = 0; i < size-1; i++) {
 				tf[i].setText("");
 			}
-			//¸ğµç ÀÔ·ÂÄ­À» °ø¹éÀ¸·Î ¸¸µë
+			//ëª¨ë“  ì…ë ¥ì¹¸ì„ ê³µë°±ìœ¼ë¡œ ë§Œë“¬
 		}
 	}
-	//ÀÌº¥Æ® ¹ß»ı½Ã ½ÇÇàµÊ.
+	//ì´ë²¤íŠ¸ ë°œìƒì‹œ ì‹¤í–‰ë¨.
 }

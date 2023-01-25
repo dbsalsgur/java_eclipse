@@ -10,30 +10,30 @@ import bs.models.EmployeeVO;
 public class EmployeeModel extends AbstractTableModel {
 	Object [][] data;
 	Object []columnName;
-	//µ¥ÀÌÅÍ´Â ¿©·¯°³ÀÇ ´Ü¾î·Î ±¸¼ºµÇ¾î ÀÖ¾î¼­ ´ÙÂ÷¿ø¹è¿­·Î ¼±¾ğ
-	//¼Ó¼º¸íÀº °¢°¢ ÇÑ°³ ¾¿ÀÌ¹Ç·Î ¹è¿­·Î ¼±¾ğ
+	//ë°ì´í„°ëŠ” ì—¬ëŸ¬ê°œì˜ ë‹¨ì–´ë¡œ êµ¬ì„±ë˜ì–´ ìˆì–´ì„œ ë‹¤ì°¨ì›ë°°ì—´ë¡œ ì„ ì–¸
+	//ì†ì„±ëª…ì€ ê°ê° í•œê°œ ì”©ì´ë¯€ë¡œ ë°°ì—´ë¡œ ì„ ì–¸
 	
 	EmployeeDAO emDao = new EmployeeDAO();
 	EmployeeVO emVo;
 	ArrayList<String> title;
-	//¼Ó¼º¸í ´ãÀ» º¯¼ö
+	//ì†ì„±ëª… ë‹´ì„ ë³€ìˆ˜
 	ArrayList<EmployeeVO> list;
-	//·¹ÄÚµå ´ãÀ» º¯¼ö
+	//ë ˆì½”ë“œ ë‹´ì„ ë³€ìˆ˜
 	
 	public EmployeeModel() {
 		title = emDao.getColumnName();
 		columnName = title.toArray();
-		//ArrayList·Î ¸¸µç ¼Ó¼º¸íÀ» °´Ã¼ ¹è¿­·Î ¹İÈ¯
+		//ArrayListë¡œ ë§Œë“  ì†ì„±ëª…ì„ ê°ì²´ ë°°ì—´ë¡œ ë°˜í™˜
 		int columnCount = title.size();
-		//¼Ó¼º¸í °³¼ö(¿­ÀÇ °³¼ö) º¯¼ö¿¡ ´ãÀ½
+		//ì†ì„±ëª… ê°œìˆ˜(ì—´ì˜ ê°œìˆ˜) ë³€ìˆ˜ì— ë‹´ìŒ
 		
 		list = emDao.getEmployeetotal();
-		//list¿¡ ·¹ÄÚµå ³»¿ë ÀÔ·Â
+		//listì— ë ˆì½”ë“œ ë‚´ìš© ì…ë ¥
 		int rowCount = list.size();
-		//·¹ÄÚµåÀÇ °³¼ö º¯¼ö¿¡ ´ãÀ½
+		//ë ˆì½”ë“œì˜ ê°œìˆ˜ ë³€ìˆ˜ì— ë‹´ìŒ
 		
 		data = new Object[rowCount][columnCount];
-		//data´Â µ¥ÀÌÅÍº£ÀÌ½º¿¡ ÀúÀåµÈ µ¥ÀÌÅÍ¸¦ ´ãÀ» °ÍÀÌ±â ¶§¹®¿¡ Çà¿­ °¢°¢ÀÇ °³¼ö¸¸Å­ ÁöÁ¤
+		//dataëŠ” ë°ì´í„°ë² ì´ìŠ¤ì— ì €ì¥ëœ ë°ì´í„°ë¥¼ ë‹´ì„ ê²ƒì´ê¸° ë•Œë¬¸ì— í–‰ì—´ ê°ê°ì˜ ê°œìˆ˜ë§Œí¼ ì§€ì •
 	
 		for (int index = 0; index < rowCount; index++) {
 			emVo = list.get(index);
@@ -43,7 +43,7 @@ public class EmployeeModel extends AbstractTableModel {
 			data[index][3]=emVo.getDepartment();
 			data[index][4]=emVo.getEmail();
 		}
-		//data¿¡ µ¥ÀÌÅÍº£ÀÌ½ºÀÇ ·¹ÄÚµåµé ÀúÀå
+		//dataì— ë°ì´í„°ë² ì´ìŠ¤ì˜ ë ˆì½”ë“œë“¤ ì €ì¥
 	}
 
 	@Override
@@ -54,7 +54,7 @@ public class EmployeeModel extends AbstractTableModel {
 			return data.length;
 		}
 	}
-	//·¹ÄÚµå °³¼ö ¹İÈ¯. ¾øÀ¸¸é 0¹İÈ¯.
+	//ë ˆì½”ë“œ ê°œìˆ˜ ë°˜í™˜. ì—†ìœ¼ë©´ 0ë°˜í™˜.
 
 	@Override
 	public int getColumnCount() {
@@ -63,16 +63,16 @@ public class EmployeeModel extends AbstractTableModel {
 		else 
 			return columnName.length;
 	}
-	//¼Ó¼º °³¼ö ¹İÈ¯. ¾øÀ¸¸é 0 ¹İÈ¯
+	//ì†ì„± ê°œìˆ˜ ë°˜í™˜. ì—†ìœ¼ë©´ 0 ë°˜í™˜
 
 	@Override
 	public Object getValueAt(int rowIndex, int columnIndex) {
 		return data[rowIndex][columnIndex];
 	}
-	//data¿¡ ÀúÀåÇÑ Ã£°í ½ÍÀº µ¥ÀÌÅÍ ¹İÈ¯.
+	//dataì— ì €ì¥í•œ ì°¾ê³  ì‹¶ì€ ë°ì´í„° ë°˜í™˜.
 	
 	public String getColumnName(int column) {
 		return (String)columnName[column];
 	}
-	//¼Ó¼º ÀÌ¸§ ¹İÈ¯. ±âº»ÀûÀ¸·Î ObjectÇüÀÌ±â ¶§¹®¿¡ StringÀ¸·Î Çüº¯È¯.
+	//ì†ì„± ì´ë¦„ ë°˜í™˜. ê¸°ë³¸ì ìœ¼ë¡œ Objectí˜•ì´ê¸° ë•Œë¬¸ì— Stringìœ¼ë¡œ í˜•ë³€í™˜.
 }

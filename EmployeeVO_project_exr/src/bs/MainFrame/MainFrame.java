@@ -19,12 +19,12 @@ public class MainFrame extends JFrame {
 		fp = new FindPane();
 		tpa = new TotalPane();
 		
-		tp.addTab("»ç¿øÁ¤º¸ÀÔ·Â", ap);
-		tp.addTab("»ç¿øÁ¤º¸Á¶È¸", fp);
-		tp.addTab("»ç¿øÀüÃ¼º¸±â", tpa);
+		tp.addTab("ì‚¬ì›ì •ë³´ì…ë ¥", ap);
+		tp.addTab("ì‚¬ì›ì •ë³´ì¡°íšŒ", fp);
+		tp.addTab("ì‚¬ì›ì „ì²´ë³´ê¸°", tpa);
 		
 		getContentPane().add(tp);
-		setTitle("»ç¿ø °ü¸®(JDBC ¹öÀü)");
+		setTitle("ì‚¬ì› ê´€ë¦¬(JDBC ë²„ì „)");
 		
 		pack();
 		setVisible(true);

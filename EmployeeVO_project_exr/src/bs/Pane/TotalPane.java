@@ -11,5 +11,5 @@ public class TotalPane extends JPanel {
 		JTable table = new JTable(new EmployeeModel());
 		add(new JScrollPane(table));
 	}
-	//EmployeeModel Å©±âÀÇ Ç¥ »ı¼º, ½ºÅ©·Ñ¹Ùµµ Ãß°¡
+	//EmployeeModel í¬ê¸°ì˜ í‘œ ìƒì„±, ìŠ¤í¬ë¡¤ë°”ë„ ì¶”ê°€
 }

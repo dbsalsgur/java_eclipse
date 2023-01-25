@@ -21,7 +21,7 @@ public class FindPane extends JPanel implements ActionListener {
 	private JButton okb;
 	private JButton rsb;
 	
-	String[] caption = {"»ç ¹ø :", "ÀÌ ¸§ :", "Á÷ Ã¥ :", "ºÎ ¼­ :", "¸Ş ÀÏ :"};
+	String[] caption = {"ì‚¬ ë²ˆ :", "ì´ ë¦„ :", "ì§ ì±… :", "ë¶€ ì„œ :", "ë©” ì¼ :"};
 	
 	public FindPane() {
 		setLayout(new GridLayout(7,1));
@@ -43,9 +43,9 @@ public class FindPane extends JPanel implements ActionListener {
 			}
 		}
 		jp[size] = new JPanel();
-		okb = new JButton("»ç¿øÁ¤º¸Á¶È¸");
+		okb = new JButton("ì‚¬ì›ì •ë³´ì¡°íšŒ");
 		okb.addActionListener(this);
-		rsb = new JButton("´Ù½Ã¾²±â");
+		rsb = new JButton("ë‹¤ì‹œì“°ê¸°");
 		rsb.addActionListener(this);
 		jp[size].add(okb);
 		jp[size].add(rsb);
@@ -83,7 +83,7 @@ public class FindPane extends JPanel implements ActionListener {
 				tf[3].setText(evo.getDepartment()+"");
 				tf[4].setText(evo.getEmail());
 			} else {
-				JOptionPane.showMessageDialog(this, "°Ë»ö ½ÇÆĞ");
+				JOptionPane.showMessageDialog(this, "ê²€ìƒ‰ ì‹¤íŒ¨");
 			}
 		} else if(ae_type.equals(rsb.getText())) {
 			int size = caption.length;

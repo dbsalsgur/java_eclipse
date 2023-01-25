@@ -15,9 +15,9 @@ public class JDBCTest01 {
 			Class.forName(driver);
 			con = DriverManager.getConnection(url, "root", "");
 			stmt = con.createStatement();
-			System.out.println("单捞磐海捞胶 楷搬 己傍!");
+			System.out.println("雿办澊韯半矤鞚挫姢 鞐瓣舶 靹标车!");
 		} catch (Exception e){
-			System.out.println("单捞磐海捞胶 楷搬 角菩!");
+			System.out.println("雿办澊韯半矤鞚挫姢 鞐瓣舶 鞁ろ尐!");
 		} finally {
 			try {
 				if (con != null)
