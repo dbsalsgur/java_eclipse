@@ -49,6 +49,7 @@ ex) HTTP1/1(HTTP버전) 404(응답코드) Object Not Found\r\n(코드메세지)
 - 프로젝트 생성 시 web.xml을 생성한다.
 - 데이터를 수정해도 .java파일을 컴파일할 필요가 없음
 - 여러개의 서블릿을 묶어놓고 관리하기 편하다.
+- web.xml에는 웹 서버의 환경정보, 설정을 저장한다.
 
 (2)annotation 설정
 - 프로젝트 생성 시 web.xml을 생성하지 않는다.
@@ -63,3 +64,45 @@ ex) @WebServlet("/omg")
 ex) http://localhost:8081/JSPandServlet_exr/ServletGetParameter?data1=aaa&data2=bbb&data3=ccc
 - 웹페이지에서 링크를 클릭한 경우
 ex) 위와 같은 주소로 만들어진 링크를 html파일에 만들어서 그 링크를 클릭하면 동일하게 동작한다.
+- javascript의 window.open방식에 의한 요청, 자바스크립트 form태그의 method에 "get"을 설정하여 요청하는 것 모두 get방식 
+- get방식과 post방식으로 전달한 파라미터는 한글이 깨진다. 열혈강의 서블렛 jsp웹 프로그래밍 509페이지를 참조하면 개발자가 직접 인코딩을 할 수 있다.
+ex) String name = request.getParameter("name");
+    name = new String(name.getBytes("ISO8859_1"), "euc-kr");
+- post방식은 메세지 바디에 모든 데이터가 담겨 전송되기 때문에 간단히 언어처리를 할 수 있다.
+ex) request.setCharacterEncoding("euc-kr");
+- 위와 같이 하면 인코딩을 할 수 있다.
+
+6. Post요청 방식의 예제
+- form태그의 method에는 get, post방식을 지정한다
+- action에는 서버의 주소를 지정한다.
+ → 현재 환경에서는 apache tomcat을 사용하므로, 프로젝트 생성 시 만든  web.xml에 servlet-mapping의 url-pattern에 그 주소를 설정하고 있다.  
+- 클라이언트의 요청에 담긴 데이터를 가져오는 메소드가 getParameter()이다.
+ → 괄호 안에 있는 변수의 형식대로 가져옴
+- getParameter()의 반환형은 String 형이다. 
+ → 한계가 있음
+- 객체를 그대로 전달할 수 있는 방법이 필요하다.
+
+7. 응답
+- 응답은 setContentType()메소드로 인코딩을 한다.
+ex) response.setContentType("text/html;charset=utf-8");
+- 해당 메소드의 인자는 mime방식으로 넣는다.
+※mime방식 : 파일의 종류/파일포맷 으로 쓴다.
+ex) text/html
+
+8. 서블릿 프로그램
+- web.xml에 저장된 정보를 가져오기 위해 아래와같이 쓴다.
+ex) ServletConfig config = this.getServletConfig();
+
+9. 헤더의 출력
+- 클라이언트가 요청하면서 보내온 헤더값은 확인만 가능
+- 서버가 응답하면서 보내는 헤더의 값은 변경가능
+- 실무 상 헤더의 값을 변경할 일은 없다.
+
+10. 에러처리와 url이동
+- sendError() : printStackTrace()와 같이 에러 메세지를 출력한다.
+- 메세지를 출력하는 것 이외에 의미가 없기 때문에 실무에서는 사용하지 않는다.
+- sendRedirect() : 오류가 발생했을 때, 이전페이지 또는 다른 페이지로 이동한다.
+- redirect : 이동. 데이터를 가지지 않고 이동만 한다.
+ex) 회원가입 이후 가입 성공페이지 띄울때
+- forward : 전달, redirect의 반대되는 개념. 데이터를 전달한다.
+ex) 메일 송신할 때

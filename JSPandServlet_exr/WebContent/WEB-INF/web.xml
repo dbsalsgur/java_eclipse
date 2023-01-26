@@ -3,20 +3,41 @@
   <display-name>JSPandServlet_exr</display-name>
   <servlet>
   	<servlet-name>MyServlet</servlet-name>
-  	<servlet-class>JSPandServlet_servlet.JSPandServlet</servlet-class>
+  	<servlet-class>Servlet_example.JSPandServlet</servlet-class>
   </servlet>
   <servlet>
   	<servlet-name>MyServlet02</servlet-name>
-  	<servlet-class>JSPandServlet_servlet.ServletRequest</servlet-class>
+  	<servlet-class>Servlet_example.ServletRequest</servlet-class>
   </servlet>
   <servlet>
   	<servlet-name>MyServlet03</servlet-name>
-  	<servlet-class>JSPandServlet_servlet.ServletGetAndPost</servlet-class>
+  	<servlet-class>Servlet_example.ServletGetAndPost</servlet-class>
   </servlet>
   <servlet>
   	<servlet-name>MyServlet04</servlet-name>
-  	<servlet-class>JSPandServlet_servlet.ServletGetParameter</servlet-class>
+  	<servlet-class>Servlet_example.ServletGetParameter</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>MyServlet05</servlet-name>
+  	<servlet-class>Servlet_example.ServletConfiguration</servlet-class>
+  	<init-param>
+  		<param-name>start</param-name>
+  		<param-value>1</param-value>
+  	</init-param>
+  	<init-param>
+  		<param-name>end</param-name>
+  		<param-value>10</param-value>
+  	</init-param>
+  </servlet>
+  <servlet>
+  	<servlet-name>MyServlet06</servlet-name>
+  	<servlet-class>Servlet_example.ServletHeader</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>MyServlet07</servlet-name>
+  	<servlet-class>Servlet_example.ServletHeaderChange</servlet-class>
+  </servlet>
+  
   
   <servlet-mapping>
   	<servlet-name>MyServlet</servlet-name>
@@ -34,6 +55,19 @@
   	<servlet-name>MyServlet04</servlet-name>
   	<url-pattern>/ServletGetParameter</url-pattern>
   </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>MyServlet05</servlet-name>
+  	<url-pattern>/ServletConfiguration</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>MyServlet06</servlet-name>
+  	<url-pattern>/ServletHeader</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>MyServlet07</servlet-name>
+  	<url-pattern>/ServletHeaderChange</url-pattern>
+  </servlet-mapping>
+  
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
     <welcome-file>index.htm</welcome-file>
