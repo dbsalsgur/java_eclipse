@@ -43,9 +43,9 @@ public class CriminalModel extends AbstractTableModel {
 			data[index][2]=crVo.getSex();
 			data[index][3]=crVo.getcRecord();
 			data[index][4]=crVo.getName();
-			data[index][4]=crVo.getRegitNumber();
-			data[index][4]=crVo.getDate();
-			data[index][4]=crVo.getCrimDivNo();
+			data[index][5]=crVo.getRegitNumber();
+			data[index][6]=crVo.getDate();
+			data[index][7]=crVo.getCrimDivNo();
 		}
 		//data에 데이터베이스의 레코드들 저장
 	}

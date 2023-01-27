@@ -9,7 +9,7 @@ public class CrimeRecordVO {
 	private String cRecord;
 	private String name;
 	private int regitNumber;
-	private Date date;
+	private String date;
 	private int crimDivNo;
 	private String regionName;
 	private String categoryName; // 카테고리 테이블의 category 컬럼
@@ -19,7 +19,7 @@ public class CrimeRecordVO {
 	public CrimeRecordVO() {
 	}
 
-	public CrimeRecordVO(int crimNo, int region, int sex, String cRecord, String name, int regitNumber, Date date,
+	public CrimeRecordVO(int crimNo, int region, int sex, String cRecord, String name, int regitNumber, String date,
 			int crimDivNo) {
 		super();
 		this.crimNo = crimNo;
@@ -80,11 +80,11 @@ public class CrimeRecordVO {
 		this.regitNumber = regitNumber;
 	}
 
-	public Date getDate() {
+	public String getDate() {
 		return date;
 	}
 
-	public void setDate(Date date) {
+	public void setDate(String date) {
 		this.date = date;
 	}
 
@@ -127,5 +127,11 @@ public class CrimeRecordVO {
 	public void setSexName(String sexName) {
 		this.sexName = sexName;
 	}
+
+	@Override
+	public String toString() {
+		return "범죄자 정보 "+crimNo + region + sex + cRecord + name + regitNumber + date + crimDivNo +"";
+	}
+	
 
 }
