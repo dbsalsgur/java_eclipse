@@ -37,6 +37,54 @@
   	<servlet-name>MyServlet07</servlet-name>
   	<servlet-class>Servlet_example.ServletHeaderChange</servlet-class>
   </servlet>
+  <servlet>
+   	<servlet-name>MyServlet08</servlet-name>
+	<servlet-class>Servlet_example.ServletSendRedirect</servlet-class>
+  </servlet>
+  <servlet>
+   	<servlet-name>MyServlet09</servlet-name>
+	<servlet-class>Servlet_example.ServletForward</servlet-class>
+  </servlet>
+  <servlet>
+   	<servlet-name>MyServlet10</servlet-name>
+	<servlet-class>Servlet_example.ServletForward_Seoul</servlet-class>
+  </servlet>
+  <servlet>
+   	<servlet-name>MyServlet11</servlet-name>
+	<servlet-class>Servlet_example.ServletForward_Daegu</servlet-class>
+  </servlet>
+  <servlet>
+   	<servlet-name>MyServlet12</servlet-name>
+	<servlet-class>Servlet_example.ServletInclude</servlet-class>
+  </servlet>
+  <servlet>
+   	<servlet-name>MyServlet13</servlet-name>
+	<servlet-class>Servlet_example.ServletRequestArea_01</servlet-class>
+  </servlet>
+  <servlet>
+   	<servlet-name>MyServlet14</servlet-name>
+	<servlet-class>Servlet_example.ServletRequestArea_02</servlet-class>
+  </servlet>
+  <servlet>
+   	<servlet-name>MyServlet15</servlet-name>
+	<servlet-class>Servlet_example.ServletSessionArea_01</servlet-class>
+  </servlet>
+  <servlet>
+   	<servlet-name>MyServlet16</servlet-name>
+	<servlet-class>Servlet_example.ServletSessionArea_02</servlet-class>
+  </servlet>
+  <servlet>
+   	<servlet-name>MyServlet17</servlet-name>
+	<servlet-class>Servlet_example.ServletSessionArea_03</servlet-class>
+  </servlet>
+  <servlet>
+   	<servlet-name>MyServlet18</servlet-name>
+	<servlet-class>Servlet_example.ServletCookie_01</servlet-class>
+  </servlet>
+  <servlet>
+   	<servlet-name>MyServlet19</servlet-name>
+	<servlet-class>Servlet_example.ServletCookie_02</servlet-class>
+  </servlet>
   
   
   <servlet-mapping>
@@ -67,6 +115,56 @@
   	<servlet-name>MyServlet07</servlet-name>
   	<url-pattern>/ServletHeaderChange</url-pattern>
   </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>MyServlet08</servlet-name>
+  	<url-pattern>/ServletSendRedirect</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>MyServlet09</servlet-name>
+  	<url-pattern>/ServletForward</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>MyServlet10</servlet-name>
+  	<url-pattern>/ServletForward_Seoul</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>MyServlet11</servlet-name>
+  	<url-pattern>/ServletForward_Daegu</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>MyServlet12</servlet-name>
+  	<url-pattern>/ServletInclude</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>MyServlet13</servlet-name>
+  	<url-pattern>/ServletRequestArea_01</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>MyServlet14</servlet-name>
+  	<url-pattern>/ServletRequestArea_02</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>MyServlet15</servlet-name>
+  	<url-pattern>/ServletSessionArea_01</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>MyServlet16</servlet-name>
+  	<url-pattern>/ServletSessionArea_02</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>MyServlet17</servlet-name>
+  	<url-pattern>/ServletSessionArea_03</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>MyServlet18</servlet-name>
+  	<url-pattern>/ServletCookie_01</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>MyServlet19</servlet-name>
+  	<url-pattern>/ServletCookie_02</url-pattern>
+  </servlet-mapping>
+  
+  
   
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>

@@ -1,3 +1,7 @@
+※※※※※※※※※※ 웹 프로그램과 서블릿 ※※※※※※※※※※※
+
+
+
 1. 웹 프로그램의 실행 순서
 - public void init()  : 웹에서 멤버 필드의 값을 초기화한다. 사용자가 접속 시 제일 먼저 발생한다.
 - public void service() : 웹에서 모든 사용자가 접속하고 있을 때 제일 먼저 실행되는 메소드이다. java의 main메소드와 같다
@@ -44,6 +48,11 @@ ex) HTTP1/1(HTTP버전) 404(응답코드) Object Not Found\r\n(코드메세지)
 - 400~499는 클라이언트의 요청이 형식에 맞지 않거나 인증되지 않을 때 응답코드이며, 주소가 잘못되었을 때 404가 뜬다.
 
 
+
+※※※※※※※※※※ 서블릿에서 데이터 통신과 한글처리 ※※※※※※※※※※※
+
+
+
 4. mapping 
 (1)web.xml파일 설정 
 - 프로젝트 생성 시 web.xml을 생성한다.
@@ -56,6 +65,9 @@ ex) HTTP1/1(HTTP버전) 404(응답코드) Object Not Found\r\n(코드메세지)
 - mapping 방식을 annotation방식을 지정한다.
 - servlet파일을 만들면 @WebServlet에 annotation에 지정한 이름이 나온다.
 ex) @WebServlet("/omg")
+
+
+※※※※※※※※※※ 서블릿의 라이프 사이클과 주요 클래스들 ※※※※※※※※※※※
 
 
 5. get방식과 post방식
@@ -98,6 +110,12 @@ ex) ServletConfig config = this.getServletConfig();
 - 서버가 응답하면서 보내는 헤더의 값은 변경가능
 - 실무 상 헤더의 값을 변경할 일은 없다.
 
+
+
+※※※※※※※※※※ 서블릿 API ※※※※※※※※※※※
+
+
+
 10. 에러처리와 url이동
 - sendError() : printStackTrace()와 같이 에러 메세지를 출력한다.
 - 메세지를 출력하는 것 이외에 의미가 없기 때문에 실무에서는 사용하지 않는다.
@@ -106,3 +124,42 @@ ex) ServletConfig config = this.getServletConfig();
 ex) 회원가입 이후 가입 성공페이지 띄울때
 - forward : 전달, redirect의 반대되는 개념. 데이터를 전달한다.
 ex) 메일 송신할 때
+
+11. sendRedirect()
+- response.sendRedirect("이동할 페이지");
+- 위와 같이하면, 응답을 할 때 해당 페이지로 이동이 가능하다.
+
+12. requestDispatcher()
+- forward()를 하기위한 인터페이스
+- getServletContext()로 내용을 담아온 뒤,
+- getRequestDispatcher("url")로 링크를 설정하고
+- forward(request, response)로 자료를 넘긴다.
+
+13. include() 
+- forward와 사용방식이 똑같다
+- forward와 다른 점은 응답할 내용을 include()로 포함시키면, 그 정보가 누적되어 페이지에 해당 내용들을 모두 포함해서 보여준다.
+
+
+
+※※※※※※※※※※ 데이터의 저장영역 ※※※※※※※※※※※
+
+1. 저장영역의 종류 : 페이지 객체, 요청 객체, 세션 객체, ServletContext(application) 객체
+- 저장영역을 사용하는 이유 : getParameter()는 String형, 즉, 문자열이기 때문에, 데이터 처리가 까다롭다.
+- 저장영역을 사용하면, 객체 단위로 데이터를 처리할 수 있다.
+ → 저장영역 객체에 데이터를 집어넣어서 그 객체를 주고 받는 식
+
+2. 데이터 처리
+- 객체 : 각 객체
+- 추가 : request.setAttribute("키", 값)
+- 생성 : session = request.getSession()
+- 삭제 : session.removeAttribute("키", 값)
+- 획득 : Object obj = session.getAttribute("키")
+- 생성을 제외한 모든 영역이 같은 메소드를 사용한다.
+
+3. 쿠키 데이터
+- 클라이언트의 컴퓨터에 파일로 저장되는 데이터
+- 로그인 정보를 저장하는 등의 처리에서 활용함.
+ → 로그인 한뒤 창을 끄고, 다음에 창을 열었을 때 id, pw가 텍스트 필드에 기재되어 있다.
+
+※※※※※※※※※※ 서블릿에서의 파일 입출력과 전송, JDBC ※※※※※※※※※※※
+
