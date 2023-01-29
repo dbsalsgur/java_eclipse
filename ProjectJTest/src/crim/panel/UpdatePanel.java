@@ -126,7 +126,7 @@ public class UpdatePanel extends JPanel implements ActionListener, ItemListener 
 				crDAO = new CriminalDAO();
 				crDAO.getCriminalUpdate(crVO);
 			} catch (Exception e) {
-				System.out.println("입력값 오류");
+				System.out.println("input error");
 				System.out.println("e=["+e+"e");
 			}
 			String[] input = new String[7];
