@@ -11,7 +11,7 @@ import crim.DBUtil.DBUtil;
 
 
 public class CriminalDAO {
-	private static final String UPDATE = "update crimerecord set region=?, sex=?, crimeRecord=?, name=?, regitNumber=?, date=?, crimDivNo=? WHERE crimNo=?";
+	private static final String UPDATE = "update crimerecord set region=?, sex=?, crimeRecord=?, name=?, regitNumber=?, date=?, crimDivNo=? where crimNo=?";
 	private static final String SHOW_DATA = "select * from crimerecord";
 	private static final String FIND_DATA = "select * from crimerecord where crimNo = ?";
 	
@@ -46,7 +46,7 @@ public class CriminalDAO {
 		}
 		return retval;
 		//범죄자 정보조회 구현
-		//범죄번호를 통해 해당 레코드를 리턴하는 메소드
+		//범죄번호를 통해 해당 레코드를 리턴
 	}
 	
 	public ArrayList<CrimeRecordVO> getCriminaltotal() {
@@ -116,21 +116,25 @@ public class CriminalDAO {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		CrimeRecordVO resultValue = null;
+		String sql = "update crimerecord set region= '?', sex= ?, crimeRecord=?, name= ?, regitNumber= ?, date= ?, crimDivNo= ? where crimNo= '?'";
 		
 		try {
 			con = DBUtil.getConnection();
-			pstmt = con.prepareStatement(UPDATE);
+			pstmt = con.prepareStatement("update crimerecord set region=? where crimNo=?");
 			pstmt.setInt(1, cvo.getRegion());
-			pstmt.setInt(2, cvo.getSex());
-			pstmt.setString(3, cvo.getcRecord());
-			pstmt.setString(4, cvo.getName());
-			pstmt.setInt(5, cvo.getRegitNumber());
-			pstmt.setString(6, cvo.getDate());
-			pstmt.setInt(7, cvo.getCrimDivNo());
-			pstmt.setInt(8, cvo.getCrimNo());
-			pstmt.executeUpdate();
+//			pstmt.setInt(2, cvo.getSex());
+//			pstmt.setString(3, cvo.getcRecord());
+//			pstmt.setString(4, cvo.getName());
+//			pstmt.setInt(5, cvo.getRegitNumber());
+//			pstmt.setString(6, cvo.getDate());
+//			pstmt.setInt(7, cvo.getCrimDivNo());
+			pstmt.setInt(2, cvo.getCrimNo());
+			int i = pstmt.executeUpdate();
+			if (i <= 0) {
+				System.out.println("잘못 입력하셨습니다.");
+			}
+			System.out.println(i);
 			resultValue = new CrimeRecordVO();
-			//return value 변수를 객체화 하여 레코드 개수를 status에 담는다.
 		} catch(SQLException e) {
 			System.out.println("e=["+e+"]");
 		} catch (Exception e) {

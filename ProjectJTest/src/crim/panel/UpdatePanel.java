@@ -5,6 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import java.util.Arrays;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -117,6 +118,7 @@ public class UpdatePanel extends JPanel implements ActionListener, ItemListener 
 		} else if(ae_type.equals(update.getText())) {
 			try {
 				regionInput = Integer.parseInt(answerF[0].getText());
+				System.out.println(answerF[0].getText());
 				sexInput = Integer.parseInt(answerF[1].getText());
 				regitNumInput = Integer.parseInt(answerF[4].getText());
 				crimDivNoInput = Integer.parseInt(answerF[6].getText());
@@ -124,17 +126,23 @@ public class UpdatePanel extends JPanel implements ActionListener, ItemListener 
 				crDAO = new CriminalDAO();
 				crDAO.getCriminalUpdate(crVO);
 			} catch (Exception e) {
+				System.out.println("입력값 오류");
 				System.out.println("e=["+e+"e");
 			}
 			String[] input = new String[7];
 			for (int i = 0; i < input.length; i++) {
 				input[i] = answerF[i].getText();
 			}
-			JOptionPane.showMessageDialog(this, input+""+"\n"+"로 수정되었습니다!");
+			System.out.println(regionInput);
+			if(crVO != null) {
+				JOptionPane.showMessageDialog(this, "지역, 성별, 전과, 이름, 주민번호, 날짜, 발생일자, 분류번호가"+"\n"+Arrays.toString(input)+"\n"+"로 수정되었습니다!");
+			} else {
+				JOptionPane.showMessageDialog(this, "잘못 입력하셨습니다");
+			}
 		} else if(ae_type.equals(reset.getText())) {
 			int size = caption.length;
 			for (int i = 0; i < size; i++) {
-				tf[i].setText("");
+				answerF[i].setText("");
 			}
 		}
 	}

@@ -1,7 +1,5 @@
 package crim.models;
 
-import java.sql.Date;
-
 public class CrimeRecordVO {
 	private int crimNo;
 	private int region;
@@ -127,11 +125,5 @@ public class CrimeRecordVO {
 	public void setSexName(String sexName) {
 		this.sexName = sexName;
 	}
-
-	@Override
-	public String toString() {
-		return "범죄자 정보 "+crimNo + region + sex + cRecord + name + regitNumber + date + crimDivNo +"";
-	}
-	
 
 }
