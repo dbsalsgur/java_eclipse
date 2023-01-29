@@ -24,6 +24,7 @@ public class UpdatePanel extends JPanel implements ActionListener, ItemListener 
 	private JPanel keyP = new JPanel();
 	private JLabel jl[] = new JLabel[7];
 	private JLabel keyL = new JLabel();
+	private JLabel arrowL = new JLabel();
 	private JTextField tf[] = new JTextField[7];
 	private JTextField keyF = new JTextField();
 	private JTextField answerF[] = new JTextField[7];
@@ -57,10 +58,12 @@ public class UpdatePanel extends JPanel implements ActionListener, ItemListener 
 		for (int i = 0; i < size; i++) {
 			jl[i] = new JLabel(caption[i]);
 			tf[i] = new JTextField(10);
+			arrowL = new JLabel(" → ");
 			answerF[i] = new JTextField(10);
 			jp[i] = new JPanel();
 			jp[i].add(jl[i]);
 			jp[i].add(tf[i]);
+			jp[i].add(arrowL);
 			jp[i].add(answerF[i]);
 			add(jp[i]);
 			tf[i].setEditable(false);
@@ -112,17 +115,23 @@ public class UpdatePanel extends JPanel implements ActionListener, ItemListener 
 				tf[4].setText(crVO.getRegitNumber()+"");
 				tf[5].setText(crVO.getDate()+"");
 				tf[6].setText(crVO.getCrimDivNo()+"");
+				answerF[0].setText(crVO.getRegion()+"");
+				answerF[1].setText(crVO.getSex()+"");
+				answerF[2].setText(crVO.getcRecord());
+				answerF[3].setText(crVO.getName()+"");
+				answerF[4].setText(crVO.getRegitNumber()+"");
+				answerF[5].setText(crVO.getDate()+"");
+				answerF[6].setText(crVO.getCrimDivNo()+"");
 			} else {
 				JOptionPane.showMessageDialog(this, "검색 실패");
 			}
 		} else if(ae_type.equals(update.getText())) {
 			try {
-				regionInput = Integer.parseInt(answerF[0].getText());
-				System.out.println(answerF[0].getText());
-				sexInput = Integer.parseInt(answerF[1].getText());
-				regitNumInput = Integer.parseInt(answerF[4].getText());
-				crimDivNoInput = Integer.parseInt(answerF[6].getText());
-				crVO = new CrimeRecordVO(0, regionInput, sexInput, answerF[2].getText(), answerF[3].getText(), regitNumInput, answerF[5].getText(), crimDivNoInput);
+				regionInput = Integer.parseInt(answerF[0].getText().trim());
+				sexInput = Integer.parseInt(answerF[1].getText().trim());
+				regitNumInput = Integer.parseInt(answerF[4].getText().trim());
+				crimDivNoInput = Integer.parseInt(answerF[6].getText().trim());
+				crVO = new CrimeRecordVO(0, regionInput, sexInput, answerF[2].getText().trim(), answerF[3].getText().trim(), regitNumInput, answerF[5].getText().trim(), crimDivNoInput);
 				crDAO = new CriminalDAO();
 				crDAO.getCriminalUpdate(crVO);
 			} catch (Exception e) {
@@ -137,7 +146,7 @@ public class UpdatePanel extends JPanel implements ActionListener, ItemListener 
 			if(crVO != null) {
 				JOptionPane.showMessageDialog(this, "지역, 성별, 전과, 이름, 주민번호, 날짜, 발생일자, 분류번호가"+"\n"+Arrays.toString(input)+"\n"+"로 수정되었습니다!");
 			} else {
-				JOptionPane.showMessageDialog(this, "잘못 입력하셨습니다");
+				JOptionPane.showMessageDialog(this, "잘못 입력하셨습니다"+"\n"+"입력 내용을 다시 확인해주세요.");
 			}
 		} else if(ae_type.equals(reset.getText())) {
 			int size = caption.length;
@@ -146,9 +155,6 @@ public class UpdatePanel extends JPanel implements ActionListener, ItemListener 
 			}
 		}
 	}
-	
-	public static int getInt(JTextField tf) {
-		return Integer.parseInt(tf.getText());
-	}
+
 
 }

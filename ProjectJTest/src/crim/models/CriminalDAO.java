@@ -116,20 +116,21 @@ public class CriminalDAO {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		CrimeRecordVO resultValue = null;
-		String sql = "update crimerecord set region= '?', sex= ?, crimeRecord=?, name= ?, regitNumber= ?, date= ?, crimDivNo= ? where crimNo= '?'";
 		
 		try {
 			con = DBUtil.getConnection();
-			pstmt = con.prepareStatement("update crimerecord set region=? where crimNo=?");
+			pstmt = con.prepareStatement(UPDATE);
 			pstmt.setInt(1, cvo.getRegion());
-//			pstmt.setInt(2, cvo.getSex());
-//			pstmt.setString(3, cvo.getcRecord());
-//			pstmt.setString(4, cvo.getName());
-//			pstmt.setInt(5, cvo.getRegitNumber());
-//			pstmt.setString(6, cvo.getDate());
-//			pstmt.setInt(7, cvo.getCrimDivNo());
-			pstmt.setInt(2, cvo.getCrimNo());
+			pstmt.setInt(2, cvo.getSex());
+			pstmt.setString(3, cvo.getcRecord());
+			pstmt.setString(4, cvo.getName());
+			pstmt.setInt(5, cvo.getRegitNumber());
+			pstmt.setString(6, cvo.getDate());
+			pstmt.setInt(7, cvo.getCrimDivNo());
+			pstmt.setInt(8, cvo.getCrimNo());
+			System.out.println("세팅은 됨");
 			int i = pstmt.executeUpdate();
+			System.out.println("쿼리 날리기도 됨");
 			if (i <= 0) {
 				System.out.println("잘못 입력하셨습니다.");
 			}
