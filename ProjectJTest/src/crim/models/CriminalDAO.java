@@ -49,6 +49,45 @@ public class CriminalDAO {
 		//범죄번호를 통해 해당 레코드를 리턴
 	}
 	
+	public CrimeRecordVO getCriminalUpdate(CrimeRecordVO cvo) throws Exception {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		CrimeRecordVO resultValue = null;
+		
+		try {
+			con = DBUtil.getConnection();
+			pstmt = con.prepareStatement(UPDATE);
+			pstmt.setInt(1, cvo.getRegion());
+			pstmt.setInt(2, cvo.getSex());
+			pstmt.setString(3, cvo.getcRecord());
+			pstmt.setString(4, cvo.getName());
+			pstmt.setInt(5, cvo.getRegitNumber());
+			pstmt.setString(6, cvo.getDate());
+			pstmt.setInt(7, cvo.getCrimDivNo());
+			pstmt.setInt(8, cvo.getCrimNo());
+			int i = pstmt.executeUpdate();
+//			if (i <= 0) {
+//				System.out.println("잘못 입력하셨습니다.");
+//			}
+//			System.out.println(i);
+			resultValue = new CrimeRecordVO();
+		} catch(SQLException e) {
+			System.out.println("e=["+e+"]");
+		} catch (Exception e) {
+			System.out.println("e=["+e+"]");
+		} finally {
+			try {
+				if (pstmt != null) pstmt.close();
+				if(con != null) con.close();
+			} catch (SQLException e) {
+				
+			}
+		}
+		//SQLException을 먼저 캐치, SQL과 관련없는 예외도 캐치하기 위해 Exception도 배치
+		//클래스의 동작이 끝나면 연결해제, pstmt에 담긴 문구도 null로 비워준다.
+		return resultValue;
+	}
+	
 	public ArrayList<CrimeRecordVO> getCriminaltotal() {
 		ArrayList<CrimeRecordVO> list = new ArrayList<CrimeRecordVO>();
 		Connection con = null;
@@ -112,45 +151,107 @@ public class CriminalDAO {
 		return columnName;
 	}
 	
-	public CrimeRecordVO getCriminalUpdate(CrimeRecordVO cvo) throws Exception {
+	public ArrayList<String> getCrimeCategoryTableData() {
+		ArrayList<String> list = new ArrayList<String>();
+		String tml = "select * from Crimecategory";
+
 		Connection con = null;
 		PreparedStatement pstmt = null;
-		CrimeRecordVO resultValue = null;
-		
+		ResultSet rs = null;
+
 		try {
 			con = DBUtil.getConnection();
-			pstmt = con.prepareStatement(UPDATE);
-			pstmt.setInt(1, cvo.getRegion());
-			pstmt.setInt(2, cvo.getSex());
-			pstmt.setString(3, cvo.getcRecord());
-			pstmt.setString(4, cvo.getName());
-			pstmt.setInt(5, cvo.getRegitNumber());
-			pstmt.setString(6, cvo.getDate());
-			pstmt.setInt(7, cvo.getCrimDivNo());
-			pstmt.setInt(8, cvo.getCrimNo());
-			System.out.println("세팅은 됨");
-			int i = pstmt.executeUpdate();
-			System.out.println("쿼리 날리기도 됨");
-			if (i <= 0) {
-				System.out.println("잘못 입력하셨습니다.");
+			pstmt = con.prepareStatement(tml);
+			rs = pstmt.executeQuery();
+
+			while (rs.next()) {
+				list.add(rs.getString(2));
 			}
-			System.out.println(i);
-			resultValue = new CrimeRecordVO();
-		} catch(SQLException e) {
-			System.out.println("e=["+e+"]");
+		} catch (SQLException se) {
+			System.out.println(se);
 		} catch (Exception e) {
-			System.out.println("e=["+e+"]");
+			System.out.println(e);
 		} finally {
 			try {
-				if (pstmt != null) pstmt.close();
-				if(con != null) con.close();
-			} catch (SQLException e) {
-				
+				if (rs != null)
+					rs.close();
+				if (pstmt != null)
+					pstmt.close();
+				if (con != null)
+					con.close();
+			} catch (SQLException se) {
 			}
 		}
-		//SQLException을 먼저 캐치, SQL과 관련없는 예외도 캐치하기 위해 Exception도 배치
-		//클래스의 동작이 끝나면 연결해제, pstmt에 담긴 문구도 null로 비워준다.
-		return resultValue;
+		return list;
 	}
 	
+	public ArrayList<String> getCrimeRegionTableData() {
+		ArrayList<String> list = new ArrayList<String>();
+		String tml = "select * from Crimeregion";
+
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		try {
+			con = DBUtil.getConnection();
+			pstmt = con.prepareStatement(tml);
+			rs = pstmt.executeQuery();
+
+			while (rs.next()) {
+				list.add(rs.getString(2));
+			}
+		} catch (SQLException se) {
+			System.out.println(se);
+		} catch (Exception e) {
+			System.out.println(e);
+		} finally {
+			try {
+				if (rs != null)
+					rs.close();
+				if (pstmt != null)
+					pstmt.close();
+				if (con != null)
+					con.close();
+			} catch (SQLException se) {
+			}
+		}
+		return list;
+	}
+
+	
+	
+	public ArrayList<String> getCrimeSexTableData() {
+		ArrayList<String> list = new ArrayList<String>();
+		String tml = "select * from sex";
+
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		try {
+			con = DBUtil.getConnection();
+			pstmt = con.prepareStatement(tml);
+			rs = pstmt.executeQuery();
+
+			while (rs.next()) {
+				list.add(rs.getString(2));
+			}
+		} catch (SQLException se) {
+			System.out.println(se);
+		} catch (Exception e) {
+			System.out.println(e);
+		} finally {
+			try {
+				if (rs != null)
+					rs.close();
+				if (pstmt != null)
+					pstmt.close();
+				if (con != null)
+					con.close();
+			} catch (SQLException se) {
+			}
+		}
+		return list;
+	}
 }

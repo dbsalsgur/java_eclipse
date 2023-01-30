@@ -1,4 +1,4 @@
-package models;
+package ccsp.models;
 //package ccsp.model;
 
 import java.sql.Date;
