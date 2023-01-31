@@ -34,14 +34,13 @@ public class UpdatePanel extends JPanel implements ActionListener, ItemListener 
 	//ok(수정하기) 버튼
 	private JButton reset;
 	//reset(다시하기)버튼
-	public int regionNo = 1;
-	public int sexNo = 1;
-	public int crimDivNo = 1;
+	private int regionNo = 1;
+	private int sexNo = 1;
+	private int crimDivNo = 1;
 	JComboBox rcombo = new JComboBox();
 	JComboBox scombo = new JComboBox();
 	JComboBox ctgycombo = new JComboBox();
 	JComboBox[] comboBoxes = {rcombo, scombo, ctgycombo};
-//	ArrayList cList = new ArrayList();
 	
 	String[] caption = {"분류번호 : ", "지        역 : ", "성        별 : ", "전        과 : ", "이        름 : ", "주민번호 : ", "발생일자 : "};
 
@@ -97,22 +96,31 @@ public class UpdatePanel extends JPanel implements ActionListener, ItemListener 
 		
 		
 		ctgycombo.addItem("번호를   선택하세요");
-		categoryDataList = crDAO.getCrimeCategoryTableData();
-		addCbboxItem(ctgycombo, categoryDataList);
+		for (int i = 1; i <= 15; i++) {
+			ctgycombo.addItem(i);
+		}
+//		categoryDataList = crDAO.getCrimeCategoryTableData();
+//		addCbboxItem(ctgycombo, categoryDataList);
 		jp[0].add(ctgycombo);
 		ctgycombo.addActionListener(this);
 		ctgycombo.addItemListener(this);
 		
 		rcombo.addItem("지역을   선택하세요");
-		regionDataList = crDAO.getCrimeRegionTableData();
-		addCbboxItem(rcombo, regionDataList);
+		for (int i = 1; i <= 17; i++) {
+			rcombo.addItem(i);
+		}
+//		regionDataList = crDAO.getCrimeRegionTableData();
+//		addCbboxItem(rcombo, regionDataList);
 		jp[1].add(rcombo);
 		rcombo.addActionListener(this);
 		rcombo.addItemListener(this);
 		
 		scombo.addItem("성별을   선택하세요");
-		sexDataList = crDAO.getCrimeSexTableData();
-		addCbboxItem(scombo, sexDataList);
+		for (int i = 1; i <= 2; i++) {
+			scombo.addItem(i);
+		}
+//		sexDataList = crDAO.getCrimeSexTableData();
+//		addCbboxItem(scombo, sexDataList);
 		jp[2].add(scombo);
 		scombo.addActionListener(this);
 		scombo.addItemListener(this);
@@ -130,30 +138,22 @@ public class UpdatePanel extends JPanel implements ActionListener, ItemListener 
 	}
 	
 	public void addCbboxItem(JComboBox cbbox, ArrayList<String> list) {
-		for (int i = 1; i <= list.size(); i++) {
-			cbbox.addItem(i+". "+list.get(i-1));
-//			cList.add(i, list);
+		for (int i = 0; i < list.size(); i++) {
+			cbbox.addItem(list.get(i));
 		}
-		
 	}
 
 	@Override
 	public void itemStateChanged(ItemEvent ie) {
 		if(ie.getStateChange() == ItemEvent.SELECTED) {
 			if(ie.getSource().equals(rcombo.getSelectedItem())) {
-//				regionNo = Integer.parseInt(ie.getItem().toString());
-				regionNo = rcombo.getSelectedIndex();
+				regionNo = Integer.parseInt(ie.getItem().toString());
 			} else if(ie.getSource().equals(scombo.getSelectedItem())) {
-//				sexNo = Integer.parseInt(ie.getItem().toString());
-				sexNo = scombo.getSelectedIndex();
+				sexNo = Integer.parseInt(ie.getItem().toString());
 			} else if(ie.getSource().equals(ctgycombo.getSelectedItem())) {
-//				crimDivNo = Integer.parseInt(ie.getItem().toString());
-				crimDivNo = ctgycombo.getSelectedIndex();
+				crimDivNo = Integer.parseInt(ie.getItem().toString());
 			}
 		}
-		System.out.println(regionNo+"지역번호");
-		System.out.println(sexNo+"성별번호");
-		System.out.println(crimDivNo+"분류번호");
 	}
 
 	@Override
@@ -192,9 +192,6 @@ public class UpdatePanel extends JPanel implements ActionListener, ItemListener 
 			}
 		} else if(ae_type.equals(update.getText())) {
 			try {
-				System.out.println(regionNo+"지역번호");
-				System.out.println(sexNo+"성별번호");
-				System.out.println(crimDivNo+"분류번호");
 				crimNo = Integer.parseInt(keyF.getText().trim());
 				regitNumInput = Integer.parseInt(answerF[2].getText().trim());
 				crVO = new CrimeRecordVO(crimNo, regionNo, sexNo, answerF[0].getText().trim(), answerF[1].getText().trim(), regitNumInput, answerF[3].getText().trim(), crimDivNo);

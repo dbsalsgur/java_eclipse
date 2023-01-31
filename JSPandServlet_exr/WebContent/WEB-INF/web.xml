@@ -85,6 +85,26 @@
    	<servlet-name>MyServlet19</servlet-name>
 	<servlet-class>Servlet_example.ServletCookie_02</servlet-class>
   </servlet>
+  <servlet>
+   	<servlet-name>MyServlet20</servlet-name>
+	<servlet-class>Servlet_example.ServletMakeFile</servlet-class>
+  </servlet>
+  <servlet>
+   	<servlet-name>MyServlet21</servlet-name>
+	<servlet-class>Servlet_example.ServletFileTransmit</servlet-class>
+  </servlet>
+  <servlet>
+   	<servlet-name>MyServlet22</servlet-name>
+	<servlet-class>Servlet_example.ServletFileServerTransmit</servlet-class>
+  </servlet>
+  <servlet>
+   	<servlet-name>MyServlet23</servlet-name>
+	<servlet-class>Servlet_example.ServletDBMS</servlet-class>
+  </servlet>
+  <servlet>
+   	<servlet-name>MyServlet24</servlet-name>
+	<servlet-class>Servlet_example.ServletDBMS_dbcp</servlet-class>
+  </servlet>
   
   
   <servlet-mapping>
@@ -163,7 +183,34 @@
   	<servlet-name>MyServlet19</servlet-name>
   	<url-pattern>/ServletCookie_02</url-pattern>
   </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>MyServlet20</servlet-name>
+  	<url-pattern>/ServletMakeFile</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>MyServlet21</servlet-name>
+  	<url-pattern>/ServletFileTransmit</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>MyServlet22</servlet-name>
+  	<url-pattern>/ServletFileServerTransmit</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>MyServlet23</servlet-name>
+  	<url-pattern>/ServletDBMS</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>MyServlet24</servlet-name>
+  	<url-pattern>/ServletDBMS_dbcp</url-pattern>
+  </servlet-mapping>
   
+  
+  <resource-ref>
+  	<description>MySQL Resource</description>
+  	<res-ref-name>jdbc/myconn</res-ref-name>
+  	<res-type>javax.sql.DataSource</res-type>
+  	<res-auth>Container</res-auth>
+  </resource-ref>
   
   
   <welcome-file-list>

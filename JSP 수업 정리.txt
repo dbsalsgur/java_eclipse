@@ -53,7 +53,7 @@ ex) HTTP1/1(HTTP버전) 404(응답코드) Object Not Found\r\n(코드메세지)
 
 
 
-4. mapping 
+1. mapping 
 (1)web.xml파일 설정 
 - 프로젝트 생성 시 web.xml을 생성한다.
 - 데이터를 수정해도 .java파일을 컴파일할 필요가 없음
@@ -70,7 +70,7 @@ ex) @WebServlet("/omg")
 ※※※※※※※※※※ 서블릿의 라이프 사이클과 주요 클래스들 ※※※※※※※※※※※
 
 
-5. get방식과 post방식
+1. get방식과 post방식
 - form태그의 method 속성을 post로 설정하면 post방식으로 요청한다. 그 이외의 방식은 모두 get방식 요청,
 - 주소표시줄에 직접 요청하는 경우
 ex) http://localhost:8081/JSPandServlet_exr/ServletGetParameter?data1=aaa&data2=bbb&data3=ccc
@@ -84,7 +84,7 @@ ex) String name = request.getParameter("name");
 ex) request.setCharacterEncoding("euc-kr");
 - 위와 같이 하면 인코딩을 할 수 있다.
 
-6. Post요청 방식의 예제
+2. Post요청 방식의 예제
 - form태그의 method에는 get, post방식을 지정한다
 - action에는 서버의 주소를 지정한다.
  → 현재 환경에서는 apache tomcat을 사용하므로, 프로젝트 생성 시 만든  web.xml에 servlet-mapping의 url-pattern에 그 주소를 설정하고 있다.  
@@ -116,7 +116,7 @@ ex) ServletConfig config = this.getServletConfig();
 
 
 
-10. 에러처리와 url이동
+1. 에러처리와 url이동
 - sendError() : printStackTrace()와 같이 에러 메세지를 출력한다.
 - 메세지를 출력하는 것 이외에 의미가 없기 때문에 실무에서는 사용하지 않는다.
 - sendRedirect() : 오류가 발생했을 때, 이전페이지 또는 다른 페이지로 이동한다.
@@ -125,17 +125,17 @@ ex) 회원가입 이후 가입 성공페이지 띄울때
 - forward : 전달, redirect의 반대되는 개념. 데이터를 전달한다.
 ex) 메일 송신할 때
 
-11. sendRedirect()
+2. sendRedirect()
 - response.sendRedirect("이동할 페이지");
 - 위와 같이하면, 응답을 할 때 해당 페이지로 이동이 가능하다.
 
-12. requestDispatcher()
+3. requestDispatcher()
 - forward()를 하기위한 인터페이스
 - getServletContext()로 내용을 담아온 뒤,
 - getRequestDispatcher("url")로 링크를 설정하고
 - forward(request, response)로 자료를 넘긴다.
 
-13. include() 
+4. include() 
 - forward와 사용방식이 똑같다
 - forward와 다른 점은 응답할 내용을 include()로 포함시키면, 그 정보가 누적되어 페이지에 해당 내용들을 모두 포함해서 보여준다.
 
@@ -161,5 +161,32 @@ ex) 메일 송신할 때
 - 로그인 정보를 저장하는 등의 처리에서 활용함.
  → 로그인 한뒤 창을 끄고, 다음에 창을 열었을 때 id, pw가 텍스트 필드에 기재되어 있다.
 
+4. 저장공간별 데이터의 유효기간
+- 세션 : 웹브라우저를 종료하여, 현재 페이지가 종료될 때 까지
+
 ※※※※※※※※※※ 서블릿에서의 파일 입출력과 전송, JDBC ※※※※※※※※※※※
 
+1. 서블릿에서의 파일 시스템
+- 서블릿을 이용해 파일 및 폴더를 생성할 수 있다.
+  → 열혈강의 601, 603페이지 참고
+
+2. 파일 클래스 : 파일 객체를 만드는 클래스
+- File dir = new File(path);
+  if(!dir.exists()) dir.mkdir();
+  →파일 객체 생성, 파일이 존재하지 않으면, make Directory로 폴더 생성.
+
+3. 파일 전송과 관련 패키지
+- enctype은 전송되는 parameter의 형식을 알려주는 것이다.
+- 일반적으로는 복합형식이 아닌 일반 text 데이터만 전송되기 때문에 아무런 지장이 없다
+- 그러나 file과 같이 일반 text형식이 아닌 것이 전송 시에 포함되어 있으면
+- 그 상황을 서버에 미리 알려주어 전송되어온 내용을 누락시키지 않도록 만들어 주어야 한다.
+- 이러한 형식 지정은 smtp(simple mail transfer protocol)의 규약에서 사용하는 방식으로, 웹에서도 유사한 방법으로 전송타입을 지정한다.
+- 또한 multipart의 전송 시에는 밙드시 POST 방식의 전송이 필요하다.
+- GET 방식은 데이터의 길이에 제약을 받기 때문이다.
+- 파일 첨부 시에는 form의 type="file"로 해야함.
+- DiskFileItemFactory : 디스크에 파일을 만들어주는 클래스
+
+4. 서블릿에서의 DBMS
+- 일반적으로 jdbc를 사용해서 데이터베이스에 접근하진 않는다.
+- dbcp(database connection poolinng) 방식 : xml 등의 자원을 활용해서 connection객체를 반환받아 사용자에게 할당 하는 기능이다.
+  → 자바에서 직접 getConnection을 하면, 변동사항이 있을때마다 컴파일을 다시 해주어야하지만, xml 파일에 작성한 리소스는 저장만 하면 적용이 된다.  

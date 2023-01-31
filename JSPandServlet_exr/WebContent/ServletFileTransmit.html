@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>데이터와 파일 전송!</title>
+</head>
+<body>
+	<h2>데이터와 파일전송!</h2>
+		<form method="post" action="ServletFileTransmit" enctype="multipart/form-data">
+		보낸이 : <input type="text" name="sender"/><br/>
+		파일명 : <input type="file" name="attach"/><br/>	
+	<!-- 	파일 첨부 시에는 input type을 file로 지정한다. -->
+		<input type="submit" value="전송"/>
+	</form>
+</body>
+</html>
