@@ -105,6 +105,10 @@
    	<servlet-name>MyServlet24</servlet-name>
 	<servlet-class>Servlet_example.ServletDBMS_dbcp</servlet-class>
   </servlet>
+  <servlet>
+   	<servlet-name>MyServlet25</servlet-name>
+	<servlet-class>Servlet_example.ServletMIME_image</servlet-class>
+  </servlet>
   
   
   <servlet-mapping>
@@ -202,6 +206,10 @@
   <servlet-mapping>
   	<servlet-name>MyServlet24</servlet-name>
   	<url-pattern>/ServletDBMS_dbcp</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>MyServlet25</servlet-name>
+  	<url-pattern>/ServletMIME_image</url-pattern>
   </servlet-mapping>
   
   
