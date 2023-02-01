@@ -34,9 +34,9 @@ public class UpdatePanel extends JPanel implements ActionListener, ItemListener 
 	//ok(수정하기) 버튼
 	private JButton reset;
 	//reset(다시하기)버튼
-	public int regionNo = 1;
-	public int sexNo = 1;
-	public int crimDivNo = 1;
+//	private int regionState = 1;
+//	private int sexState = 1;
+//	private int crimDivNoState = 1;
 	JComboBox rcombo = new JComboBox();
 	JComboBox scombo = new JComboBox();
 	JComboBox ctgycombo = new JComboBox();
@@ -132,28 +132,30 @@ public class UpdatePanel extends JPanel implements ActionListener, ItemListener 
 	public void addCbboxItem(JComboBox cbbox, ArrayList<String> list) {
 		for (int i = 1; i <= list.size(); i++) {
 			cbbox.addItem(i+". "+list.get(i-1));
-//			cList.add(i, list);
 		}
 		
 	}
 
 	@Override
 	public void itemStateChanged(ItemEvent ie) {
-		if(ie.getStateChange() == ItemEvent.SELECTED) {
-			if(ie.getSource().equals(rcombo.getSelectedItem())) {
-//				regionNo = Integer.parseInt(ie.getItem().toString());
-				regionNo = rcombo.getSelectedIndex();
-			} else if(ie.getSource().equals(scombo.getSelectedItem())) {
-//				sexNo = Integer.parseInt(ie.getItem().toString());
-				sexNo = scombo.getSelectedIndex();
-			} else if(ie.getSource().equals(ctgycombo.getSelectedItem())) {
-//				crimDivNo = Integer.parseInt(ie.getItem().toString());
-				crimDivNo = ctgycombo.getSelectedIndex();
-			}
-		}
-		System.out.println(regionNo+"지역번호");
-		System.out.println(sexNo+"성별번호");
-		System.out.println(crimDivNo+"분류번호");
+//		if(ie.getStateChange() == ItemEvent.SELECTED) {
+//			if(ie.getSource().equals(rcombo.getSelectedItem())) {
+////				regionNo = Integer.parseInt(ie.getItem().toString());
+//				regionState = rcombo.getSelectedIndex();
+//			} else if(ie.getSource().equals(scombo.getSelectedItem())) {
+////				sexNo = Integer.parseInt(ie.getItem().toString());
+//				sexState = scombo.getSelectedIndex();
+//			} else if(ie.getSource().equals(ctgycombo.getSelectedItem())) {
+////				crimDivNo = Integer.parseInt(ie.getItem().toString());
+//				crimDivNoState = ctgycombo.getSelectedIndex();
+//			}
+//			System.out.println(regionState+"지역번호");
+//			System.out.println(sexState+"성별번호");
+//			System.out.println(crimDivNoState+"분류번호");
+//		}
+//		System.out.println(rcombo.getSelectedIndex());
+//		System.out.println(scombo.getSelectedIndex());
+//		System.out.println(ctgycombo.getSelectedIndex());
 	}
 
 	@Override
@@ -192,20 +194,17 @@ public class UpdatePanel extends JPanel implements ActionListener, ItemListener 
 			}
 		} else if(ae_type.equals(update.getText())) {
 			try {
-				System.out.println(regionNo+"지역번호");
-				System.out.println(sexNo+"성별번호");
-				System.out.println(crimDivNo+"분류번호");
 				crimNo = Integer.parseInt(keyF.getText().trim());
 				regitNumInput = Integer.parseInt(answerF[2].getText().trim());
-				crVO = new CrimeRecordVO(crimNo, regionNo, sexNo, answerF[0].getText().trim(), answerF[1].getText().trim(), regitNumInput, answerF[3].getText().trim(), crimDivNo);
+				crVO = new CrimeRecordVO(crimNo, rcombo.getSelectedIndex(), scombo.getSelectedIndex(), answerF[0].getText().trim(), answerF[1].getText().trim(), regitNumInput, answerF[3].getText().trim(), ctgycombo.getSelectedIndex());
 				crDAO = new CriminalDAO();
 				crDAO.getCriminalUpdate(crVO);
 			} catch (Exception e) {
 				System.out.println("input error");
-				System.out.println("e=["+e+"e");
+				System.out.println("e=["+e+"]");
 			}
 			if(crVO != null) {
-				JOptionPane.showMessageDialog(this, "범죄자 "+answerF[0].getText()+"의"+"\n"+"신상정보가 수정되었습니다!");
+				JOptionPane.showMessageDialog(this, "범죄자 "+answerF[1].getText()+"의"+"\n"+"신상정보가 수정되었습니다!");
 			} else {
 				JOptionPane.showMessageDialog(this, "잘못 입력하셨습니다"+"\n"+"입력 내용을 다시 확인해주세요.");
 			}
