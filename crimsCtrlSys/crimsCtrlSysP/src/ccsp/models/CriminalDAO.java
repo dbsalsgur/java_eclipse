@@ -28,7 +28,7 @@ public class CriminalDAO {
 			rs = pstmt.executeQuery();
 			//SELECT쿼리 사용시 쓰는 메소드
 			if (rs.next()) {
-				retval = new CrimeRecordVO(rs.getInt(1), rs.getInt(2), rs.getInt(3), rs.getString(4), rs.getString(5), rs.getInt(6), rs.getString(7), rs.getInt(8));
+				retval = new CrimeRecordVO(rs.getInt(1), rs.getInt(2), rs.getInt(3), rs.getInt(4), rs.getString(5), rs.getInt(6), rs.getString(7), rs.getInt(8));
 			}
 			//ResultSet을 이용해 데이터베이스에 저장된 값을 반환.
 		} catch(SQLException se) {
@@ -59,7 +59,7 @@ public class CriminalDAO {
 			pstmt = con.prepareStatement(UPDATE);
 			pstmt.setInt(1, cvo.getRegion());
 			pstmt.setInt(2, cvo.getSex());
-			pstmt.setString(3, cvo.getcRecord());
+			pstmt.setInt(3, cvo.getcRecord());
 			pstmt.setString(4, cvo.getName());
 			pstmt.setInt(5, cvo.getRegitNumber());
 			pstmt.setString(6, cvo.getDate());
@@ -100,7 +100,7 @@ public class CriminalDAO {
 			pstmt = con.prepareStatement(SHOW_DATA);
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
-				crVo = new CrimeRecordVO(rs.getInt(1), rs.getInt(2), rs.getInt(3), rs.getString(4), rs.getString(5), rs.getInt(6), rs.getString(7), rs.getInt(8));
+				crVo = new CrimeRecordVO(rs.getInt(1), rs.getInt(2), rs.getInt(3), rs.getInt(4), rs.getString(5), rs.getInt(6), rs.getString(7), rs.getInt(8));
 				list.add(crVo);
 			}
 		} catch(SQLException se) {
@@ -224,6 +224,40 @@ public class CriminalDAO {
 	public ArrayList<String> getCrimeSexTableData() {
 		ArrayList<String> list = new ArrayList<String>();
 		String tml = "select * from sex";
+
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		try {
+			con = DBUtil.getConnection();
+			pstmt = con.prepareStatement(tml);
+			rs = pstmt.executeQuery();
+
+			while (rs.next()) {
+				list.add(rs.getString(2));
+			}
+		} catch (SQLException se) {
+			System.out.println(se);
+		} catch (Exception e) {
+			System.out.println(e);
+		} finally {
+			try {
+				if (rs != null)
+					rs.close();
+				if (pstmt != null)
+					pstmt.close();
+				if (con != null)
+					con.close();
+			} catch (SQLException se) {
+			}
+		}
+		return list;
+	}
+	
+	public ArrayList<String> getCrimeRecordTableData() {
+		ArrayList<String> list = new ArrayList<String>();
+		String tml = "select * from crecord";
 
 		Connection con = null;
 		PreparedStatement pstmt = null;

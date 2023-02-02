@@ -4,7 +4,7 @@ public class CrimeRecordVO {
 	private int crimNo;
 	private int region;
 	private int sex;
-	private String cRecord;
+	private int cRecord;
 	private String name;
 	private int regitNumber;
 	private String date;
@@ -17,7 +17,7 @@ public class CrimeRecordVO {
 	public CrimeRecordVO() {
 	}
 
-	public CrimeRecordVO(int crimNo, int region, int sex, String cRecord, String name, int regitNumber, String date,
+	public CrimeRecordVO(int crimNo, int region, int sex, int cRecord, String name, int regitNumber, String date,
 			int crimDivNo) {
 		super();
 		this.crimNo = crimNo;
@@ -54,11 +54,11 @@ public class CrimeRecordVO {
 		this.sex = sex;
 	}
 
-	public String getcRecord() {
+	public int getcRecord() {
 		return cRecord;
 	}
 
-	public void setcRecord(String cRecord) {
+	public void setcRecord(int cRecord) {
 		this.cRecord = cRecord;
 	}
 
