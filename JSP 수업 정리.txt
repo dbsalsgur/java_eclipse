@@ -132,7 +132,7 @@ ex) 메일 송신할 때
 3. requestDispatcher()
 - forward()를 하기위한 인터페이스
 - getServletContext()로 내용을 담아온 뒤,
-- getRequestDispatcher("url")로 링크를 설정하고
+- getRequestDispatcher("url")로 링크를 설정하고 → 요청을 처리할 자원의 주소
 - forward(request, response)로 자료를 넘긴다.
 
 4. include() 
@@ -217,3 +217,46 @@ ex) 메일 송신할 때
 - FlterChain : filter와 다른 동작, 또는 여러개의 필터가 순차적으로 진행되도록 설정하는 클래스.
 - filter는 web.xml에서 servlet보다 위에 등록해야한다
 - filter의 url-pattern은 filter가 적용될 서블릿이다.
+
+
+※※※※※※※※※※ 웹프로그램과 JSP ※※※※※※※※※※※
+※JSP 내용은 729부터 구성됨
+1. jsp 파일의 생성과 실행
+- jsp는 서블릿을 태그화 시켰다고 할 수 있다.
+※jsp 구성 : 
+- 페이지 선언부(<%@page %>) : 서블릿에서의 import를 구현해놓는다. 페이지 언어(java), 인코딩, contenttype을 지정한다.
+- 선언부(<%! %>) : 인스턴스 변수, 메소드(init, destroy 포함)을 기재할 때 사용한다.. doGet, doPost안에 쓰던 내용 이외의 것을 작성한다고 생각하면 된다. → service바깥에 기술되는 문장
+- 스크립트릿(<% %>) : 서블릿에서의 doGet, doPost 메소드 안에 썼던 내용들(요청방식에 따라 처리할 내용)을 작성한다.
+- html 안에서도 스크립트릿을 사용해서 자바 코드를 작성할 수 있다.(열혈강의 729p)
+- 식(<%= %>) : 결과값을 출력함. println같은것임.
+- jsp파일을 web.xml파일에 등록할 수 있다(열혈강의 731p참고)
+
+
+2. JSP 파일의 구성요소와 주석처리
+- page원소 선언 : page 선언부에 쓰기편한 원소(element)를 정의할 수 있다.
+ex) import, session, buffer 등
+- 자세한 내용은 열혈강의 jsp 736~ 참조
+
+3. jsp파일의 라이프 사이클
+- jspInit(){}
+- _jspService(HttpServletRequest request, HttpServletResponse response) {}
+- jspDestroy() {}
+
+
+
+※※※※※※※※※※ 디폴트 객체 ※※※※※※※※※※※
+1. 디폴트 객체들(열혈강의 750p 참조)
+- Servlet에서 쓰던 클래스(객체)들을 따로 import하지 않아도 되게끔 jsp에서 기본으로 제공해주는 변수(객체)이다.
+- 디폴트 객체란 JSP에서 사용가능한 변수 집합이라고 할 수 있겠다.
+- HttpServletRequest request
+- HttpServletResponse response
+- PageContext pageContext
+- JspWriter out
+- Object page
+- HttpSession session
+- ServletContext application
+- ServletConfig config
+- Throwable exception
+- 위의 객체들은 sevice, doPost, doGet에서만 쓸 수 있는 것들이다.
+- 즉 jsp 에서는 스크립트릿에서만 쓸 수 있다. (page 선언부나 선언부에서 사용불가)
+

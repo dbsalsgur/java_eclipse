@@ -3,21 +3,25 @@ package crim.main;
 import javax.swing.JFrame;
 import javax.swing.JTabbedPane;
 
+import crim.panel.AddPanel;
 import crim.panel.TotalPanel;
 import crim.panel.UpdatePanel;
 
 public class MainFrame_crim extends JFrame {
 
 	private JTabbedPane tp;
+	private AddPanel ap;
 	private UpdatePanel up;
 	private TotalPanel tpa;
 	
 	
 	public MainFrame_crim() {
 		tp = new JTabbedPane();
+		ap = new AddPanel();
 		up = new UpdatePanel();
 		tpa = new TotalPanel();
 		
+		tp.addTab("범죄자 정보 추가", ap);
 		tp.addTab("범죄자 정보 수정", up);
 		tp.addTab("범죄자 전체 보기", tpa);
 		
