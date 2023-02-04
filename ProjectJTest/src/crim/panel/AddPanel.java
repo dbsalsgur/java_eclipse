@@ -52,7 +52,6 @@ public class AddPanel extends JPanel implements ItemListener, ActionListener {
 			jl[i] = new JLabel(caption[i]);
 			jp[i] = new JPanel();
 			jp[i].add(jl[i]);
-//			jp[i].add(comboBoxes[i]);
 			add(jp[i]);
 		}
 		for (int i = 4; i < size; i++) {
@@ -124,19 +123,21 @@ public class AddPanel extends JPanel implements ItemListener, ActionListener {
 		String ae_type = ae.getActionCommand();
 		CrimeRecordVO crVO = null;
 		CriminalDAO crDAO = null;
-		int crimNo = 0;
 		int regitNumInput = 0;
 		if (ae_type.equals(insert.getText())) {
 			try {
 				regitNumInput = Integer.parseInt(tf[5].getText().trim());
 				crVO = new CrimeRecordVO(0, rcombo.getSelectedIndex(), scombo.getSelectedIndex(), crcombo.getSelectedIndex(), tf[4].getText().trim(), regitNumInput, tf[6].getText().trim(), ctgycombo.getSelectedIndex());
-				
+				crDAO = new CriminalDAO();
+				crDAO.getCriminalRegister(crVO);
 			} catch (Exception e) {
 				System.out.println("input error");
 				System.out.println("e=["+e+"e");
 			}
 			if (crVO != null) {
 				JOptionPane.showMessageDialog(this, tf[4].getText()+"님이 성공적으로 추가됨");
+			} else {
+				JOptionPane.showMessageDialog(this, "잘못 입력하셨습니다."+"\n" +"입력내용을 확인해주세요.");
 			}
 		} else if(ae_type.equals(reset.getText())) {
 			for (int i = 0; i < tf.length; i++) {

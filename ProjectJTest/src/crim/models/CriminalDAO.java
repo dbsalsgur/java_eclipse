@@ -15,6 +15,45 @@ public class CriminalDAO {
 	private static final String SHOW_DATA = "select * from crimerecord";
 	private static final String FIND_DATA = "select * from crimerecord where crimNo = ?";
 	
+	public CrimeRecordVO getCriminalRegister(CrimeRecordVO crVO) throws Exception {
+		String dml = "insert into crimerecord"
+				+ " (region,sex,crimeRecord,name,regitNumber,date,crimDivNo)" + "values " + " (?,	?,	?,	?, ?, ?, ? )";
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		CrimeRecordVO retval = null;
+		
+		try {
+			con = DBUtil.getConnection();
+			pstmt = con.prepareStatement(dml);
+			pstmt.setInt(1, crVO.getRegion());
+			pstmt.setInt(2, crVO.getSex());
+			pstmt.setInt(3, crVO.getcRecord());
+			pstmt.setString(4, crVO.getName());
+			pstmt.setInt(5, crVO.getRegitNumber());
+			pstmt.setString(6, crVO.getDate());
+			pstmt.setInt(7, crVO.getCrimDivNo());
+			
+			int i = pstmt.executeUpdate();
+			//INSERTÄõ¸® »ç¿ë ½Ã ¾²´Â ¸Ş¼Òµå
+			//¹İ¿µµÈ ·¹ÄÚµå °Ç¼ö ¸®ÅÏ. create, drop¿¡ ´ëÇØ¼± -1 ¸®ÅÏ
+			retval = new CrimeRecordVO();
+		} catch(SQLException e) {
+			System.out.println("e=["+e+"]");
+		} catch (Exception e) {
+			System.out.println("e=["+e+"]");
+		} finally {
+			try {
+				if (pstmt != null) pstmt.close();
+				if(con != null) con.close();
+			} catch (SQLException e) {
+				
+			}
+		}
+		//SQLExceptionÀ» ¸ÕÀú Ä³Ä¡, SQL°ú °ü·Ã¾ø´Â ¿¹¿Üµµ Ä³Ä¡ÇÏ±â À§ÇØ Exceptionµµ ¹èÄ¡
+		//Å¬·¡½ºÀÇ µ¿ÀÛÀÌ ³¡³ª¸é ¿¬°áÇØÁ¦, pstmt¿¡ ´ã±ä ¹®±¸µµ null·Î ºñ¿öÁØ´Ù.
+		return retval;
+	}
+	
 	public CrimeRecordVO getCriminalCheck(int no) throws Exception {
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -26,11 +65,11 @@ public class CriminalDAO {
 			pstmt = con.prepareStatement(FIND_DATA);
 			pstmt.setInt(1, no);
 			rs = pstmt.executeQuery();
-			//SELECTì¿¼ë¦¬ ì‚¬ìš©ì‹œ ì“°ëŠ” ë©”ì†Œë“œ
+			//SELECTÄõ¸® »ç¿ë½Ã ¾²´Â ¸Ş¼Òµå
 			if (rs.next()) {
 				retval = new CrimeRecordVO(rs.getInt(1), rs.getInt(2), rs.getInt(3), rs.getInt(4), rs.getString(5), rs.getInt(6), rs.getString(7), rs.getInt(8));
 			}
-			//ResultSetì„ ì´ìš©í•´ ë°ì´í„°ë² ì´ìŠ¤ì— ì €ì¥ëœ ê°’ì„ ë°˜í™˜.
+			//ResultSetÀ» ÀÌ¿ëÇØ µ¥ÀÌÅÍº£ÀÌ½º¿¡ ÀúÀåµÈ °ªÀ» ¹İÈ¯.
 		} catch(SQLException se) {
 			System.out.println(se);
 		} catch(Exception e) {
@@ -45,8 +84,8 @@ public class CriminalDAO {
 			}
 		}
 		return retval;
-		//ë²”ì£„ì ì •ë³´ì¡°íšŒ êµ¬í˜„
-		//ë²”ì£„ë²ˆí˜¸ë¥¼ í†µí•´ í•´ë‹¹ ë ˆì½”ë“œë¥¼ ë¦¬í„´
+		//¹üÁËÀÚ Á¤º¸Á¶È¸ ±¸Çö
+		//¹üÁË¹øÈ£¸¦ ÅëÇØ ÇØ´ç ·¹ÄÚµå¸¦ ¸®ÅÏ
 	}
 	
 	public CrimeRecordVO getCriminalUpdate(CrimeRecordVO cvo) throws Exception {
@@ -66,10 +105,6 @@ public class CriminalDAO {
 			pstmt.setInt(7, cvo.getCrimDivNo());
 			pstmt.setInt(8, cvo.getCrimNo());
 			int i = pstmt.executeUpdate();
-//			if (i <= 0) {
-//				System.out.println("ì˜ëª» ì…ë ¥í•˜ì…¨ìŠµë‹ˆë‹¤.");
-//			}
-//			System.out.println(i);
 			resultValue = new CrimeRecordVO();
 		} catch(SQLException e) {
 			System.out.println("e=["+e+"]");
@@ -83,8 +118,8 @@ public class CriminalDAO {
 				
 			}
 		}
-		//SQLExceptionì„ ë¨¼ì € ìºì¹˜, SQLê³¼ ê´€ë ¨ì—†ëŠ” ì˜ˆì™¸ë„ ìºì¹˜í•˜ê¸° ìœ„í•´ Exceptionë„ ë°°ì¹˜
-		//í´ë˜ìŠ¤ì˜ ë™ì‘ì´ ëë‚˜ë©´ ì—°ê²°í•´ì œ, pstmtì— ë‹´ê¸´ ë¬¸êµ¬ë„ nullë¡œ ë¹„ì›Œì¤€ë‹¤.
+		//SQLExceptionÀ» ¸ÕÀú Ä³Ä¡, SQL°ú °ü·Ã¾ø´Â ¿¹¿Üµµ Ä³Ä¡ÇÏ±â À§ÇØ Exceptionµµ ¹èÄ¡
+		//Å¬·¡½ºÀÇ µ¿ÀÛÀÌ ³¡³ª¸é ¿¬°áÇØÁ¦, pstmt¿¡ ´ã±ä ¹®±¸µµ null·Î ºñ¿öÁØ´Ù.
 		return resultValue;
 	}
 	
