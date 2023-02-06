@@ -14,6 +14,7 @@ public class CriminalDAO {
 	private static final String UPDATE = "update crimerecord set region=?, sex=?, crimeRecord=?, name=?, regitNumber=?, date=?, crimDivNo=? where crimNo=?";
 	private static final String SHOW_DATA = "select * from crimerecord";
 	private static final String FIND_DATA = "select * from crimerecord where crimNo = ?";
+	//í•œê¸€ì¢€ ê¹¨ì§€ì§€ ë§ˆë¼!!!!!!!!
 	
 	public CrimeRecordVO getCriminalRegister(CrimeRecordVO crVO) throws Exception {
 		String dml = "insert into crimerecord"
@@ -34,8 +35,6 @@ public class CriminalDAO {
 			pstmt.setInt(7, crVO.getCrimDivNo());
 			
 			int i = pstmt.executeUpdate();
-			//INSERTÄõ¸® »ç¿ë ½Ã ¾²´Â ¸Ş¼Òµå
-			//¹İ¿µµÈ ·¹ÄÚµå °Ç¼ö ¸®ÅÏ. create, drop¿¡ ´ëÇØ¼± -1 ¸®ÅÏ
 			retval = new CrimeRecordVO();
 		} catch(SQLException e) {
 			System.out.println("e=["+e+"]");
@@ -49,8 +48,6 @@ public class CriminalDAO {
 				
 			}
 		}
-		//SQLExceptionÀ» ¸ÕÀú Ä³Ä¡, SQL°ú °ü·Ã¾ø´Â ¿¹¿Üµµ Ä³Ä¡ÇÏ±â À§ÇØ Exceptionµµ ¹èÄ¡
-		//Å¬·¡½ºÀÇ µ¿ÀÛÀÌ ³¡³ª¸é ¿¬°áÇØÁ¦, pstmt¿¡ ´ã±ä ¹®±¸µµ null·Î ºñ¿öÁØ´Ù.
 		return retval;
 	}
 	
@@ -65,11 +62,9 @@ public class CriminalDAO {
 			pstmt = con.prepareStatement(FIND_DATA);
 			pstmt.setInt(1, no);
 			rs = pstmt.executeQuery();
-			//SELECTÄõ¸® »ç¿ë½Ã ¾²´Â ¸Ş¼Òµå
 			if (rs.next()) {
 				retval = new CrimeRecordVO(rs.getInt(1), rs.getInt(2), rs.getInt(3), rs.getInt(4), rs.getString(5), rs.getInt(6), rs.getString(7), rs.getInt(8));
 			}
-			//ResultSetÀ» ÀÌ¿ëÇØ µ¥ÀÌÅÍº£ÀÌ½º¿¡ ÀúÀåµÈ °ªÀ» ¹İÈ¯.
 		} catch(SQLException se) {
 			System.out.println(se);
 		} catch(Exception e) {
@@ -84,8 +79,6 @@ public class CriminalDAO {
 			}
 		}
 		return retval;
-		//¹üÁËÀÚ Á¤º¸Á¶È¸ ±¸Çö
-		//¹üÁË¹øÈ£¸¦ ÅëÇØ ÇØ´ç ·¹ÄÚµå¸¦ ¸®ÅÏ
 	}
 	
 	public CrimeRecordVO getCriminalUpdate(CrimeRecordVO cvo) throws Exception {
@@ -118,8 +111,6 @@ public class CriminalDAO {
 				
 			}
 		}
-		//SQLExceptionÀ» ¸ÕÀú Ä³Ä¡, SQL°ú °ü·Ã¾ø´Â ¿¹¿Üµµ Ä³Ä¡ÇÏ±â À§ÇØ Exceptionµµ ¹èÄ¡
-		//Å¬·¡½ºÀÇ µ¿ÀÛÀÌ ³¡³ª¸é ¿¬°áÇØÁ¦, pstmt¿¡ ´ã±ä ¹®±¸µµ null·Î ºñ¿öÁØ´Ù.
 		return resultValue;
 	}
 	
