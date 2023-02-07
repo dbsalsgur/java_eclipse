@@ -260,3 +260,9 @@ ex) import, session, buffer 등
 - 위의 객체들은 sevice, doPost, doGet에서만 쓸 수 있는 것들이다.
 - 즉 jsp 에서는 스크립트릿에서만 쓸 수 있다. (page 선언부나 선언부에서 사용불가)
 
+
+※※※※※※※※※※ 스크립팅 원소와 지시어 원소 ※※※※※※※※※※※
+
+1. session 속성
+- session은 기본적으로 true로 지정되어 있다.
+  → 개발자가 따로 session 속성에 대한 값을 입력하지 않으면 true.
