@@ -206,10 +206,10 @@ public class UpdatePanel extends JPanel implements ActionListener, ItemListener 
 				System.out.println("input error");
 				System.out.println("e=[" + e + "]");
 			}
-			if (crVO == null) {
-				JOptionPane.showMessageDialog(this, "正しくありません" + "\n" + "入力内容をもう一度確認してください");
-			} else {
+			if (crVO != null) {
 				JOptionPane.showMessageDialog(this, "犯罪者 " + answerF[1].getText() + "の" + "\n" + "個人情報が修正されました!");
+			} else {
+				JOptionPane.showMessageDialog(this, "正しくありません" + "\n" + "入力内容をもう一度確認してください");
 			}
 		} else if (ae_type.equals(reset.getText())) {
 			for (int i = 0; i < answerF.length; i++) {

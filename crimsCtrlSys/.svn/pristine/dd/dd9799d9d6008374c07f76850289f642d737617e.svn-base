@@ -112,8 +112,9 @@ public class DeletePanel extends JPanel implements ActionListener, ItemListener 
 				System.out.println("input error");
 				System.out.println("e=["+e+"e");
 			}
-			if(crVO == null) {
+			if(crVO != null) {
 				JOptionPane.showMessageDialog(this, "正しくありません"+"\n"+"犯罪番号をもう一度確認してください");
+
 			} else {
 				JOptionPane.showMessageDialog(this, "犯罪者 "+tf[5].getText()+"の"+"\n"+"個人情報が削除されました！");
 			}

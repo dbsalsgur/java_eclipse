@@ -24,7 +24,7 @@ public class MainFrame extends JFrame {
 		tp.addTab("条件別照会", lbcp);
 		tp.addTab("統計(円形グラフ)", pcp);
 		tp.addTab("データ修正", up);
-		tp.addTab("データ修正", up);
+		tp.addTab("修正", up);
 		tp.addTab("データ削除", dp);
 
 		getContentPane().add(tp); // this가 생략(메인프레임 상속받음)
