@@ -53,22 +53,18 @@ public class UpdatePanel extends JPanel implements ActionListener, ItemListener 
 		CrimeSysDAO crDAO = new CrimeSysDAO();
 
 		int size = caption.length;
-		
-		//犯罪番号入力欄
+
 		keyL = new JLabel("犯罪番号 : ");
 		keyF = new JTextField(10);
 		keyP = new JPanel();
 		keyP.add(keyL);
 		keyP.add(keyF);
-		//検索ボタン
 		search = new JButton("検索");
 		search.addActionListener(this);
 		keyP.add(search);
 		add(keyP);
-		//入力可能
 		keyF.setEditable(true);
-		
-		//犯罪者データ表示欄とデータ入力欄
+
 		for (int i = 0; i <= 3; i++) {
 			jl[i] = new JLabel(caption[i]);
 			tf[i] = new JTextField(10);
@@ -79,7 +75,6 @@ public class UpdatePanel extends JPanel implements ActionListener, ItemListener 
 			jp[i].add(arrowL);
 			jp[i].add(comboBoxes[i]);
 			add(jp[i]);
-			//既存のデータ表示欄は修正できません
 			tf[i].setEditable(false);
 		}
 		for (int i = 4; i < size; i++) {
@@ -93,38 +88,31 @@ public class UpdatePanel extends JPanel implements ActionListener, ItemListener 
 			jp[i].add(arrowL);
 			jp[i].add(answerF[i - 4]);
 			add(jp[i]);
-			//既存のデータ表示欄は修正できません
 			tf[i].setEditable(false);
-			//データ入力欄は入力可能
 			answerF[i - 4].setEditable(true);
 		}
-		
-		//項目別選択箱
-		//犯罪分類の選択箱
+
 		ctgycombo.addItem("番号を選択してください");
 		categoryDataList = crDAO.getCrimeCategoryTableData();
 		addCbboxItem(ctgycombo, categoryDataList);
 		jp[0].add(ctgycombo);
 		ctgycombo.addActionListener(this);
 		ctgycombo.addItemListener(this);
-		
-		//地域の選択箱
+
 		rcombo.addItem("地域を選択してください");
 		regionDataList = crDAO.getCrimeRegionTableData();
 		addCbboxItem(rcombo, regionDataList);
 		jp[1].add(rcombo);
 		rcombo.addActionListener(this);
 		rcombo.addItemListener(this);
-		
-		//性別の選択箱
+
 		scombo.addItem("性別を選択してください");
 		sexDataList = crDAO.getCrimeSexTableData();
 		addCbboxItem(scombo, sexDataList);
 		jp[2].add(scombo);
 		scombo.addActionListener(this);
 		scombo.addItemListener(this);
-		
-		//前科の選択箱
+
 		crcombo.addItem("前科の有無を選択してください");
 		cRecordDataList = crDAO.getCRecordTableData();
 		addCbboxItem(crcombo, cRecordDataList);
@@ -142,8 +130,7 @@ public class UpdatePanel extends JPanel implements ActionListener, ItemListener 
 		add(jp[size]);
 
 	}
-	
-	//データベースからデータを持ち込み、それをリスト化する関数
+
 	public void addCbboxItem(JComboBox cbbox, ArrayList<String> list) {
 		for (int i = 1; i <= list.size(); i++) {
 			cbbox.addItem(i + ". " + list.get(i - 1));
@@ -180,7 +167,7 @@ public class UpdatePanel extends JPanel implements ActionListener, ItemListener 
 				System.out.println("e=[" + e + "e");
 			}
 			
-			//犯罪者データの持ち込みに成功した場合、データを表示
+			//犯罪者データの持ち込みに成功した場合、テキストフィールドにデータを表示
 			if (crVO != null) {
 				tf[0].setText(crVO.getCrimDivNo() + "");
 				tf[1].setText(crVO.getRegion() + "");
@@ -193,7 +180,7 @@ public class UpdatePanel extends JPanel implements ActionListener, ItemListener 
 				answerF[1].setText(crVO.getRegitNumber() + "");
 				answerF[2].setText(crVO.getDate() + "");
 				
-			//犯罪番号に何も記入しなかった場合や、正しくない文字を書いた場合、メッセージを表示
+			//犯罪番号になにも記入しなかった場合、表示
 			} else {
 				JOptionPane.showMessageDialog(this, "検索失敗");
 			}
