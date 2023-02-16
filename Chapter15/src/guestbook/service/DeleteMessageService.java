@@ -21,7 +21,9 @@ public class DeleteMessageService {
 	public void deleteMessage(int messageId, String password) {
 		Connection conn = null;
 		try {
+			//커넥션 풀에 접속
 			conn = ConnectionProvider.getConnection();
+			//오류가 발생하면 rollback을 하고, try문 안에 있는 것이 정상적으로 수행되면 커밋이 되도록한다.
 			conn.setAutoCommit(false);
 			
 			MessageDao messageDao = MessageDao.getInstance();
