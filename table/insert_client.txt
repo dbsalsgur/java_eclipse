@@ -1,0 +1,24 @@
+insert into client values ('アマゾンジャパン','ジャスパー・チャン','東京都目黒区下目黒１丁目８−1','01-2089-9543','info@amazon.jp','3040001028447');
+insert into client values ('楽天','三木谷 浩史','東京都世田谷区玉川一丁目14番1号','050-5581-6910','info@rakuten.jp','9010701020592');
+insert into client values ('クリアックス','木下 泰一','東京都豊島区南池袋1-10-13荒井ビル5階','03-5950-3400','info@kuriaku.jp','9013301013693');
+insert into client values ('BICCAMERA','秋保 徹','東京都豊島区高田3-23-23','03-3590-1111','info@biccamera.jp','9013301010402');
+insert into client values ('サカゼン','村上 隆司','東京都中央区日本橋馬喰町1丁目6番10号9階','0120-42-1641','info@sakazen.jp','9010001044730');
+insert into client values ('ZOZO','澤田 宏太郎','千葉県千葉市稲毛区緑町1-15-16','06-6881-3100','info@zozo.jp','4260002031294');
+insert into client values ('千趣会','梶原　健司','大阪府大阪市北区同心1-6-23','03-5811-1160','info@bellemaison.jp','3260001021421');
+insert into client values ('フォーピープル','宇都宮 純子','東京都台東区寿3丁目15番12号','03-6274-8194','info@equipe.jp','2260002031271');
+insert into client values ('エスダ―','河合　剛','東京都港区東麻布2丁目16番4号','03-6354-8889','info@esda.jp','3260001025018');
+insert into client values ('ザ・マーク','五十嵐 弘子','大阪府 大阪市中央区','06-7755-2250','info@themark.jp','1260002032304');
+insert into client values ('kindabeige','杵村 完南','東京都新宿区新宿５丁目３−20','03-863-5780','info@kindabeige.jp','4010401131234');
+insert into client values ('98℃','板谷 影恒','東京都新宿区歌舞伎町１丁目19−1','043-734-4528','info@98doci.jp','9010403176779');
+insert into client values ('ブラックアップ','原渕 祇晶','大阪府大阪市浪速区日本橋３丁目４−10','043-739-7410','info@blackup.jp','5370020212597');
+insert into client values ('少女レシピ','崎 小穂実','京都府京都市下京区東塩小路町579','052-8814-5729','info@girlsrcp.jp','8010987488641');
+insert into client values ('ガイルック','保倉 藤宏','愛知県名古屋市中村区平池町４丁目６０−7','044-8823-9012','info@guylook.jp','9025718562390');
+insert into client values ('クルーズショップリスト','佐藤 宏','東京都渋谷区恵比寿４丁目３番14号恵比寿SSビル','03-3391-9319','info@crooz.jp','4010401137246');
+insert into client values ('グラファー','吉田 和真','東京都渋谷区千駄ヶ谷１丁目５番８号','06-7560-1824','info@graffer.jp','9010401132779');
+insert into client values ('デホリック','林 陽斗','宮城県仙台市青葉区北目町１番13号','06-1482-9826','info@dholic.jp','5370001012597');
+insert into client values ('darkvictory','山下 夏也美','東京都渋谷区東３丁目１６番３号','03-8814-8652','info@darkvictory.jp','8010401098864');
+insert into client values ('エンビルック','前田 光','神奈川県相模原市緑区寸沢嵐1091','04-8823-9012','info@envylook.jp','9025718997890');
+
+
+insert into client values ('','','','','','');
+

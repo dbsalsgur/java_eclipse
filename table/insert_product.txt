@@ -1,0 +1,24 @@
+insert into product values ('UG001','ロングスリーブ Tシャツ','上着',1000,0);
+insert into product values ('UG002','クルーネックスウェットシャツ','上着',4900,0);
+insert into product values ('UG003','スウェット プルオーバー フード','上着',2700,0);
+insert into product values ('UG004','セーター Vネック','上着',3500,0);
+insert into product values ('UG005','アイシャツ','上着',4200,0);
+
+insert into product values ('KE001','ワイドデニムパンツ','下衣',5900,0);
+insert into product values ('KE002','ラップチェックスカート','下衣',8900,0);
+insert into product values ('KE003','ルーズデニムショートパンツ','下衣',5500,0);
+insert into product values ('KE004','リラクシーパンツ','下衣',8900,0);
+insert into product values ('KE005','ワイドストレートトラックパンツ','下衣',6900,0);
+
+insert into product values ('KY001','ウール·トレンチ·コート','アウター',13000,0);
+insert into product values ('KY002','ウール·ジャケット','アウター',23000,0);
+insert into product values ('KY003','リバーシブルムートン','アウター',7800,0);
+insert into product values ('KY004','羊毛フリース','アウター',5000,0);
+insert into product values ('KY005','ダウンベス','アウター',4800,0);
+
+
+insert into product values ('AC001','ニット·クロスバック','アクセサリー',4800,0);
+insert into product values ('AC002','カシミヤ靴下','アクセサリー',300,0);
+insert into product values ('AC003','ニットマフラー','アクセサリー',2500,0);
+insert into product values ('AC004','ミニクロスバッグ','アクセサリー',5000,0);
+insert into product values ('AC005','リボンイヤリング','アクセサリー',900,0);
