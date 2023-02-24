@@ -20,6 +20,22 @@ public class Ticket {
 		this.tstat = tstat;
 		this.startDate = startDate;
 	}
+	
+	
+	public Ticket(int tno, String carno, String phone, String grade, String tstat, Date startDate, Date endDate) {
+		super();
+		this.tno = tno;
+		this.carno = carno;
+		this.phone = phone;
+		this.grade = grade;
+		this.tstat = tstat;
+		this.startDate = startDate;
+		this.endDate = endDate;
+	}
+	
+	public Ticket() {}
+
+
 	public int getTno() {
 		return tno;
 	}

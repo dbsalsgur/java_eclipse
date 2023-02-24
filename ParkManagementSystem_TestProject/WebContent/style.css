@@ -1,0 +1,44 @@
+@charset "UTF-8";
+* {
+	margin:0;
+	border:0;
+}
+header {
+	width:100%;
+	height:50px;
+	padding:15px;
+	margin:0 auto;
+	background-color: #3C5A91;
+	color:white;
+}
+#menus {
+	width:100%;
+	height:20px;
+	color:white; 
+	background-color:#8C8CBE; 
+	padding:10px;
+}
+section {
+	width:100%;
+	padding:50px;
+	padding-bottom:532px;
+	background-color:#E0EBFF;
+}
+footer {
+	width:100%;
+	height:25px;
+	padding:20px;
+	background-color: #3C5A91;
+	color:white;
+}
+table {
+	text-align:center;
+	border : 1px;
+	border-color: black;
+	border-style : double;
+}
+td {
+	border : 1px;
+	border-color: black;
+	border-style: double;
+}

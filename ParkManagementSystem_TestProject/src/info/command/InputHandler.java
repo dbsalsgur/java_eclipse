@@ -1,4 +1,4 @@
-package ticket.command;
+package info.command;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -6,15 +6,15 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import info.service.InputRequest;
+import info.service.InputService;
 import mvc.command.CommandHandler;
 import ticket.service.DuplicateIdException;
-import ticket.service.RegistRequest;
-import ticket.service.RegistService;
 
-public class RegistHandler implements CommandHandler {
-	
-	private static final String FORM_VIEW =	"view/registForm.jsp";
-	private RegistService registService = new RegistService();
+public class InputHandler implements CommandHandler {
+
+	private static final String FORM_VIEW =	"/view/infoForm.jsp";
+	private InputService inputService = new InputService();
 
 	@Override
 	public String process(HttpServletRequest req, HttpServletResponse res) throws Exception {
@@ -34,26 +34,25 @@ public class RegistHandler implements CommandHandler {
 	}
 	
 	private String processSubmit(HttpServletRequest req, HttpServletResponse res) {
-		RegistRequest registReq = new RegistRequest();
-		registReq.setTno(req.getParameter("tno"));
-		registReq.setCarno(req.getParameter("carno"));
-		registReq.setPhone(req.getParameter("phone"));
-		registReq.setGrade(req.getParameter("grade"));
-		registReq.setTstat(req.getParameter("tstat"));
-		registReq.setStartDate(req.getParameter("startDate"));
-		registReq.setEndDate(req.getParameter("endDate"));
+		InputRequest inputReq = new InputRequest();
+		inputReq.setParkNo(req.getParameter("parkNo"));
+		inputReq.setCarNo(req.getParameter("carNo"));
+		inputReq.setGrade(req.getParameter("grade"));
+		inputReq.setTstat(req.getParameter("tstat"));
+		inputReq.setInDate(req.getParameter("inDate"));
+		inputReq.setOutDate(req.getParameter("outDate"));
 		
 		Map<String, Boolean> errors = new HashMap<String, Boolean>();
 		req.setAttribute("errors", errors);
 		
-		registReq.validate(errors);
+		inputReq.validate(errors);
 		if (!errors.isEmpty()) {
 			return FORM_VIEW;
 		}
 		
 		try {
-			registService.regist(registReq);
-			return "view/readForm.jsp";
+			inputService.input(inputReq);
+			return "/view/infoForm.jsp";
 		} catch (DuplicateIdException e) {
 			errors.put("duplicateId", Boolean.TRUE);
 			return FORM_VIEW;
