@@ -14,8 +14,9 @@
 	}
 </script>
 </head>
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="/style.css">
 <body>
+<div id="wrap">
 	<header>
 		<div align="center">
 			<h1>주차관리 프로그램 ver 1.0</h1>
@@ -76,6 +77,6 @@
 			</p>
 		</div>
 	</footer>
-
+</div>
 </body>
 </html>

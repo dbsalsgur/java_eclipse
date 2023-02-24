@@ -8,16 +8,17 @@
 <title>주차차량 입고, 출고 관리</title>
 
 </head>
-<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="/style.css">
 <body>
+<div id="wrap">
 	<header>
 		<div align="center">
 			<h1>주차관리 프로그램 ver 1.0</h1>
 		</div>
 	</header>
 	<div id="menus">
-		<a href="regist.do">[정기권등록]</a>&nbsp;&nbsp;&nbsp;&nbsp; <a
-			href="read.do">[정기권조회]</a>&nbsp;&nbsp;&nbsp;&nbsp; <a>[주차차량입,출고]</a>&nbsp;&nbsp;&nbsp;&nbsp;
+		<a href="/regist.do">[정기권등록]</a>&nbsp;&nbsp;&nbsp;&nbsp; <a
+			href="/read.do">[정기권조회]</a>&nbsp;&nbsp;&nbsp;&nbsp; <a>[주차차량입,출고]</a>&nbsp;&nbsp;&nbsp;&nbsp;
 		<a>[주차현황조회]</a>
 	</div>
 	<section>
@@ -33,5 +34,6 @@
 			</p>
 		</div>
 	</footer>
+</div>
 </body>
 </html>

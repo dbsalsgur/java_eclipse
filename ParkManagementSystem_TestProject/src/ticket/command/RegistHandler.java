@@ -13,7 +13,7 @@ import ticket.service.RegistService;
 
 public class RegistHandler implements CommandHandler {
 	
-	private static final String FORM_VIEW =	"view/registForm.jsp";
+	private static final String FORM_VIEW =	"/view/registForm.jsp";
 	private RegistService registService = new RegistService();
 
 	@Override
@@ -42,7 +42,6 @@ public class RegistHandler implements CommandHandler {
 		registReq.setTstat(req.getParameter("tstat"));
 		registReq.setStartDate(req.getParameter("startDate"));
 		registReq.setEndDate(req.getParameter("endDate"));
-		
 		Map<String, Boolean> errors = new HashMap<String, Boolean>();
 		req.setAttribute("errors", errors);
 		
@@ -53,7 +52,7 @@ public class RegistHandler implements CommandHandler {
 		
 		try {
 			registService.regist(registReq);
-			return "view/readForm.jsp";
+			return "/view/readForm.jsp";
 		} catch (DuplicateIdException e) {
 			errors.put("duplicateId", Boolean.TRUE);
 			return FORM_VIEW;
