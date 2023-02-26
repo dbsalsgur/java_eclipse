@@ -17,15 +17,20 @@
 		</div>
 	</header>
 	<div id="menus">
-		<a href="/regist.do">[정기권등록]</a>&nbsp;&nbsp;&nbsp;&nbsp; <a
-			href="/read.do">[정기권조회]</a>&nbsp;&nbsp;&nbsp;&nbsp; <a>[주차차량입,출고]</a>&nbsp;&nbsp;&nbsp;&nbsp;
-		<a>[주차현황조회]</a>
+			<a class="menu" href="/regist.do">[정기권등록]</a>
+			<a class="menu" href="/view/readForm.jsp">[정기권조회]</a> 
+			<a>[주차차량입,출고]</a>
+			<a>[주차현황조회]</a>
 	</div>
 	<section>
-			<h1>주차차량 입고, 출고 관리</h1>
-			차량번호 <input type="text" name="carno"> 
-			<input type="button" name="input" value="주차입고"> 
-			<input type="button" name="output" value="주차출고"> <br>
+			<form method="post">
+				<h1>주차차량 입고, 출고 관리</h1>
+				차량번호 <input type="text" name="carNo"> 
+	<!-- 				<a class="button" href="/view/inputForm" target="_blank">주차입고</a> -->
+	<!-- 				<a class="button" href="/view/outputForm" target="_blank">주차출고</a> -->
+				<input type="submit" value="주차입고" formaction="/view/inputForm.jsp">
+				<input type="submit" value="주차출고" formaction="/view/outputForm.jsp"> <br/>
+			</form>
 	</section>
 	<footer>
 		<div align="center">
