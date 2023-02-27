@@ -12,6 +12,12 @@ import jdbc.JdbcUtil;
 import ticket.model.Ticket;
 
 public class TicketDao {
+	
+	private static TicketDao instance = new TicketDao();
+	
+	public static TicketDao getInstance() {
+		return instance;
+	}
 
 	public Ticket selectById(Connection conn, int tno) throws SQLException {
 		PreparedStatement pstmt = null;
