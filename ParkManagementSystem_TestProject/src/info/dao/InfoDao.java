@@ -10,8 +10,34 @@ import java.util.Date;
 
 import info.model.Info;
 import jdbc.JdbcUtil;
+import ticket.model.Ticket;
 
 public class InfoDao {
+	
+	public Ticket selectByCarNo(Connection conn, String carNo) throws SQLException {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			pstmt = conn.prepareStatement("select * from ticket_tbl_01 where carno = ?");
+			pstmt.setString(1, carNo);
+			rs = pstmt.executeQuery();
+			Ticket ticket = null;
+			if (rs.next()) {
+				ticket = new Ticket(
+						rs.getInt("tno"),
+						rs.getString("carno"),
+						rs.getString("phone"),
+						rs.getString("grade"),
+						rs.getString("tstat"),
+						toDate(rs.getTimestamp("startdate")),
+						toDate(rs.getTimestamp("enddate")));
+			}
+			return ticket;
+		} finally {
+			JdbcUtil.close(rs);
+			JdbcUtil.close(pstmt);
+		}
+	}
 
 	public Info selectById(Connection conn, int parkNo) throws SQLException {
 		PreparedStatement pstmt = null;

@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+
 <!DOCTYPE html>
+
 <html>
 <head>
 <meta charset="UTF-8">
@@ -33,7 +36,7 @@
 					</tr>
 					<tr>
 						<td>차량번호</td>
-						<td><input type="text" name="carNo"></td>
+						<td><input type="text" name="carNo" value="${tic.getcarNo }"></td>
 					</tr>
 					<tr>
 						<td>차주전화</td>

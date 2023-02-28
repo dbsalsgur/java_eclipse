@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,7 +27,7 @@
 			<form method="post">
 				<h1>주차차량 입고, 출고 관리</h1>
 				차량번호 <input type="text" name="carNo"> 
-				<input type="submit" value="주차입고" formaction="/view/inputForm.jsp">
+				<input type="submit" value="주차입고" formaction="/searchTicket.do">
 				<input type="submit" value="주차출고" formaction="/view/outputForm.jsp"> <br/>
 			</form>
 	</section>

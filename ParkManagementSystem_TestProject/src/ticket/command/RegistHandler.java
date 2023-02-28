@@ -42,6 +42,7 @@ public class RegistHandler implements CommandHandler {
 		registReq.setTstat(req.getParameter("tstat"));
 		registReq.setStartDate(req.getParameter("startDate"));
 		registReq.setEndDate(req.getParameter("endDate"));
+		
 		Map<String, Boolean> errors = new HashMap<String, Boolean>();
 		req.setAttribute("errors", errors);
 		
