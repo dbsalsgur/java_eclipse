@@ -10,6 +10,9 @@ public class Info {
 	private String tstat;
 	private Date inDate;
 	private Date outDate;
+	
+	public Info () {}
+	
 	public Info(int parkNo, String carNo, String grade, String tstat, Date inDate, Date outDate) {
 		super();
 		this.parkNo = parkNo;

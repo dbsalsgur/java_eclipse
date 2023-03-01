@@ -1,5 +1,6 @@
 package info.command;
 
+import java.text.ParseException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -33,17 +34,17 @@ public class InputHandler implements CommandHandler {
 		return FORM_VIEW;
 	}
 	
-	private String processSubmit(HttpServletRequest req, HttpServletResponse res) {
+	private String processSubmit(HttpServletRequest req, HttpServletResponse res) throws ParseException {
 		InputRequest inputReq = new InputRequest();
 		inputReq.setParkNo(req.getParameter("parkNo"));
 		inputReq.setCarNo(req.getParameter("carNo"));
 		inputReq.setGrade(req.getParameter("grade"));
 		inputReq.setTstat(req.getParameter("tstat"));
-		inputReq.setInDate(req.getParameter("inDate"));
-		inputReq.setOutDate(req.getParameter("outDate"));
+//		inputReq.setInDate(req.getParameter("inDate"));
+//		inputReq.setOutDate(req.getParameter("outDate"));
 		
 		Map<String, Boolean> errors = new HashMap<String, Boolean>();
-		req.setAttribute("errors", errors);
+//		req.setAttribute("errors", errors);
 		
 		inputReq.validate(errors);
 		if (!errors.isEmpty()) {

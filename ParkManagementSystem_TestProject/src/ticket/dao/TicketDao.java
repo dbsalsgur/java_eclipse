@@ -49,22 +49,22 @@ public class TicketDao {
 	}
 	
 	public void insert(Connection conn, Ticket tic) throws SQLException {
-		Timestamp ts = new Timestamp(tic.getStartDate().getTime());
-		Calendar cal = Calendar.getInstance();
-		cal.setTime(ts);
-		try {
-			if (tic.getGrade().equals("Y")) {
-				cal.add(Calendar.DAY_OF_YEAR, 365);
-			} else if(tic.getGrade().equals("M")){
-				cal.add(Calendar.DAY_OF_MONTH, 30);
-			} else {
-				throw new SQLException();
-			}
-		} catch(Exception e) {
-			e.printStackTrace();
-		}
-		ts.setTime(cal.getTime().getTime()); 
-		ts = new Timestamp(cal.getTime().getTime());
+//		Timestamp ts = new Timestamp(tic.getStartDate().getTime());
+//		Calendar cal = Calendar.getInstance();
+//		cal.setTime(ts);
+//		try {
+//			if (tic.getGrade().equals("Y")) {
+//				cal.add(Calendar.DAY_OF_YEAR, 365);
+//			} else if(tic.getGrade().equals("M")){
+//				cal.add(Calendar.DAY_OF_MONTH, 30);
+//			} else {
+//				throw new SQLException();
+//			}
+//		} catch(Exception e) {
+//			e.printStackTrace();
+//		}
+//		ts.setTime(cal.getTime().getTime()); 
+//		ts = new Timestamp(cal.getTime().getTime());
 		
 		try(PreparedStatement pstmt = conn.prepareStatement("insert into ticket_tbl_01 values (?,?,?,?,?,?,?)")) {
 			pstmt.setInt(1, tic.getTno());
@@ -73,7 +73,8 @@ public class TicketDao {
 			pstmt.setString(4, tic.getGrade());
 			pstmt.setString(5, tic.getTstat());
 			pstmt.setTimestamp(6, new Timestamp(tic.getStartDate().getTime()));
-			pstmt.setTimestamp(7, ts);
+//			pstmt.setTimestamp(7, ts);
+			pstmt.setTimestamp(7, new Timestamp(tic.getEndDate().getTime()));
 			pstmt.executeUpdate();
 		}
 		

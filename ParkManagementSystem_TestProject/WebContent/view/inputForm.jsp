@@ -1,13 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
-
+<% 
+	
+%>
 <!DOCTYPE html>
 
 <html>
 <head>
 <meta charset="UTF-8">
 <title>주차차량 입고</title>
+<script type="text/javascript">
+	function check_form() {
+				
+	}
+</script>
 </head>
 <link rel="stylesheet" href="/style.css">
 <body>
@@ -24,47 +31,49 @@
 			<a>[주차현황조회]</a>
 		</div>
 	<section>
+		<form method="post">
 			<h1>주차차량 입고, 출고 관리</h1>
 			차량번호 <input type="text" name="carNo"> 
 			<input type="submit" value="주차입고" formaction="/view/inputForm">
 			<input type="submit" value="주차출고" formaction="/view/outputForm"> <br/>
-			<form method="post">
-				<table border="1">
-					<tr>
-						<td width="200">정기권번호</td>
-						<td width="400"><input type="text" name="parkNo"></td>
-					</tr>
-					<tr>
-						<td>차량번호</td>
-						<td><input type="text" name="carNo" value="${tic.getcarNo }"></td>
-					</tr>
-					<tr>
-						<td>차주전화</td>
-						<td><input type="text" name="grade"></td>
-					</tr>
-					<tr>
-						<td>등급</td>
-						<td><input type="text" name="grade"></td>
-					</tr>
-					<tr>
-						<td>주차시작일</td>
-						<td><input type="text" name="startDate"></td>
-					</tr>
-					<tr>
-						<td>주차종료일</td>
-						<td><input type="text" name="endDate"></td>
-					</tr>
-					<tr>
-						<td>비고</td>
-						<td><input type="text" name="note"></td>
-					</tr>
-					<tr>
-						<td>다음주차번호</td>
-						<td><input type="text" name="nextCarno"></td>
-					</tr>
-				</table><br/>
-				<input type="submit" value="입고확인">
-			</form>
+		</form>
+		<form method="post" action="/input.do" onSubmit="return check_form()">
+			<table border="1">
+				<tr>
+					<td width="200">정기권번호</td>
+					<td width="400"><input type="text" name="parkNo" value="${ ticket.tno }"></td>
+				</tr>
+				<tr>
+					<td>차량번호</td>
+					<td><input type="text" name="carNo" value="${ ticket.carno }"></td>
+				</tr>
+				<tr>
+					<td>차주전화</td>
+					<td><input type="text" name="phone" value="${ ticket.phone }"></td>
+				</tr>
+				<tr>
+					<td>등급</td>
+					<td><input type="text" name="grade" value="${ ticket.grade }"></td>
+				</tr>
+				<tr>
+					<td>주차시작일</td>
+					<td><input type="text" value="${ startDate }"></td>
+				</tr>
+				<tr>
+					<td>주차종료일</td>
+					<td><input type="text" value="${ endDate }"></td>
+				</tr>
+				<tr>
+					<td>비고</td>
+					<td><input type="text" value="${ note }"></td>
+				</tr>
+				<tr>
+					<td>다음주차번호</td>
+					<td><input type="text" name="nextParkNo" value="${ nextParkNo }"></td>
+				</tr>
+			</table><br/>
+			<input type="submit" value="입고확인">
+		</form>
 	</section>
 	<footer>
 		<div align="center">

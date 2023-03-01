@@ -1,5 +1,6 @@
 package ticket.command;
 
+import java.text.ParseException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -33,7 +34,7 @@ public class RegistHandler implements CommandHandler {
 		return FORM_VIEW;
 	}
 	
-	private String processSubmit(HttpServletRequest req, HttpServletResponse res) {
+	private String processSubmit(HttpServletRequest req, HttpServletResponse res) throws ParseException {
 		RegistRequest registReq = new RegistRequest();
 		registReq.setTno(req.getParameter("tno"));
 		registReq.setCarno(req.getParameter("carno"));

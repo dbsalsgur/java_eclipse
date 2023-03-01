@@ -2,7 +2,10 @@ package info.service;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 
 import info.dao.InfoDao;
 import info.model.Info;
@@ -14,15 +17,16 @@ public class InputService {
 
 	private InfoDao infoDao = new InfoDao();
 	
-	public void input(InputRequest inputReq) {
+	public void input(InputRequest inputReq) throws ParseException {
 		Connection conn = null;
+		Info info = null;
 		try {
 			conn = ConnectionProvider.getConnection();
 			conn.setAutoCommit(false);
 			
-			int parkNo = Integer.parseInt(inputReq.getParkNo());
-			Info info = infoDao.selectById(conn, parkNo);
-			if (info != null) {
+//			int parkNo = Integer.parseInt(inputReq.getParkNo());
+			Info infoValue = infoDao.selectById(conn, info);
+			if (infoValue != null) {
 				JdbcUtil.rollback(conn);
 				throw new DuplicateIdException();
 			}
@@ -41,4 +45,5 @@ public class InputService {
 			JdbcUtil.close(conn);
 		}
 	}
+	
 }

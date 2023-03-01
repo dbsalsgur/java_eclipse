@@ -4,19 +4,18 @@ import java.sql.Connection;
 import java.sql.SQLException;
 
 import info.dao.InfoDao;
+import info.model.Info;
 import jdbc.connection.ConnectionProvider;
-import ticket.model.Ticket;
 
-public class SearchTicketService {
+public class SearchParkInfoService {
 
 	private InfoDao infoDao = new InfoDao();
 	
-	public Ticket searchTicket(SearchTicketRequest searchTicReq) {
+	public Info searchParkInfo(Info info) {
 		try(Connection conn = ConnectionProvider.getConnection()) {
-			
-			return infoDao.selectByCarNo(conn, searchTicReq.getcarNo());
+			return infoDao.selectById(conn, info);
 		} catch(SQLException e) {
 			throw new RuntimeException();
-		} 
+		}
 	}
 }

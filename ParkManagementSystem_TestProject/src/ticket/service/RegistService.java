@@ -2,7 +2,10 @@ package ticket.service;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 
 import jdbc.JdbcUtil;
 import jdbc.connection.ConnectionProvider;
@@ -13,7 +16,7 @@ public class RegistService {
 
 private TicketDao ticketDao = new TicketDao();
 	
-	public void regist(RegistRequest registReq) {
+	public void regist(RegistRequest registReq) throws ParseException {
 		Connection conn = null;
 		try {
 			conn = ConnectionProvider.getConnection();
@@ -31,7 +34,8 @@ private TicketDao ticketDao = new TicketDao();
 					registReq.getPhone(),
 					registReq.getGrade(),
 					registReq.getTstat(),
-					new Date())
+					dateFormat(registReq.getStartDate()),
+					dateFormat(registReq.getEndDate()))
 				);
 			conn.commit();
 		} catch(SQLException e) {
@@ -40,5 +44,11 @@ private TicketDao ticketDao = new TicketDao();
 		} finally {
 			JdbcUtil.close(conn);
 		}
+	}
+	
+	public Date dateFormat(String inputDate) throws ParseException {
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd", Locale.KOREA);
+		Date date = formatter.parse(inputDate);
+		return date;
 	}
 }
