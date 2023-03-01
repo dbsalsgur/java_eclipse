@@ -20,9 +20,9 @@
 	<div id="menus">
 			<a class="menu" href="/regist.do">[정기권등록]</a>
 			<a class="menu" href="/view/readForm.jsp">[정기권조회]</a> 
-			<a>[주차차량입,출고]</a>
+			<a class="menu" href="/view/infoForm.jsp">[주차차량입,출고]</a>
 			<a>[주차현황조회]</a>
-	</div>
+		</div>
 	<section>
 			<h1>주차차량 입고, 출고 관리</h1>
 			차량번호 <input type="text" name="carNo"> 

@@ -9,7 +9,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title></title>
+<title>주차 정기권 조회</title>
 </head>
 <link rel="stylesheet" href="/style.css">
 <body>
@@ -20,11 +20,11 @@
 		</div>
 	</header>
 	<div id="menus">
-		<a href="/regist.do">[정기권등록]</a>&nbsp;&nbsp;&nbsp;&nbsp; 
-		<a href="/view/readForm.jsp">[정기권조회]</a>&nbsp;&nbsp;&nbsp;&nbsp; 
-		<a>[주차차량입,출고]</a>&nbsp;&nbsp;&nbsp;&nbsp;
-		<a>[주차현황조회]</a>
-	</div>
+			<a class="menu" href="/regist.do">[정기권등록]</a>
+			<a class="menu" href="/view/readForm.jsp">[정기권조회]</a> 
+			<a class="menu" href="/view/infoForm.jsp">[주차차량입,출고]</a>
+			<a>[주차현황조회]</a>
+		</div>
 	<section>
 		<div align="center">
 			<h1 style="padding-bottom:50px">정기권 조회</h1>
