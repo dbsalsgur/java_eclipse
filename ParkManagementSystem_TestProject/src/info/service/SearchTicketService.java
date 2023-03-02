@@ -11,10 +11,10 @@ public class SearchTicketService {
 
 	private InfoDao infoDao = new InfoDao();
 	
-	public Ticket searchTicket(SearchTicketRequest searchTicReq) {
+	public Ticket searchTicket(SearchRequest searchReq) {
 		try(Connection conn = ConnectionProvider.getConnection()) {
 			
-			return infoDao.selectByCarNo(conn, searchTicReq.getcarNo());
+			return infoDao.selectByCarNo(conn, searchReq.getcarNo());
 		} catch(SQLException e) {
 			throw new RuntimeException();
 		} 

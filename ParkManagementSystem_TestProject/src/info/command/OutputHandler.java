@@ -5,18 +5,16 @@ import java.text.ParseException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import info.model.Info;
 import info.service.InputRequest;
-import info.service.InputService;
-import info.service.SearchParkInfoService;
-import info.service.SearchTicketService;
+import info.service.OutputRequest;
+import info.service.OutputService;
 import mvc.command.CommandHandler;
 import ticket.service.DuplicateIdException;
 
-public class InputHandler implements CommandHandler {
+public class OutputHandler implements CommandHandler {
 
 	private static final String FORM_VIEW =	"/view/infoForm.jsp";
-	private InputService inputService = new InputService();
+	private OutputService outputService = new OutputService();
 
 	@Override
 	public String process(HttpServletRequest req, HttpServletResponse res) throws Exception {
@@ -36,16 +34,15 @@ public class InputHandler implements CommandHandler {
 	}
 	
 	private String processSubmit(HttpServletRequest req, HttpServletResponse res) throws ParseException {
-		InputRequest inputReq = new InputRequest();
-		inputReq.setCarNo(req.getParameter("carNo"));
-		inputReq.setGrade(req.getParameter("grade"));
+		OutputRequest OutputReq = new OutputRequest();
+		OutputReq.setCarNo(req.getParameter("carNo"));
 		
 		try {
-			
-			inputService.input(inputReq);
+			outputService.output(OutputReq);
 			return "/view/infoForm.jsp";
-		} catch (DuplicateIdException e) {
+		} catch (Exception e) {
 			return FORM_VIEW;
 		}
 	}
+
 }

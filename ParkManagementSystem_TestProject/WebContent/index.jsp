@@ -16,9 +16,9 @@
 		</header>
 		<div id="menus">
 			<a class="menu" href="/regist.do">[정기권등록]</a>
-			<a class="menu" href="/view/readForm.jsp">[정기권조회]</a> 
+			<a class="menu" href="/view/readTicketForm.jsp">[정기권조회]</a> 
 			<a class="menu" href="/view/infoForm.jsp">[주차차량입,출고]</a>
-			<a>[주차현황조회]</a>
+			<a class="menu" href="/view/readParkInfoForm.jsp">[주차현황조회]</a>
 		</div>
 		<section>
 			<div>

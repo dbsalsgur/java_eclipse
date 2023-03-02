@@ -11,11 +11,11 @@ public class SearchParkInfoService {
 
 	private InfoDao infoDao = new InfoDao();
 	
-	public Info searchParkInfo(Info info) {
+	public Info searchParkInfo(SearchRequest searchReq) {
 		try(Connection conn = ConnectionProvider.getConnection()) {
-			return infoDao.selectById(conn, info);
+			return infoDao.selectByCarNum(conn, searchReq.getcarNo());
 		} catch(SQLException e) {
 			throw new RuntimeException();
-		}
+		} 
 	}
 }

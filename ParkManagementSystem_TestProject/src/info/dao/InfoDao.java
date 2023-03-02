@@ -4,12 +4,13 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.sql.Timestamp;
-import java.util.Calendar;
 import java.util.Date;
 
 import info.model.Info;
 import jdbc.JdbcUtil;
+import jdbc.connection.ConnectionProvider;
 import ticket.model.Ticket;
 
 public class InfoDao {
@@ -39,12 +40,13 @@ public class InfoDao {
 		}
 	}
 
-	public Info selectById(Connection conn, Info info) throws SQLException {
+	public Info selectByCarNum(Connection conn, String carNo) throws SQLException {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
+		Info info = null;
 		try {
-			pstmt = conn.prepareStatement("select * from park_info_tbl where parkno = ?");
-			pstmt.setInt(1, info.getParkNo());
+			pstmt = conn.prepareStatement("select * from park_info_tbl where carno = ?");
+			pstmt.setString(1, carNo);
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
 				info = new Info(
@@ -56,8 +58,22 @@ public class InfoDao {
 						toDate(rs.getTimestamp("outdate")));
 			}
 			return info;
-		} catch(NullPointerException e) {
-			return info;
+		} finally {
+			JdbcUtil.close(rs);
+			JdbcUtil.close(pstmt);
+		}
+	}
+	
+	public void update(Connection conn, String carNo) {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			pstmt = conn.prepareStatement("update park_info_tbl set tstat='O', outdate=now() where carno = ?");
+			pstmt.setString(1, carNo);
+			pstmt.executeUpdate();
+			System.out.println(6);
+		} catch(SQLException e) {
+			e.printStackTrace();
 		} finally {
 			JdbcUtil.close(rs);
 			JdbcUtil.close(pstmt);
@@ -69,30 +85,12 @@ public class InfoDao {
 	}
 	
 	public void insert(Connection conn, Info info) throws SQLException {
-//		Timestamp ts = new Timestamp(info.getInDate().getTime());
-//		Calendar cal = Calendar.getInstance();
-//		cal.setTime(ts);
-//		try {
-//			if (info.getGrade().equals("Y")) {
-//				cal.add(Calendar.DAY_OF_YEAR, 365);
-//			} else if(info.getGrade().equals("M")){
-//				cal.add(Calendar.DAY_OF_MONTH, 30);
-//			} else {
-//				throw new SQLException();
-//			}
-//		} catch(Exception e) {
-//			e.printStackTrace();
-//		}
-//		ts.setTime(cal.getTime().getTime()); 
-//		ts = new Timestamp(cal.getTime().getTime());
 		
-		try(PreparedStatement pstmt = conn.prepareStatement("insert into park_info_tbl values (?,?,?,?,?,?)")) {
-			pstmt.setInt(1, info.getParkNo());
-			pstmt.setString(2, info.getCarNo());
-			pstmt.setString(3, info.getGrade());
-			pstmt.setString(4, info.getTstat());
-			pstmt.setTimestamp(5, new Timestamp(info.getInDate().getTime()));
-			pstmt.setTimestamp(6, new Timestamp(info.getOutDate().getTime()));
+		try(PreparedStatement pstmt = conn.prepareStatement("insert into park_info_tbl(parkno, carno, grade, tstat, indate) values (0,?,?,?,?)")) {
+			pstmt.setString(1, info.getCarNo());
+			pstmt.setString(2, info.getGrade());
+			pstmt.setString(3, info.getTstat());
+			pstmt.setTimestamp(4, new Timestamp(info.getInDate().getTime()));
 			pstmt.executeUpdate();
 		}
 		

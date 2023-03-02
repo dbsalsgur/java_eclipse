@@ -22,9 +22,8 @@ public class Info {
 		this.inDate = inDate;
 		this.outDate = outDate;
 	}
-	public Info(int parkNo, String carNo, String grade, String tstat, Date inDate) {
+	public Info(String carNo, String grade, String tstat, Date inDate) {
 		super();
-		this.parkNo = parkNo;
 		this.carNo = carNo;
 		this.grade = grade;
 		this.tstat = tstat;

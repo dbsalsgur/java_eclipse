@@ -1,9 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
-<% 
-	
-%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 
 <html>
@@ -11,8 +8,26 @@
 <meta charset="UTF-8">
 <title>주차차량 입고</title>
 <script type="text/javascript">
-	function check_form() {
-				
+	var id = "<c:out value='${info}'/>";
+	document.write(id);
+	function check_form(event) {
+		
+		if(!confirm("[차량입고]하시겠습니까?")) {
+			alert("취소하였습니다");
+			event.preventDefault();
+			location.href = "/view/infoForm.jsp";
+			return false;
+		} else {
+			if (id == null) {
+				alert("[입고완료]되었습니다.");
+			} else if(id != null) {
+				alert(console.log(id));
+				alert("이미 입고된 차량입니다!");
+				event.preventDefault();
+				location.href = "/view/infoForm.jsp";
+				return false;
+			}
+		}
 	}
 </script>
 </head>
@@ -25,19 +40,19 @@
 		</div>
 	</header>
 	<div id="menus">
-			<a class="menu" href="/regist.do">[정기권등록]</a>
-			<a class="menu" href="/view/readForm.jsp">[정기권조회]</a> 
-			<a class="menu" href="/view/infoForm.jsp">[주차차량입,출고]</a>
-			<a>[주차현황조회]</a>
-		</div>
+		<a class="menu" href="/regist.do">[정기권등록]</a>
+		<a class="menu" href="/view/readTicketForm.jsp">[정기권조회]</a> 
+		<a class="menu" href="/view/infoForm.jsp">[주차차량입,출고]</a>
+		<a class="menu" href="/view/readParkInfoForm.jsp">[주차현황조회]</a>
+	</div>
 	<section>
 		<form method="post">
 			<h1>주차차량 입고, 출고 관리</h1>
 			차량번호 <input type="text" name="carNo"> 
-			<input type="submit" value="주차입고" formaction="/view/inputForm">
-			<input type="submit" value="주차출고" formaction="/view/outputForm"> <br/>
+			<input type="submit" value="주차입고" formaction="/searchTicket.do">
+			<input type="submit" value="주차출고" formaction="/searchParkInfo.do"> <br/>
 		</form>
-		<form method="post" action="/input.do" onSubmit="return check_form()">
+		<form method="post" action="/input.do" onSubmit="return check_form(event)">
 			<table border="1">
 				<tr>
 					<td width="200">정기권번호</td>
@@ -67,11 +82,8 @@
 					<td>비고</td>
 					<td><input type="text" value="${ note }"></td>
 				</tr>
-				<tr>
-					<td>다음주차번호</td>
-					<td><input type="text" name="nextParkNo" value="${ nextParkNo }"></td>
-				</tr>
 			</table><br/>
+<%-- 			<c:set var="id" value="${requestScope.info.carNo }"/> --%>
 			<input type="submit" value="입고확인">
 		</form>
 	</section>

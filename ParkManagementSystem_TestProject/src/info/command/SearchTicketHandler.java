@@ -1,6 +1,7 @@
 package info.command;
 
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -9,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import info.model.Info;
 import info.service.SearchParkInfoService;
-import info.service.SearchTicketRequest;
+import info.service.SearchRequest;
 import info.service.SearchTicketService;
 import mvc.command.CommandHandler;
 import ticket.model.Ticket;
@@ -39,34 +40,35 @@ public class SearchTicketHandler implements CommandHandler {
 	}
 	
 	private String processSubmit(HttpServletRequest req, HttpServletResponse res) {
-		SearchTicketRequest searchTicReq = new SearchTicketRequest();
-		searchTicReq.setcarNo(req.getParameter("carNo"));
-		
-		Info info = null;
+		SearchRequest searchReq = new SearchRequest();
+		searchReq.setcarNo(req.getParameter("carNo"));
 		
 		Map<String, Boolean> errors = new HashMap<String, Boolean>();
 		req.setAttribute("errors", errors);
 		
-		searchTicReq.validate(errors);
+		searchReq.validate(errors);
 		if (!errors.isEmpty()) {
 			return FORM_VIEW;
 		}
 		try {
-			Ticket ticket =  searchTicService.searchTicket(searchTicReq);
-			Info infoParkNoValue = searchParkInfoService.searchParkInfo(info);
-			
+			Ticket ticket =  searchTicService.searchTicket(searchReq);
+			Info info =  searchParkInfoService.searchParkInfo(searchReq);
+			System.out.println(info);
+		
+			if (ticket == null) {
+				Date date = new Date();
+				SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+				String inDate = format.format(date);
+				req.setAttribute("inDate", inDate);
+				
+				return "/view/inputDayMemberForm.jsp";
+			}
 			//등급에 따라 비고에 출력할 문구 설정
 			String note = "";
 			if (ticket.getGrade().equals("Y")) {
 				note = "연회원입니다.";
 			} else if(ticket.getGrade().equals("M")) {
 				note = "월회원입니다.";
-			}
-			
-			//다음주차번호 판단
-			int nextParkNo = 1;
-			if (infoParkNoValue != null) {
-				nextParkNo = infoParkNoValue.getParkNo() + 1;
 			}
 			
 			//DB에서 가져온 날짜 값 변환
@@ -78,12 +80,13 @@ public class SearchTicketHandler implements CommandHandler {
 			req.setAttribute("startDate", startDate);
 			req.setAttribute("endDate", endDate);
 			req.setAttribute("note", note);
-			req.setAttribute("nextParkNo", nextParkNo);
+			req.setAttribute("info", info);
+			
 			
 			return "/view/inputForm.jsp";
 		} catch (DuplicateIdException e) {
 			errors.put("duplicateId", Boolean.TRUE);
 			return FORM_VIEW;
-		}
+		} 
 	}
 }

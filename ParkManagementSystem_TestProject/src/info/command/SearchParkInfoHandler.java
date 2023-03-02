@@ -1,16 +1,69 @@
 package info.command;
 
+import java.text.SimpleDateFormat;
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import info.model.Info;
+import info.service.SearchParkInfoService;
+import info.service.SearchRequest;
 import mvc.command.CommandHandler;
+import ticket.service.DuplicateIdException;
 
 public class SearchParkInfoHandler implements CommandHandler {
 
+	private static final String FORM_VIEW =	"/view/infoForm.jsp";
+	private SearchParkInfoService searchParkInfoService = new SearchParkInfoService();
+
 	@Override
 	public String process(HttpServletRequest req, HttpServletResponse res) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		if (req.getMethod().equalsIgnoreCase("GET")) {
+			return processForm(req, res);
+		} else if(req.getMethod().equalsIgnoreCase("POST")) {
+			return processSubmit(req, res);
+		} else {
+			res.setStatus(HttpServletResponse.SC_METHOD_NOT_ALLOWED);
+			return null;
+		}
+	}
+
+
+	private String processForm(HttpServletRequest req, HttpServletResponse res) {
+		return FORM_VIEW;
+	}
+	
+	private String processSubmit(HttpServletRequest req, HttpServletResponse res) {
+		SearchRequest searchReq = new SearchRequest();
+		searchReq.setcarNo(req.getParameter("carNo"));
+		Map<String, Boolean> errors = new HashMap<String, Boolean>();
+		req.setAttribute("errors", errors);
+		
+		searchReq.validate(errors);
+		if (!errors.isEmpty()) {
+			return FORM_VIEW;
+		}
+		try {
+			Info info =  searchParkInfoService.searchParkInfo(searchReq);
+			
+			//비고에 출력할 문구
+			String note = "출차 준비중입니다.";
+			
+			//DB에서 가져온 날짜 값 변환
+			SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+			String inDate = format.format(info.getInDate());
+			
+			req.setAttribute("info", info);
+			req.setAttribute("inDate", inDate);
+			req.setAttribute("note", note);
+			
+			return "/view/outputForm.jsp";
+		} catch (DuplicateIdException e) {
+			errors.put("duplicateId", Boolean.TRUE);
+			return FORM_VIEW;
+		}
 	}
 
 }

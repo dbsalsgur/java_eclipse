@@ -2,13 +2,13 @@ package info.service;
 
 import java.util.Map;
 
-public class SearchTicketRequest {
+public class SearchRequest {
 
 	private String carNo;
 
-	public SearchTicketRequest() {}
+	public SearchRequest() {}
 	
-	public SearchTicketRequest(String carNo) {
+	public SearchRequest(String carNo) {
 		super();
 		this.carNo = carNo;
 	}

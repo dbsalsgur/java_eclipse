@@ -18,17 +18,18 @@
 		</div>
 	</header>
 	<div id="menus">
-			<a class="menu" href="/regist.do">[정기권등록]</a>
-			<a class="menu" href="/view/readForm.jsp">[정기권조회]</a> 
-			<a class="menu" href="/view/infoForm.jsp">[주차차량입,출고]</a>
-			<a>[주차현황조회]</a>
-		</div>
+		<a class="menu" href="/regist.do">[정기권등록]</a>
+		<a class="menu" href="/view/readTicketForm.jsp">[정기권조회]</a> 
+		<a class="menu" href="/view/infoForm.jsp">[주차차량입,출고]</a>
+		<a class="menu" href="/view/readParkInfoForm.jsp">[주차현황조회]</a>
+	</div>
 	<section>
 			<form method="post">
 				<h1>주차차량 입고, 출고 관리</h1>
 				차량번호 <input type="text" name="carNo"> 
 				<input type="submit" value="주차입고" formaction="/searchTicket.do">
-				<input type="submit" value="주차출고" formaction="/view/outputForm.jsp"> <br/>
+				<input type="submit" value="주차출고" formaction="/searchParkInfo.do"> 
+				<c:if test="${errors.carNo }">차량번호를 입력하세요. </c:if><br/>
 			</form>
 	</section>
 	<footer>
