@@ -8,7 +8,7 @@
 <title>게시글 쓰기</title>
 </head>
 <body>
-<form method="post" action="write.do">
+<form method="post" action="/board_JSPProject_example/write.do">
 <p>
 	제목 : <br/> <input type="text" name="title" value="${param.title }">
 	<c:if test="${errors.title }">제목을 입력하세요. </c:if>

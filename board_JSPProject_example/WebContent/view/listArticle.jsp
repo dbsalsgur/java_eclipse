@@ -11,7 +11,7 @@
 
 <table border="1">
 	<tr>
-		<td colspan="4"> <a href="write.do">[게시글 쓰기]</a> </td>
+		<td colspan="4"> <a href="/board_JSPProject_example/write.do">[게시글 쓰기]</a> </td>
 	</tr>
 	<tr>
 		<td>번호</td>
