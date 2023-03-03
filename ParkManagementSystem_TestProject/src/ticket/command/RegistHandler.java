@@ -54,7 +54,7 @@ public class RegistHandler implements CommandHandler {
 		
 		try {
 			registService.regist(registReq);
-			return "/view/readForm.jsp";
+			return "/view/readTicketForm.jsp";
 		} catch (DuplicateIdException e) {
 			errors.put("duplicateId", Boolean.TRUE);
 			return FORM_VIEW;

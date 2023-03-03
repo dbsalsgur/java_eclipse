@@ -1,0 +1,10 @@
+CREATE TABLE `parkmanagement`.`park_info_tbl` (
+  `parkno` INT(6) NOT NULL AUTO_INCREMENT,
+  `carno` VARCHAR(10) NOT NULL,
+  `grade` CHAR(1) NULL DEFAULT NULL,
+  `tstat` CHAR(1) NULL DEFAULT NULL,
+  `indate` DATETIME NULL DEFAULT NULL,
+  `outdate` DATETIME NULL DEFAULT NULL,
+  PRIMARY KEY (`parkno`, `carno`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;

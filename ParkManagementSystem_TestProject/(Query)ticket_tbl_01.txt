@@ -1,0 +1,11 @@
+CREATE TABLE `parkmanagement`.`ticket_tbl_01` (
+  `tno` INT(6) NOT NULL,
+  `carno` VARCHAR(10) NOT NULL,
+  `phone` VARCHAR(13) NULL DEFAULT NULL,
+  `grade` CHAR(1) NULL DEFAULT NULL,
+  `tstat` CHAR(1) NULL DEFAULT NULL,
+  `startdate` DATETIME NULL DEFAULT NULL,
+  `enddate` DATETIME NULL DEFAULT NULL,
+  PRIMARY KEY (`tno`, `carno`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;

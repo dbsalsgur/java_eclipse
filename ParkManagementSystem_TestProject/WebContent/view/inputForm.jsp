@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+
 <!DOCTYPE html>
 
 <html>
@@ -8,8 +10,7 @@
 <meta charset="UTF-8">
 <title>주차차량 입고</title>
 <script type="text/javascript">
-	var id = "<c:out value='${info}'/>";
-	document.write(id);
+	var iid = "<c:out value='${icheck}'/>";
 	function check_form(event) {
 		
 		if(!confirm("[차량입고]하시겠습니까?")) {
@@ -18,10 +19,9 @@
 			location.href = "/view/infoForm.jsp";
 			return false;
 		} else {
-			if (id == null) {
+			if (iid == 0) {
 				alert("[입고완료]되었습니다.");
-			} else if(id != null) {
-				alert(console.log(id));
+			} else if(iid == 1) {
 				alert("이미 입고된 차량입니다!");
 				event.preventDefault();
 				location.href = "/view/infoForm.jsp";
@@ -83,7 +83,6 @@
 					<td><input type="text" value="${ note }"></td>
 				</tr>
 			</table><br/>
-<%-- 			<c:set var="id" value="${requestScope.info.carNo }"/> --%>
 			<input type="submit" value="입고확인">
 		</form>
 	</section>

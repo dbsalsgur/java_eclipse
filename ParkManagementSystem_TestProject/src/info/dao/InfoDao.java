@@ -4,13 +4,11 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.sql.Timestamp;
 import java.util.Date;
 
 import info.model.Info;
 import jdbc.JdbcUtil;
-import jdbc.connection.ConnectionProvider;
 import ticket.model.Ticket;
 
 public class InfoDao {
@@ -71,7 +69,6 @@ public class InfoDao {
 			pstmt = conn.prepareStatement("update park_info_tbl set tstat='O', outdate=now() where carno = ?");
 			pstmt.setString(1, carNo);
 			pstmt.executeUpdate();
-			System.out.println(6);
 		} catch(SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -86,7 +83,7 @@ public class InfoDao {
 	
 	public void insert(Connection conn, Info info) throws SQLException {
 		
-		try(PreparedStatement pstmt = conn.prepareStatement("insert into park_info_tbl(parkno, carno, grade, tstat, indate) values (0,?,?,?,?)")) {
+		try(PreparedStatement pstmt = conn.prepareStatement("insert into park_info_tbl(carno, grade, tstat, indate) values (?,?,?,?)")) {
 			pstmt.setString(1, info.getCarNo());
 			pstmt.setString(2, info.getGrade());
 			pstmt.setString(3, info.getTstat());

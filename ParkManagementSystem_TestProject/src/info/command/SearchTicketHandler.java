@@ -53,8 +53,16 @@ public class SearchTicketHandler implements CommandHandler {
 		try {
 			Ticket ticket =  searchTicService.searchTicket(searchReq);
 			Info info =  searchParkInfoService.searchParkInfo(searchReq);
-			System.out.println(info);
+			
+			//차량 입고 테이블을 확인, javascript로 전달할 값 설정.
+			int icheck = 2;
+			if(info == null) {
+				icheck = 0;
+			} else if(info != null){
+				icheck = 1;
+			}
 		
+			//정기권 등록이 안된 차량이면 일일회원 입고페이지로 이동
 			if (ticket == null) {
 				Date date = new Date();
 				SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -80,7 +88,7 @@ public class SearchTicketHandler implements CommandHandler {
 			req.setAttribute("startDate", startDate);
 			req.setAttribute("endDate", endDate);
 			req.setAttribute("note", note);
-			req.setAttribute("info", info);
+			req.setAttribute("icheck", icheck);
 			
 			
 			return "/view/inputForm.jsp";

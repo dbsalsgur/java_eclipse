@@ -17,9 +17,7 @@ private InfoDao infoDao = new InfoDao();
 			conn = ConnectionProvider.getConnection();
 			conn.setAutoCommit(false);
 			String carNo = outputReq.getCarNo();
-			System.out.println(1);
 			infoDao.update(conn, carNo);
-			System.out.println(2);
 			conn.commit();
 		} catch(SQLException e) {
 			jdbc.JdbcUtil.rollback(conn);

@@ -9,7 +9,6 @@ import info.dao.InfoDao;
 import info.model.Info;
 import jdbc.JdbcUtil;
 import jdbc.connection.ConnectionProvider;
-import ticket.service.DuplicateIdException;
 
 public class InputService {
 
@@ -21,12 +20,6 @@ public class InputService {
 			conn = ConnectionProvider.getConnection();
 			conn.setAutoCommit(false);
 			
-			String carNo = inputReq.getCarNo();
-			Info infoValue = infoDao.selectByCarNum(conn, carNo);
-			if (infoValue != null) {
-				JdbcUtil.rollback(conn);
-				throw new DuplicateIdException();
-			}
 			infoDao.insert(conn, new Info(
 					inputReq.getCarNo(),
 					inputReq.getGrade(),

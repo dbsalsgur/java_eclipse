@@ -48,8 +48,21 @@ public class SearchParkInfoHandler implements CommandHandler {
 		try {
 			Info info =  searchParkInfoService.searchParkInfo(searchReq);
 			
+			//입, 출차 여부를 javascript 변수 oid로 전달
+			int ocheck = 2;
+			if(info.getTstat().equals("I")) {
+				ocheck = 0;
+			} else if(info.getTstat().equals("O")) {
+				ocheck = 1;
+			}
+			
 			//비고에 출력할 문구
-			String note = "출차 준비중입니다.";
+			String note = "";
+			if(info.getTstat().equals("I")) {
+				note = "출차 준비중입니다.";
+			} else if(info.getTstat().equals("O")) {
+				note = "출차가 완료된 차량입니다";
+			}
 			
 			//DB에서 가져온 날짜 값 변환
 			SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -58,6 +71,7 @@ public class SearchParkInfoHandler implements CommandHandler {
 			req.setAttribute("info", info);
 			req.setAttribute("inDate", inDate);
 			req.setAttribute("note", note);
+			req.setAttribute("ocheck", ocheck);
 			
 			return "/view/outputForm.jsp";
 		} catch (DuplicateIdException e) {

@@ -1,12 +1,34 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>주차차량 출고</title>
-<link rel="stylesheet" href="/style.css">
+
+<script type="text/javascript">
+	var oid = "<c:out value='${ocheck}'/>";
+	function check_form(event) {
+		if(!confirm("[차량출고]하시겠습니까?")) {
+			alert("취소하였습니다");
+			event.preventDefault();
+			location.href = "/view/infoForm.jsp";
+			return false;
+		} else {
+			if (oid == 0) {
+				alert("[출고완료]되었습니다.");
+			} else if(oid == 1) {
+				alert("이미 출고된 차량입니다!");
+				event.preventDefault();
+				location.href = "/view/infoForm.jsp";
+				return false;
+			}
+		}
+	}
+</script>
 </head>
+<link rel="stylesheet" href="/style.css">
 <body>
 	<div id="wrap">
 		<header>
@@ -27,7 +49,7 @@
 			<input type="submit" value="주차입고" formaction="/searchTicket.do">
 			<input type="submit" value="주차출고" formaction="/searchParkInfo.do"> <br/>
 		</form>
-		<form method="post" action="/output.do" onSubmit="return check_form()">
+		<form method="post" action="/output.do" onSubmit="return check_form(event)">
 			<table border="1">
 				<tr>
 					<td width="200">주차번호</td>
