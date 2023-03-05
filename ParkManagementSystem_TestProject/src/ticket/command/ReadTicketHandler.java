@@ -1,10 +1,12 @@
 package ticket.command;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import mvc.command.CommandHandler;
-import ticket.service.ListPage;
+import ticket.model.Ticket;
 import ticket.service.ReadTicketService;
 
 public class ReadTicketHandler implements CommandHandler {
@@ -13,10 +15,8 @@ public class ReadTicketHandler implements CommandHandler {
 
 	@Override
 	public String process(HttpServletRequest req, HttpServletResponse res) throws Exception {
-		ListPage listPage = readTicketService.getDateList();
-		ListPage util = new ListPage();
+		List<Ticket> listPage = readTicketService.getDateList();
 		req.setAttribute("listPage", listPage);
-		req.setAttribute("util", util);
 		return "/view/readTicketForm.jsp";
 	}
 

@@ -53,12 +53,12 @@ td {
 						<td>주차시작일</td>
 						<td>주차종료일</td>
 					</tr>
-					<c:forEach var="ticket" items="${listPage.content}">
+					<c:forEach var="ticket" items="${listPage}">
 						<tr>
 							<td>${ticket.tno }</td>
 							<td>${ticket.carno}</td>
 							<td>${ticket.phone}</td>
-							<td><%= stringFormat(${ticket.grade})%></td>
+							<td>${ticket.grade}</td>
 							<td>${ticket.tstat}</td>
 							<td>${ticket.startDate}</td>
 							<td>${ticket.endDate}</td>

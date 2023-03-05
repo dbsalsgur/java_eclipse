@@ -12,10 +12,10 @@ public class ReadTicketService {
 
 	private TicketDao ticketDao = new TicketDao();
 	
-	public ListPage getDateList() {
+	public List<Ticket> getDateList() {
 		try (Connection conn = ConnectionProvider.getConnection()) {
 			List<Ticket> dataList = ticketDao.select();
-			return new ListPage(dataList);
+			return dataList;
 		} catch(SQLException e) {
 			throw new RuntimeException();
 		} 
