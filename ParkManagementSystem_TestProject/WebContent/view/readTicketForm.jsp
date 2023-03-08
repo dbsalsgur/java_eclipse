@@ -1,20 +1,7 @@
-<%@page import="jdbc.JdbcUtil"%>
-<%@page import="ticket.model.Ticket"%>
-<%@page import="jdbc.connection.ConnectionProvider"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ page import="java.sql.*"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%!
-	String stringFormat(String str) {
-		if (str.equals("Y"))
-			return "연회원";
-		if (str.equals("M"))
-			return "월회원";
-		else
-			return "";
-	}
-%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -38,7 +25,7 @@ td {
 			<a class="menu" href="/regist.do">[정기권등록]</a> 
 			<a class="menu" href="/readTic.do">[정기권조회]</a> 
 			<a class="menu" href="/view/infoForm.jsp">[주차차량입,출고]</a> 
-			<a class="menu" href="/view/readParkInfoForm.jsp">[주차현황조회]</a>
+			<a class="menu" href="/readPark.do">[주차현황조회]</a>
 		</div>
 		<section>
 			<div align="center">
@@ -53,15 +40,15 @@ td {
 						<td>주차시작일</td>
 						<td>주차종료일</td>
 					</tr>
-					<c:forEach var="ticket" items="${listPage}">
+					<c:forEach var="ticket" items="${tlistPage}">
 						<tr>
 							<td>${ticket.tno }</td>
 							<td>${ticket.carno}</td>
 							<td>${ticket.phone}</td>
-							<td>${ticket.grade}</td>
+							<td>${ticket.grade.equals("Y")? "연회원" : "월회원"}</td>
 							<td>${ticket.tstat}</td>
-							<td>${ticket.startDate}</td>
-							<td>${ticket.endDate}</td>
+							<td>${ticket.startDateStr}</td>
+							<td>${ticket.endDateStr}</td>
 						</tr>
 					</c:forEach>
 				</table>

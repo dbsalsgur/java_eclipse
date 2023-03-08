@@ -10,8 +10,20 @@ public class Info {
 	private String tstat;
 	private Date inDate;
 	private Date outDate;
+	private String inDateStr;
+	private String outDateStr;
 	
 	public Info () {}
+	
+	public Info(int parkNo, String carNo, String grade, String tstat, String inDateStr, String outDateStr) {
+		super();
+		this.parkNo = parkNo;
+		this.carNo = carNo;
+		this.grade = grade;
+		this.tstat = tstat;
+		this.inDateStr = inDateStr;
+		this.outDateStr = outDateStr;
+	}
 	
 	public Info(int parkNo, String carNo, String grade, String tstat, Date inDate, Date outDate) {
 		super();
@@ -22,6 +34,7 @@ public class Info {
 		this.inDate = inDate;
 		this.outDate = outDate;
 	}
+
 	public Info(String carNo, String grade, String tstat, Date inDate) {
 		super();
 		this.carNo = carNo;
@@ -65,4 +78,17 @@ public class Info {
 	public void setOutDate(Date outDate) {
 		this.outDate = outDate;
 	}
+	public String getInDateStr() {
+		return inDateStr;
+	}
+	public void setInDateStr(String inDateStr) {
+		this.inDateStr = inDateStr;
+	}
+	public String getOutDateStr() {
+		return outDateStr;
+	}
+	public void setOutDateStr(String outDateStr) {
+		this.outDateStr = outDateStr;
+	}
+	
 }

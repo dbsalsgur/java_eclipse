@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -69,8 +70,8 @@ public class TicketDao {
 				rs.getString("phone"),
 				rs.getString("grade"),
 				rs.getString("tstat"),
-				toDate(rs.getTimestamp("startdate")),
-				toDate(rs.getTimestamp("enddate")));
+				dateFormat(rs.getTimestamp("startdate")),
+				dateFormat(rs.getTimestamp("enddate")));
 		return record; 
 	}
 	
@@ -91,5 +92,15 @@ public class TicketDao {
 			pstmt.executeUpdate();
 		}
 		
+	}
+	
+	public String dateFormat(Timestamp date) {
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+		if(date == null) {
+			return "";
+		}
+		String strDate = format.format(date);
+		
+		return strDate;
 	}
 }

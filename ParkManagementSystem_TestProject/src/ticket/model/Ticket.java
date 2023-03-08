@@ -11,14 +11,17 @@ public class Ticket {
 	private String tstat;
 	private Date startDate;
 	private Date endDate;
-	public Ticket(int tno, String carno, String phone, String grade, String tstat, Date startDate) {
+	private String startDateStr;
+	private String endDateStr;
+	public Ticket(int tno, String carno, String phone, String grade, String tstat, String startDateStr, String endDateStr) {
 		super();
 		this.tno = tno;
 		this.carno = carno;
 		this.phone = phone;
 		this.grade = grade;
 		this.tstat = tstat;
-		this.startDate = startDate;
+		this.startDateStr = startDateStr;
+		this.endDateStr = endDateStr;
 	}
 	
 	
@@ -78,6 +81,18 @@ public class Ticket {
 	public void setEndDate(Date endDate) {
 		this.endDate = endDate;
 	}
+	public String getStartDateStr() {
+		return startDateStr;
+	}
+	public void setStartDateStr(String startDateStr) {
+		this.startDateStr = startDateStr;
+	}
+	public String getEndDateStr() {
+		return endDateStr;
+	}
+	public void setEndDateStr(String endDateStr) {
+		this.endDateStr = endDateStr;
+	}
 	
-	
+
 }

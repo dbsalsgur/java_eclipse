@@ -15,8 +15,8 @@ public class ReadTicketHandler implements CommandHandler {
 
 	@Override
 	public String process(HttpServletRequest req, HttpServletResponse res) throws Exception {
-		List<Ticket> listPage = readTicketService.getDateList();
-		req.setAttribute("listPage", listPage);
+		List<Ticket> tlistPage = readTicketService.getDateList();
+		req.setAttribute("tlistPage", tlistPage);
 		return "/view/readTicketForm.jsp";
 	}
 

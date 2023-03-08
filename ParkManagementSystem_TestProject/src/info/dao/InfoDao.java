@@ -4,11 +4,16 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import info.model.Info;
 import jdbc.JdbcUtil;
+import jdbc.connection.ConnectionProvider;
 import ticket.model.Ticket;
 
 public class InfoDao {
@@ -62,6 +67,38 @@ public class InfoDao {
 		}
 	}
 	
+	public List<Info> select() throws SQLException {
+		Connection conn = null;
+		Statement stmt = null;
+		ResultSet rs = null;
+
+		try {
+			conn = ConnectionProvider.getConnection();
+			stmt = conn.createStatement();
+			rs = stmt.executeQuery("select * from park_info_tbl");
+			java.util.List<Info> records = new ArrayList<>();
+			while (rs.next()) {
+				records.add(listingRecord(rs));
+			}
+			return records;
+		} finally {
+			JdbcUtil.close(rs);
+			JdbcUtil.close(stmt);
+			JdbcUtil.close(conn);
+		}
+	}
+	
+	private Info listingRecord(ResultSet rs) throws SQLException {
+		Info record = new Info(
+				rs.getInt("parkno"),
+				rs.getString("carno"),
+				rs.getString("grade"),
+				rs.getString("tstat"),
+				dateFormat(rs.getTimestamp("indate")),
+				dateFormat(rs.getTimestamp("outdate")));
+		return record; 
+	}
+	
 	public void update(Connection conn, String carNo) {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -91,5 +128,15 @@ public class InfoDao {
 			pstmt.executeUpdate();
 		}
 		
+	}
+	
+	public String dateFormat(Timestamp date) {
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		if(date == null) {
+			return "";
+		}
+		String strDate = format.format(date);
+		
+		return strDate;
 	}
 }
