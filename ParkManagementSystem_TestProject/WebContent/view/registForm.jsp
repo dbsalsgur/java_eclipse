@@ -49,7 +49,7 @@
 			<a class="menu" href="/view/readParkInfoForm.jsp">[주차현황조회]</a>
 		</div>
 	<section>
-		<form method="post" onSubmit="registCheck()" action="regist.do">
+		<form method="post" name="data_form" onSubmit="return registCheck()" action="/regist.do">
 		<div align="center">
 			<h1 style="padding-bottom:50px">주차 정기권 등록</h1>
 			<table border="1">

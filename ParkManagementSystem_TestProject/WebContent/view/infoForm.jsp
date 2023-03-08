@@ -7,7 +7,6 @@
 <head>
 <meta charset="UTF-8">
 <title>주차차량 입고, 출고 관리</title>
-
 </head>
 <link rel="stylesheet" href="/style.css">
 <body>
@@ -24,7 +23,7 @@
 			<a class="menu" href="/readPark.do">[주차현황조회]</a>
 		</div>
 	<section>
-			<form method="post">
+			<form method="post" onSubmit="return check_form()">
 				<h1>주차차량 입고, 출고 관리</h1>
 				차량번호 <input type="text" name="carNo"> 
 				<input type="submit" value="주차입고" formaction="/searchTicket.do">

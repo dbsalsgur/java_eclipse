@@ -5,11 +5,9 @@ import java.text.ParseException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import info.service.InputRequest;
 import info.service.OutputRequest;
 import info.service.OutputService;
 import mvc.command.CommandHandler;
-import ticket.service.DuplicateIdException;
 
 public class OutputHandler implements CommandHandler {
 

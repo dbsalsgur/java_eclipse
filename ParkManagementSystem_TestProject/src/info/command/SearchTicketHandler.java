@@ -68,6 +68,8 @@ public class SearchTicketHandler implements CommandHandler {
 				SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 				String inDate = format.format(date);
 				req.setAttribute("inDate", inDate);
+				req.setAttribute("icheck", icheck);
+				System.out.println(icheck);
 				
 				return "/view/inputDayMemberForm.jsp";
 			}

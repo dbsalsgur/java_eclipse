@@ -49,8 +49,10 @@ public class SearchParkInfoHandler implements CommandHandler {
 			Info info =  searchParkInfoService.searchParkInfo(searchReq);
 			
 			//입, 출차 여부를 javascript 변수 oid로 전달
-			int ocheck = 2;
-			if(info.getTstat().equals("I")) {
+			int ocheck = 3;
+			if(info == null) {
+				ocheck = 2;
+			} else if(info.getTstat().equals("I")) {
 				ocheck = 0;
 			} else if(info.getTstat().equals("O")) {
 				ocheck = 1;

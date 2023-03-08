@@ -44,19 +44,10 @@ public class RegistHandler implements CommandHandler {
 		registReq.setStartDate(req.getParameter("startDate"));
 		registReq.setEndDate(req.getParameter("endDate"));
 		
-		Map<String, Boolean> errors = new HashMap<String, Boolean>();
-		req.setAttribute("errors", errors);
-		
-		registReq.validate(errors);
-		if (!errors.isEmpty()) {
-			return FORM_VIEW;
-		}
-		
 		try {
 			registService.regist(registReq);
-			return "/view/readTicketForm.jsp";
+			return "/readTic.do";
 		} catch (DuplicateIdException e) {
-			errors.put("duplicateId", Boolean.TRUE);
 			return FORM_VIEW;
 		}
 	}

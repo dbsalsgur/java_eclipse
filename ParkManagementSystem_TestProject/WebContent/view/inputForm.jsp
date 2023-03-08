@@ -2,7 +2,6 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-
 <!DOCTYPE html>
 
 <html>
@@ -12,7 +11,6 @@
 <script type="text/javascript">
 	var iid = "<c:out value='${icheck}'/>";
 	function check_form(event) {
-		
 		if(!confirm("[차량입고]하시겠습니까?")) {
 			alert("취소하였습니다");
 			event.preventDefault();
@@ -48,7 +46,7 @@
 	<section>
 		<form method="post">
 			<h1>주차차량 입고, 출고 관리</h1>
-			차량번호 <input type="text" name="carNo"> 
+			차량번호 <input type="text" name="carNo" value="${param.carNo }"> 
 			<input type="submit" value="주차입고" formaction="/searchTicket.do">
 			<input type="submit" value="주차출고" formaction="/searchParkInfo.do"> <br/>
 		</form>

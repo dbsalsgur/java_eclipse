@@ -38,7 +38,6 @@ public class InputHandler implements CommandHandler {
 		inputReq.setGrade(req.getParameter("grade"));
 		
 		try {
-			
 			inputService.input(inputReq);
 			return "/view/infoForm.jsp";
 		} catch (DuplicateIdException e) {
