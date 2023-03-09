@@ -26,7 +26,7 @@ public class InfoDao {
 			pstmt.setString(1, carNo);
 			rs = pstmt.executeQuery();
 			Ticket ticket = null;
-			if (rs.next()) {
+			while (rs.next()) {
 				ticket = new Ticket(
 						rs.getInt("tno"),
 						rs.getString("carno"),
@@ -51,7 +51,7 @@ public class InfoDao {
 			pstmt = conn.prepareStatement("select * from park_info_tbl where carno = ?");
 			pstmt.setString(1, carNo);
 			rs = pstmt.executeQuery();
-			if (rs.next()) {
+			while (rs.next()) {
 				info = new Info(
 						rs.getInt("parkno"),
 						rs.getString("carno"),

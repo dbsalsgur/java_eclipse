@@ -56,12 +56,13 @@ public class SearchTicketHandler implements CommandHandler {
 			
 			//차량 입고 테이블을 확인, javascript로 전달할 값 설정.
 			int icheck = 2;
-			if(info == null) {
+			//입,출고가 끝난 차량이 다시 입고 하는 상황을 체크
+			if(info == null || (info.getInDate() != null && info.getOutDate() != null)) {
 				icheck = 0;
-			} else if(info != null){
+			} else if(info.getInDate() != null && info.getOutDate() == null){
 				icheck = 1;
 			}
-		
+			System.out.println(icheck);
 			//정기권 등록이 안된 차량이면 일일회원 입고페이지로 이동
 			if (ticket == null) {
 				Date date = new Date();

@@ -23,6 +23,11 @@
 				event.preventDefault();
 				location.href = "/view/infoForm.jsp";
 				return false;
+			} else if(oid == 2) {
+				alert("입고기록이 없는 차량입니다!");
+				event.preventDefault();
+				location.href = "/view/infoForm.jsp";
+				return false;
 			}
 		}
 	}

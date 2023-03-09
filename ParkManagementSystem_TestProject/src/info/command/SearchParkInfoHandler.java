@@ -60,7 +60,9 @@ public class SearchParkInfoHandler implements CommandHandler {
 			
 			//비고에 출력할 문구
 			String note = "";
-			if(info.getTstat().equals("I")) {
+			if(ocheck == 2) {
+				note = "입차가 완료되지 않은 차량입니다";
+			} else if(info.getTstat().equals("I")) {
 				note = "출차 준비중입니다.";
 			} else if(info.getTstat().equals("O")) {
 				note = "출차가 완료된 차량입니다";
@@ -76,8 +78,7 @@ public class SearchParkInfoHandler implements CommandHandler {
 			req.setAttribute("ocheck", ocheck);
 			
 			return "/view/outputForm.jsp";
-		} catch (DuplicateIdException e) {
-			errors.put("duplicateId", Boolean.TRUE);
+		} catch (Exception e) {
 			return FORM_VIEW;
 		}
 	}
