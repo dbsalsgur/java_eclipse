@@ -260,3 +260,4 @@ ex) import, session, buffer 등
 - 위의 객체들은 sevice, doPost, doGet에서만 쓸 수 있는 것들이다.
 - 즉 jsp 에서는 스크립트릿에서만 쓸 수 있다. (page 선언부나 선언부에서 사용불가)
 
+아아아
